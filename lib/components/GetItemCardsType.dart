@@ -19,7 +19,10 @@ List<GestureDetector> getItemscardtype(
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) {
-              return Itemofcards(cards: items, index: i,);
+              return Itemofcards(
+                cards: items,
+                index: i,
+              );
             }),
           );
         },

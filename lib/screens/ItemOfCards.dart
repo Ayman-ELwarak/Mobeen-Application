@@ -76,10 +76,18 @@ class _Itemofcards extends State<Itemofcards> {
                         child: Stack(
                           children: [
                             Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF9DCCC7),
-                                  borderRadius: BorderRadius.circular(60),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 50.0,
+                                  bottom: 100,
+                                  left: 30,
+                                  right: 30,
+                                ),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF9DCCC7),
+                                    borderRadius: BorderRadius.circular(60),
+                                  ),
                                 ),
                               ),
                             ),

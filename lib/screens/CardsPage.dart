@@ -1,10 +1,12 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/AnimalsList.dart';
+import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/FamilyList.dart';
 import 'package:mobile_app/components/FoodList.dart';
 import 'package:mobile_app/components/GetItemsCard.dart';
 import 'package:mobile_app/components/JobsList.dart';
+import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/models/CardModel.dart';
 
 // ignore: must_be_immutable
@@ -42,7 +44,12 @@ class Cardspage extends StatelessWidget {
     const double paddingListview = 20;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: BackButtonContainer().create(context),
+        actions: [
+          const Menu(),
+        ],
+      ),
       body: Center(
         child: Container(
           padding: const EdgeInsets.only(top: paddingListview),
