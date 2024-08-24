@@ -1,7 +1,12 @@
 // ignore_for_file: file_names
+import 'dart:io';
+// ignore: depend_on_referenced_packages
+import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:record/record.dart';
 
 // ignore: must_be_immutable
 class Itemofcards extends StatefulWidget {
@@ -16,6 +21,10 @@ class Itemofcards extends StatefulWidget {
 class _Itemofcards extends State<Itemofcards> {
   int gain = 200;
   int totalScore = 400;
+  bool isRecoring = false;
+  final AudioRecorder audioRecorder = AudioRecorder();
+  String? recordingPath;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,17 +92,23 @@ class _Itemofcards extends State<Itemofcards> {
                                   left: 30,
                                   right: 30,
                                 ),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFF9DCCC7),
-                                    borderRadius: BorderRadius.circular(60),
+                                child: SizedBox(
+                                  height: 2*MediaQuery.of(context).size.height / 5,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF9DCCC7),
+                                      borderRadius: BorderRadius.circular(60),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                             Center(
-                              child:
-                                  Image.asset(widget.cards[widget.index].image),
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height / 2,
+                                child: Image.asset(
+                                    widget.cards[widget.index].image,),
+                              ),
                             ),
                           ],
                         ),
@@ -214,7 +229,53 @@ class _Itemofcards extends State<Itemofcards> {
               ),
             ),
           ),
-          Expanded(flex: 3, child: Container()),
+          Expanded(
+            flex: 3,
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: Color(0xFF094251), shape: BoxShape.circle),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: IconButton(
+                  onPressed: () async {
+                    if (isRecoring) {
+                      String? filePath = await audioRecorder.stop();
+                      if (filePath != null) {
+                        setState(() {
+                          isRecoring = false;
+                          recordingPath = filePath;
+                        });
+                      }
+                    } else {
+                      if (await audioRecorder.hasPermission()) {
+                        final Directory appDocumentsDir =
+                            await getApplicationDocumentsDirectory();
+                        final String filePath =
+                            p.join(appDocumentsDir.path, "recording.wav");
+                        try {
+                          audioRecorder.start(
+                            const RecordConfig(),
+                            path: filePath,
+                          );
+                          setState(() {
+                            isRecoring = true;
+                            recordingPath = null;
+                          });
+                        } catch (e) {
+                          print("error!!!!!!!!!!");
+                        }
+                      }
+                    }
+                  },
+                  icon: Icon(
+                    isRecoring ? Icons.stop : Icons.mic,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
