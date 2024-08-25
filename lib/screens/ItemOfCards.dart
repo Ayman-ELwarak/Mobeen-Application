@@ -93,7 +93,9 @@ class _Itemofcards extends State<Itemofcards> {
                                   right: 30,
                                 ),
                                 child: SizedBox(
-                                  height: 2*MediaQuery.of(context).size.height / 5,
+                                  height: 2 *
+                                      MediaQuery.of(context).size.height /
+                                      5,
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: const Color(0xFF9DCCC7),
@@ -107,7 +109,8 @@ class _Itemofcards extends State<Itemofcards> {
                               child: SizedBox(
                                 height: MediaQuery.of(context).size.height / 2,
                                 child: Image.asset(
-                                    widget.cards[widget.index].image,),
+                                  widget.cards[widget.index].image,
+                                ),
                               ),
                             ),
                           ],
@@ -233,44 +236,64 @@ class _Itemofcards extends State<Itemofcards> {
             flex: 3,
             child: Container(
               decoration: const BoxDecoration(
-                  color: Color(0xFF094251), shape: BoxShape.circle),
+                color: Color(0x20094251),
+                shape: BoxShape.circle,
+              ),
               child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: IconButton(
-                  onPressed: () async {
-                    if (isRecoring) {
-                      String? filePath = await audioRecorder.stop();
-                      if (filePath != null) {
-                        setState(() {
-                          isRecoring = false;
-                          recordingPath = filePath;
-                        });
-                      }
-                    } else {
-                      if (await audioRecorder.hasPermission()) {
-                        final Directory appDocumentsDir =
-                            await getApplicationDocumentsDirectory();
-                        final String filePath =
-                            p.join(appDocumentsDir.path, "recording.wav");
-                        try {
-                          audioRecorder.start(
-                            const RecordConfig(),
-                            path: filePath,
-                          );
-                          setState(() {
-                            isRecoring = true;
-                            recordingPath = null;
-                          });
-                        } catch (e) {
-                          print("error!!!!!!!!!!");
-                        }
-                      }
-                    }
-                  },
-                  icon: Icon(
-                    isRecoring ? Icons.stop : Icons.mic,
-                    color: Colors.white,
-                    size: 40,
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0x50094251),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF094251),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: IconButton(
+                          onPressed: () async {
+                            if (isRecoring) {
+                              String? filePath = await audioRecorder.stop();
+                              if (filePath != null) {
+                                setState(() {
+                                  isRecoring = false;
+                                  recordingPath = filePath;
+                                });
+                              }
+                            } else {
+                              if (await audioRecorder.hasPermission()) {
+                                final Directory appDocumentsDir =
+                                    await getApplicationDocumentsDirectory();
+                                final String filePath = p.join(
+                                    appDocumentsDir.path, "recording.wav");
+                                try {
+                                  audioRecorder.start(
+                                    const RecordConfig(),
+                                    path: filePath,
+                                  );
+                                  setState(() {
+                                    isRecoring = true;
+                                    recordingPath = null;
+                                  });
+                                } catch (e) {
+                                  print("error!!!!!!!!!!");
+                                }
+                              }
+                            }
+                          },
+                          icon: Icon(
+                            isRecoring ? Icons.stop : Icons.mic,
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
