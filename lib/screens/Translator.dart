@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 import 'dart:io';
 import 'package:mobile_app/screens/GetText.dart';
 import 'package:path/path.dart' as p;
@@ -20,7 +21,7 @@ class _TranslatorState extends State<Translator> {
   int _start = 0;
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _start++;
       });
@@ -38,6 +39,14 @@ class _TranslatorState extends State<Translator> {
       recordingPath = null;
       _start = 0;
     });
+  }
+
+  Widget fn() {
+    if (isRecoring) {
+      return Image.asset('assest/images/Wave.gif');
+    } else {
+      return SizedBox();
+    }
   }
 
   @override
@@ -66,13 +75,16 @@ class _TranslatorState extends State<Translator> {
                 padding: const EdgeInsets.only(top: 60.0),
                 child: Text(
                   '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
-                  style: TextStyle(fontSize: 48),
+                  style: const TextStyle(fontSize: 48),
                 ),
               ),
             ),
             Expanded(
               flex: 4,
-              child: Container(),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                child: fn(),
+              ),
             ),
             const Expanded(
               flex: 2,
