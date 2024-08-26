@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+
+class ExerciseTypeButton extends StatelessWidget {
+  final String text;
+
+  ExerciseTypeButton({required this.text,this.tap});
+  Function()? tap;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Container(
+        width: 300,
+        height: 53,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFFD9D9D9),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+            padding: EdgeInsets.symmetric(),
+          ),
+          onPressed: tap,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
