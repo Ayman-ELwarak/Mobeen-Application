@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:mobile_app/screens/HomePage.dart';
 
 class Welcomepage extends StatelessWidget {
   const Welcomepage({super.key});
@@ -37,58 +38,52 @@ class Welcomepage extends StatelessWidget {
                 flex: 5,
                 child: Image.asset('assest/images/stars.png'),
               ),
-              const Spacer(
-                flex: 2,
-              ),
               GestureDetector(
                 onTap: () {},
                 child: Expanded(
                   flex: 2,
-                  child: Container(
-                    height: 55,
-                    width: 380,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 150.0,
+                      right: 150,
+                      top: 80,
                     ),
-                    child: const Center(
-                        child: Text(
-                      "Sign in",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, bottom: 20.0),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Expanded(
-                    flex: 2,
-                    child: Container(
-                      height: 55,
-                      width: 380,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF1E3A3D),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: const Center(
-                          child: Text(
-                        "Sign up",
-                        style: TextStyle(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Homepage();
+                            },
+                          ),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
                           color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                      )),
+                        child: const Center(
+                            child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Text(
+                            "Go",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )),
+                      ),
                     ),
                   ),
                 ),
               ),
+              Spacer(
+                flex: 1,
+              )
             ],
           ),
         ),

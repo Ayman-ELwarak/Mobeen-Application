@@ -69,7 +69,21 @@ class _GettextState extends State<Gettext> {
       backgroundColor: const Color(0xFF8CBBB6),
       appBar: AppBar(
         backgroundColor: const Color(0xFF8CBBB6),
-        leading: BackButtonContainer().create(context),
+        leading: Container(
+          margin: const EdgeInsets.only(left: 16.0),
+          decoration: const BoxDecoration(
+            color: Color(0xFF1E3A3D),
+            shape: BoxShape.circle,
+          ),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            color: Colors.white,
+            onPressed: () {
+              player.stop();
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
         actions: const [Menu()],
       ),
       body: Center(
