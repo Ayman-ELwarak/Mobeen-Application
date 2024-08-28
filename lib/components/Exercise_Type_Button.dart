@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ExerciseTypeButton extends StatelessWidget {
   final String text;
 
-  ExerciseTypeButton({required this.text,this.tap});
+  ExerciseTypeButton({super.key, required this.text,this.tap});
   Function()? tap;
   @override
   Widget build(BuildContext context) {

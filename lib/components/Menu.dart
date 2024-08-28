@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/screens/All_Exercises.dart';
 import 'package:mobile_app/screens/CardsPage.dart';
+import 'package:mobile_app/screens/Diagnosis.dart';
+import 'package:mobile_app/screens/HomePage.dart';
+import 'package:mobile_app/screens/Translator.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -22,16 +26,34 @@ class Menu extends StatelessWidget {
         onSelected: (String rslt) {
           switch (rslt) {
             case 'Home':
-              print('Home');
-              break;
-            case 'Profile':
-              print('Profile');
+               Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Homepage();
+                  },
+                ),
+              );
               break;
             case 'Diagnosis':
-              print('Diagnosis');
+               Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const Diagnosis();
+                  },
+                ),
+              );
               break;
             case 'voice Reconstructor':
-              print('voice Reconstructor');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const Translator();
+                  },
+                ),
+              );
               break;
             case 'Cards Game':
               Navigator.push(
@@ -44,7 +66,14 @@ class Menu extends StatelessWidget {
               );
               break;
             case 'Exercises':
-              print('Exercises');
+               Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Exercises();
+                  },
+                ),
+              );
               break;
           }
         },
@@ -54,13 +83,6 @@ class Menu extends StatelessWidget {
               value: 'Home',
               child: Text(
                 'Home',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),
-            const PopupMenuItem(
-              value: 'Profile',
-              child: Text(
-                'Profile',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),

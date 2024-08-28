@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+// ignore: must_be_immutable
 class ExercisesButton extends StatelessWidget {
   final String text;
 
-  ExercisesButton({required this.text,this.tap});
+  ExercisesButton({super.key, required this.text,this.tap});
   Function()? tap;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ExercisesButton extends StatelessWidget {
       child: Center(
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize:34 ,
           ),
         ),
