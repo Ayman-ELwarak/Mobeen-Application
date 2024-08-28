@@ -41,6 +41,7 @@ dependencies:
   path_provider: ^2.1.4
   audio_waveforms: ^1.0.5
   audio_video_progress_bar: ^2.0.3
+  video_player: ^2.9.1
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,7 @@ flutter:
   assets:
     - assest/images/
     - assest/sounds/
+    - assest/Videos/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

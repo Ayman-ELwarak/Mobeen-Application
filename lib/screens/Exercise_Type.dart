@@ -6,34 +6,25 @@ class ExercisesType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
-              SizedBox(height: 50),
               Padding(
                 padding: const EdgeInsets.only(top:20.0 ,bottom: 10.0),
-                child: Expanded(
-                  flex: 15,
-                  child: Text(
+                child: Text(
                     'Lip exercises',
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
               ),
 
               Padding(
                 padding: const EdgeInsets.only(left: 20.0,top: 70.0,right: 20.0,bottom: 50.0),
-                child: Expanded(
-                  flex: 50,
-                  child: Container(
-                    height: 450,
-                    width: 400,
+               child:  Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 60, vertical: 70),
                     decoration: BoxDecoration(
@@ -43,9 +34,7 @@ class ExercisesType extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Expanded(
-                          flex: 10,
-                          child: ExerciseTypeButton(
+                         ExerciseTypeButton(
                             text: 'Lip Opening',
                             tap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -53,10 +42,7 @@ class ExercisesType extends StatelessWidget {
                               }));
                             },
                           ),
-                        ),
-                        Expanded(
-                          flex: 10,
-                          child: ExerciseTypeButton(
+                           ExerciseTypeButton(
                             text: 'Lip Pucker',
                             tap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -64,10 +50,7 @@ class ExercisesType extends StatelessWidget {
                               }));
                             },
                           ),
-                        ),
-                        Expanded(
-                          flex: 10,
-                          child: ExerciseTypeButton(
+                        ExerciseTypeButton(
                             text: 'Retracted Smile',
                             tap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -75,10 +58,7 @@ class ExercisesType extends StatelessWidget {
                               }));
                             },
                           ),
-                        ),
-                        Expanded(
-                          flex: 10,
-                          child: ExerciseTypeButton(
+                        ExerciseTypeButton(
                             text: 'Lip Closure',
                             tap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -86,18 +66,14 @@ class ExercisesType extends StatelessWidget {
                               }));
                             },
                           ),
-                        ),
                       ],
                     ),
                   ),
-                ),
               ),
-              SizedBox(height: 20),
-              // Optionally, add the curved design or other elements here
+
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
