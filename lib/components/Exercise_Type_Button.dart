@@ -8,10 +8,8 @@ class ExerciseTypeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.all(10),
       child: Container(
-        width: 300,
-        height: 53,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xFFD9D9D9),
