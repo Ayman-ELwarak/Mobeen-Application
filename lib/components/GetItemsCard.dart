@@ -3,11 +3,12 @@ import 'package:mobile_app/models/CardModel.dart';
 import 'package:mobile_app/screens/CardTypePage.dart';
 
 List<GestureDetector> getItemscard(
-    BuildContext context, List<Cardmodel> items, double paddingListview) {// calculate the size of screen
+    BuildContext context, List<Cardmodel> items, double paddingListview) {
+  // calculate the size of screen
   const int numOfItemsPerScreen = 4;
   final double screenheight = MediaQuery.of(context).size.height -
       (MediaQuery.of(context).padding.top + kToolbarHeight + paddingListview);
-  const double totalspace = (numOfItemsPerScreen) * 64;
+  const double totalspace = (numOfItemsPerScreen) * 70;
   final double itemheight = (screenheight - totalspace) / numOfItemsPerScreen;
   //
   List<GestureDetector> item = [];
@@ -25,7 +26,7 @@ List<GestureDetector> getItemscard(
           );
         },
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 64, left: 20, right: 20),
+          padding: const EdgeInsets.only(bottom: 55, left: 20, right: 20),
           child: Container(
             height: itemheight,
             decoration: BoxDecoration(
@@ -35,33 +36,30 @@ List<GestureDetector> getItemscard(
             child: Row(
               children: [
                 Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Image.asset(
-                      items[i].image,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Center(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 25.0),
+                  flex: 3,
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 16.0, top: 32, right: 16, bottom: 32.0),
+                      child: Center(
                         child: Text(
-                          textAlign: TextAlign.center,
-                          items[i].item_name,
+                          items[i].item_name, // text
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 45,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Image.asset(items[i].image),
                   ),
                 ),
               ],

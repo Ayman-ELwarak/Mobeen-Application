@@ -1,5 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:mobile_app/screens/Form.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
@@ -7,6 +11,7 @@ import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
+import 'package:http/http.dart' as http;
 
 class Diagnosis extends StatefulWidget {
   const Diagnosis({super.key});
@@ -18,6 +23,7 @@ class Diagnosis extends StatefulWidget {
 class _DiagnosisState extends State<Diagnosis> {
   Timer? _timer;
   int _start = 0;
+  var url = 'https://dd-api-ef261231066c.herokuapp.com/detect';
 
   void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -40,6 +46,29 @@ class _DiagnosisState extends State<Diagnosis> {
     });
   }
 
+  Future<void> _uploadFile() async {
+    if (recordingPath == null) return;
+    try {
+      final Dio _dio = Dio();
+      print(MultipartFile.fromFile(recordingPath!));
+      final response = await _dio.post(
+        'https://dd-api-ef261231066c.herokuapp.com/detect',
+        data: FormData.fromMap({
+          'file': await MultipartFile.fromFile(recordingPath!),
+        }),
+        options: Options(
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        ),
+      );
+
+      print('Upload response: ${response.data}');
+    } catch (e) {
+      print('Error uploading file: $e');
+    }
+  }
+
   Widget fn() {
     if (isRecoring) {
       return Image.asset('assest/images/Wave.gif');
@@ -48,10 +77,12 @@ class _DiagnosisState extends State<Diagnosis> {
     }
   }
 
-  @override
   String? recordingPath;
   bool isRecoring = false;
+  File? file;
   final AudioRecorder audioRecorder = AudioRecorder();
+
+  @override
   Widget build(BuildContext context) {
     int minutes = _start ~/ 60;
     int seconds = _start % 60;
@@ -163,6 +194,8 @@ class _DiagnosisState extends State<Diagnosis> {
                                     setState(() {
                                       isRecoring = false;
                                       recordingPath = filePath;
+                                      file = File(filePath);
+                                      _uploadFile();
                                       _stopTimer();
                                     });
                                   }

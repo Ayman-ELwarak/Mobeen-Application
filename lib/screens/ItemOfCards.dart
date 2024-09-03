@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 import 'dart:io';
 // ignore: depend_on_referenced_packages
+import 'package:just_audio/just_audio.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
@@ -22,8 +23,22 @@ class _Itemofcards extends State<Itemofcards> {
   int gain = 200;
   int totalScore = 400;
   bool isRecoring = false;
+  bool isPlaying = false;
   final AudioRecorder audioRecorder = AudioRecorder();
   String? recordingPath;
+  AudioPlayer sound = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    sound.playerStateStream.listen((state) {
+      if (state.processingState == ProcessingState.completed) {
+        setState(() {
+          isPlaying = false;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +165,7 @@ class _Itemofcards extends State<Itemofcards> {
                                 child: Text(
                                   widget.cards[widget.index].name,
                                   style: const TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 30,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -211,11 +226,24 @@ class _Itemofcards extends State<Itemofcards> {
                       color: const Color(0xFF3D878B),
                       borderRadius: BorderRadius.circular(60),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(3.0),
-                      child: Icon(
-                        Icons.play_arrow,
-                        color: Color(0xFFD9D9D9),
+                    child: IconButton(
+                      onPressed: () {
+                        if (!isPlaying) {
+                          sound.setAsset(widget.cards[widget.index].sound);
+                          sound.play();
+                          setState(() {
+                            isPlaying = true;
+                          });
+                        } else {
+                          sound.stop();
+                          setState(() {
+                            isPlaying = false;
+                          });
+                        }
+                      },
+                      icon: Icon(
+                        isPlaying ? Icons.pause : Icons.play_arrow,
+                        color: const Color(0xFFD9D9D9),
                       ),
                     ),
                   ),

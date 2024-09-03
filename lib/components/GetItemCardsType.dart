@@ -39,30 +39,30 @@ List<GestureDetector> getItemscardtype(
             child: Row(
               children: [
                 Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 16.0, top: 32, right: 16, bottom: 32.0),
-                    child: Image.asset(items[i].image),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: FittedBox(
                     fit: BoxFit.fitWidth,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 10.0),
+                      padding: const EdgeInsets.only(
+                          left: 16.0, top: 32, right: 16, bottom: 32.0),
                       child: Center(
                         child: Text(
                           items[i].name, // text
                           style: const TextStyle(
                             color: Colors.black,
-                            fontSize: 10,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Image.asset(items[i].image),
                   ),
                 ),
               ],

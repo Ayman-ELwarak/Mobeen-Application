@@ -42,6 +42,8 @@ dependencies:
   audio_waveforms: ^1.0.5
   audio_video_progress_bar: ^2.0.3
   video_player: ^2.9.1
+  http: ^1.2.2
+  dio: ^5.6.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +72,49 @@ flutter:
     - assest/images/
     - assest/sounds/
     - assest/Videos/
+    - assest/images/اجزاء الجسم/
+    - assest/images/اجهزة منزلية/
+    - assest/images/ادوات المطبخ/
+    - assest/images/اساس البيت/
+    - assest/images/افعال/
+    - assest/images/الارقام/
+    - assest/images/الاشكال/
+    - assest/images/العيلة/
+    - assest/images/الوان/
+    - assest/images/اماكن/
+    - assest/images/حروف/
+    - assest/images/حشرات/
+    - assest/images/حيوانات الغابة/
+    - assest/images/حيوانات المزرعة/
+    - assest/images/خضار/
+    - assest/images/طيور/
+    - assest/images/فواكه/
+    - assest/images/مشاعر/
+    - assest/images/ملابس/
+    - assest/images/مهن/
+    - assest/images/وسائل المواصلات/
+    - assest/sounds/اجزاء الجسم/
+    - assest/sounds/اجهزة منزلية/
+    - assest/sounds/ادوات المطبخ/
+    - assest/sounds/اساس البيت/
+    - assest/sounds/الافعال/
+    - assest/sounds/ارقام/
+    - assest/sounds/اشكال/
+    - assest/sounds/العيلة/
+    - assest/sounds/الوان/
+    - assest/sounds/اماكن/
+    - assest/sounds/حروف/
+    - assest/sounds/حشرات/
+    - assest/sounds/حيوانات الغابة/
+    - assest/sounds/حيوانات المزرعة/
+    - assest/sounds/خضار/
+    - assest/sounds/طيور/
+    - assest/sounds/فواكه/
+    - assest/sounds/مشاعر/
+    - assest/sounds/ملابس/
+    - assest/sounds/مهن/
+    - assest/sounds/وسائل المواصلات/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
