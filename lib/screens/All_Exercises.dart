@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
+import 'package:mobile_app/components/cheek_list.dart';
+import 'package:mobile_app/components/jaw_list.dart';
 import '../components/Exercises_Button.dart';
+import '../components/lip_list.dart';
+import '../components/soft_palate_list.dart';
+import '../components/tongue_list.dart';
 import 'Exercise_Type.dart';
 
 class Exercises extends StatelessWidget {
@@ -23,7 +28,10 @@ class Exercises extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const ExercisesType();
+                      return ExercisesType(
+                          exerciseTitles: Lip_list.Lip_title,
+                        exerciseVideos: Lip_list.Lip_video,
+                      );
                     },
                   ),
                 );
@@ -54,7 +62,10 @@ class Exercises extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const ExercisesType();
+                      return ExercisesType(
+                        exerciseTitles: Tongue_list.Tongue_title,
+                        exerciseVideos: Tongue_list.Tongue_video,
+                      );
                     },
                   ),
                 );
@@ -85,7 +96,10 @@ class Exercises extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const ExercisesType();
+                      return ExercisesType(
+                        exerciseTitles: Jaw_list.Jaw_title,
+                        exerciseVideos: Jaw_list.Jaw_video,
+                      );
                     },
                   ),
                 );
@@ -116,7 +130,10 @@ class Exercises extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const ExercisesType();
+                      return ExercisesType(
+                        exerciseTitles: Cheek_list.Cheek_title,
+                        exerciseVideos: Cheek_list.Cheek_Video,
+                      );
                     },
                   ),
                 );
@@ -147,7 +164,10 @@ class Exercises extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const ExercisesType();
+                      return ExercisesType(
+                        exerciseTitles: Soft_palate_list.Soft_palate_title,
+                        exerciseVideos: Soft_palate_list.Soft_palate_video,
+                      );
                     },
                   ),
                 );
@@ -162,7 +182,7 @@ class Exercises extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'Swallowing exercises',
+                      'Soft palate exercises',
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
