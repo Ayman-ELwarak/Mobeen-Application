@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/models/ArticleModel.dart';
-import 'package:mobile_app/models/FeatureModel.dart';
 import 'package:mobile_app/screens/All_Exercises.dart';
 import 'package:mobile_app/screens/Articles.dart';
 import 'package:mobile_app/screens/CardsPage.dart';
@@ -11,24 +10,6 @@ import 'package:mobile_app/screens/Translator.dart';
 
 // ignore: must_be_immutable
 class Homepage extends StatelessWidget {
-  List<Featuremodel> Features = [
-    Featuremodel(
-        image: 'assest/images/Diagnosis.jpg',
-        text: 'Diagnosis',
-        page: const Diagnosis()),
-    Featuremodel(
-        image: 'assest/images/Voice_Reconstructor.jpg',
-        text: 'Voice Reconstructor',
-        page: const Translator()),
-    Featuremodel(
-        image: 'assest/images/Cards_Game.jpg',
-        text: 'Cards Game',
-        page: Cardspage()),
-    Featuremodel(
-        image: 'assest/images/Exercises.jpg',
-        text: 'Exercises',
-        page: Exercises()),
-  ];
   // ignore: non_constant_identifier_names
   List<Articlemodel> Articles = [
     Articlemodel(
@@ -54,17 +35,20 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenheight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Stack(
           children: [
             Container(
+              height: screenheight,
+              width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assest/images/backgrondHomePage.jpg"),
-                  fit: BoxFit
-                      .cover, // Adjusts how the image is fitted into the space
+                  image: AssetImage("assest/images/backgroundHomePage.jpg"),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -81,178 +65,327 @@ class Homepage extends StatelessWidget {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(bottom: 100.0),
-                  child: Expanded(
-                    flex: 2,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'S',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Color(0xFF8CBBB6),
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                        Text(
-                          "peech",
-                          style: TextStyle(
-                            fontSize: 35,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Text(
-                          'a',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Color(0xFF8CBBB6),
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                        Text(
-                          "ble",
-                          style: TextStyle(
-                            fontSize: 35,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    "كيف يمكنني مساعدتك ؟",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                 ),
-                const Expanded(
-                  flex: 2,
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      'Features',
-                      style: TextStyle(
-                        fontSize: 27,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 16.0),
-                  child: Divider(
-                    color: Color(0xFF8CBBB6),
-                    height: 0,
-                    indent: 175,
-                    endIndent: 175,
-                    thickness: 4,
-                  ),
-                ),
-                Expanded(
-                  flex: 10,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: Features.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return Features[index].page;
-                                },
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return Diagnosis();
+                                  },
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width:
+                                  (MediaQuery.of(context).size.width - 42) / 2,
+                              decoration: BoxDecoration(
+                                color:
+                                    const Color(0xFFF55454).withOpacity(0.48),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                            );
-                          },
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height / 6,
-                                child: Image.asset(Features[index].image),
+                              child: Column(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 20,
+                                    ),
+                                    child: Text(
+                                      "التشخيص",
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 50.0,
+                                        left: 90,
+                                        bottom: 20,
+                                        right: 20),
+                                    child: Image.asset(
+                                        'assest/images/Diagnosis.png'),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                Features[index].text,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Translator();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width:
+                                    (MediaQuery.of(context).size.width - 42) /
+                                        2,
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color(0xFFC78FF3).withOpacity(0.48),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Column(
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 20,
+                                        left: 30,
+                                      ),
+                                      child: Text(
+                                        "المترجم",
+                                        style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 50.0,
+                                          left: 70,
+                                          bottom: 20,
+                                          right: 20),
+                                      child: Image.asset(
+                                          'assest/images/Voice_Reconstructor.png'),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Cardspage();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width:
+                                    (MediaQuery.of(context).size.width - 42) /
+                                        2,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF86BEFF).withOpacity(0.48),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 20,
+                                      ),
+                                      child: Text(
+                                        "بطاقات التخاطب",
+                                        style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 50.0,
+                                          left: 90,
+                                          bottom: 20,
+                                          right: 20),
+                                      child: Image.asset(
+                                          'assest/images/Cards_Game.png'),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return AllExercises();
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width:
+                                      (MediaQuery.of(context).size.width - 42) /
+                                          2,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFFFD233).withOpacity(0.48),
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 20,
+                                          left: 30,
+                                        ),
+                                        child: Text(
+                                          "التمارين",
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 79.0,
+                                            left: 70,
+                                            bottom: 20,
+                                            right: 20),
+                                        child: Image.asset(
+                                            'assest/images/Exercises.png'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFD9D9D9).withOpacity(0.90),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(35),
+                        topRight: Radius.circular(35)),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: const Text(
+                          'المقالات',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w900,
                           ),
                         ),
-                      );
-                    },
-                  ),
-                ),
-                const Divider(
-                  color: Color(0xFFD8DADC),
-                  indent: 60,
-                  endIndent: 60,
-                  thickness: 3,
-                ),
-                const Expanded(
-                  flex: 2,
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      'Articles',
-                      style: TextStyle(
-                        fontSize: 27,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 10.0),
-                  child: Divider(
-                    color: Color(0xFF8CBBB6),
-                    height: 0,
-                    indent: 175,
-                    endIndent: 175,
-                    thickness: 4,
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 35.0),
+                        child: Divider(
+                          color: Color(0xFF86BEFF).withOpacity(0.54),
+                          height: 0,
+                          indent: 175,
+                          endIndent: 175,
+                          thickness: 4,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Expanded(
-                  flex: 15,
                   child: ListView.builder(
                     itemCount: Articles.length,
                     itemBuilder: (context, index) {
-                      return SizedBox(
-                        height: MediaQuery.of(context).size.height / 9,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return ArticlePage(index: 0);
-                                },
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ArticlePage(index: 0);
+                              },
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            Column(
+                              children: [
+                                Column(
+                                  children: [
+                                    Text(
+                                      "العلامات المبكرة للاضطرابات اللغوية",
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8, right: 8),
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            flex: 2,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 3.0),
+                                              child: const Text(
+                                                " هو خلل في نطق الطفل لبعض الأصوات اللغوية يظهر في واحد أو أكثر من الاضطرابات التالية: إبدال (نطق صوت بدلاً من صوت آخر)، أو حذف (نطق الكلمة ناقصة صوتاً أو أكثر)، أو تحريف وتشويه (نطق الصوت بصورة تشبه الصوت الأصلي غير أنه لا يماثله تماماً)، أو إضافة وضع صوتاً زائدًا إلى الكلمة",
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Image.asset(
+                                              "assest/images/photo.png",
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 16.0, bottom: 16),
+                              child: Container(
+                                height: 15,
+                                width: MediaQuery.of(context).size.width,
+                                color: Color(0xFFD9D9D9).withOpacity(0.90),
                               ),
-                            );
-                          },
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 8.0,
-                                  right: 8.0,
-                                  bottom: 4,
-                                  top: 4,
-                                ),
-                                child: SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height / 9,
-                                  child: Image.asset(Articles[index].image),
-                                ),
-                              ),
-                              Center(
-                                child: Text(Articles[index].title),
-                              ),
-                            ],
-                          ),
+                            )
+                          ],
                         ),
                       );
                     },

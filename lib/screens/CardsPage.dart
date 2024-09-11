@@ -143,13 +143,13 @@ class Cardspage extends StatelessWidget {
       image: 'assest/images/Feelings.png',
       items: Feelingslist().Feelings,
     ),
-     Cardmodel(
+    Cardmodel(
       item_name: 'الأفعال',
       color: const Color.fromARGB(255, 226, 94, 7),
       image: 'assest/images/Verbs.png',
       items: Verbslist().Verbs,
     ),
-     Cardmodel(
+    Cardmodel(
       item_name: 'الأماكن',
       color: const Color.fromARGB(255, 36, 12, 80),
       image: 'assest/images/Places.png',
@@ -160,20 +160,41 @@ class Cardspage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double paddingListview = 20;
+    final double screenheight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+    const double paddingListview = 0;
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: BackButtonContainer().create(context),
-        actions: [
-          const Menu(),
-        ],
-      ),
-      body: Center(
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Container(
-          padding: const EdgeInsets.only(top: paddingListview),
-          child: ListView(
-            children: getItemscard(context, items, paddingListview),
+          height: screenheight,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: kToolbarHeight,
+                child: Row(
+                  children: [
+                    BackButtonContainer().create(context),
+                    const Spacer(),
+                    const Menu(),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Container(
+                    padding: const EdgeInsets.only(top: paddingListview),
+                    child: ListView(
+                      children: getItemscard(context, items, paddingListview),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

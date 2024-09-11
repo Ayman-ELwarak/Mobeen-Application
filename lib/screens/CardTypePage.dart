@@ -11,25 +11,45 @@ class Cardtypepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenheight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     const double paddingListview = 16.0;
     return Scaffold(
-      backgroundColor: const Color(0xFF8CBBB6),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF8CBBB6),
-        leading: BackButtonContainer().create(context),
-        actions: [
-          Menu(),
-        ],
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: paddingListview,
-            left: paddingListview,
-            right: paddingListview,
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Container(
+          height: screenheight,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            color: Color(0xFF5A7493),
           ),
-          child: ListView(
-            children: getItemscardtype(context, items, paddingListview),
+          child: Column(
+            children: [
+              SizedBox(
+                height: kToolbarHeight,
+                child: Row(
+                  children: [
+                    BackButtonContainer().create(context),
+                    const Spacer(),
+                    const Menu(),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: paddingListview,
+                      left: paddingListview,
+                      right: paddingListview,
+                    ),
+                    child: ListView(
+                      children: getItemscardtype(context, items, paddingListview),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

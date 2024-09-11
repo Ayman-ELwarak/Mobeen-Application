@@ -70,7 +70,7 @@ class Menu extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return Exercises();
+                    return AllExercises();
                   },
                 ),
               );

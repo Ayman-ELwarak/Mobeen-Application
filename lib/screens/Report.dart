@@ -7,38 +7,48 @@ class Report extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF8CBBB6),
-        leading: BackButtonContainer().create(context),
-        actions: const [Menu()],
-      ),
-      body: Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            child: Image.asset('assest/images/Report_avatar.jpg'),
-          ),
-          Column(
-            children: [
-              ReportSection(
-                title: 'Assessment Summary',
-                content:
-                    'After listening to the child\'s speech, it appears that there is a noticeable issue with their speech production.',
-                highlightText: 'noticeable issue',
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Column(
+          children: [
+            SizedBox(
+              height: kToolbarHeight,
+              child: Container(
+                color: const Color(0xFF5A7493),
+                child: Row(
+                  children: [
+                    BackButtonContainer().create(context),
+                    const Spacer(),
+                    const Menu(),
+                  ],
+                ),
               ),
-              ReportSection(
-                title: 'Observations and Diagnosis',
-                content:
-                    'The child exhibits difficulty in articulating certain sounds. The speech pattern suggests phonological disorder. There is also evidence of stuttering which may indicate a need for further assessment and targeted speech therapy.',
-              ),
-              ReportSection(
-                title: 'Recommendation',
-                content:
-                    'A comprehensive speech evaluation is recommended to determine the specific areas of difficulty and to develop an individualized therapy plan to address these concerns.',
-              ),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Image.asset('assest/images/Report_avatar.jpg'),
+            ),
+            Column(
+              children: [
+                ReportSection(
+                  title: 'ملخص التقييم',
+                  content:
+                      'بعد الاستماع إلى كلام الطفل، يبدو أن هناك مشكلة ملحوظة في إنتاج الكلام لديه.',    
+                ),
+                ReportSection(
+                  title: 'الملاحظات والتشخيص',
+                  content:
+                      'يعاني الطفل من صعوبة في نطق بعض الأصوات. يشير نمط الكلام إلى وجود اضطراب في الأصوات. هناك أيضًا دليل على التلعثم مما قد يشير إلى الحاجة إلى مزيد من التقييم والعلاج النطقي المستهدف.',
+                ),
+                ReportSection(
+                  title: ' الاقتراحات',
+                  content:
+                      ' يوصى بإجراء تقييم شامل للكلام لتحديد مجالات الصعوبة المحددة وتطوير خطة علاج فردية لمعالجة هذه المخاوف.',
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       // backgroundColor: const Color(0xFF1E3A3D),
     );

@@ -6,7 +6,7 @@ class BackButtonContainer {
     return Container(
       margin: const EdgeInsets.only(left: 16.0),
       decoration: const BoxDecoration(
-        color: Color(0xFF1E3A3D),
+        color: Color(0xFF5A7493),
         shape: BoxShape.circle,
       ),
       child: IconButton(

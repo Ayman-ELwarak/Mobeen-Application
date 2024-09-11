@@ -42,282 +42,316 @@ class _Itemofcards extends State<Itemofcards> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenheight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: BackButtonContainer().create(context),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFF9DCCC7),
-                borderRadius: BorderRadius.circular(60),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 8.0,
-                  right: 8.0,
-                  top: 4.0,
-                  bottom: 4.0,
-                ),
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Container(
+          height: screenheight,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: kToolbarHeight,
                 child: Row(
                   children: [
-                    SizedBox(
-                      height: 20,
-                      width: 20,
-                      child: Image.asset('assest/images/diamond.png'),
-                    ),
+                    BackButtonContainer().create(context),
+                    const Spacer(),
                     Padding(
-                      padding: const EdgeInsets.only(left: 3.0),
-                      child: Text('$totalScore'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 12,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 32.0, right: 16, left: 16),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF8CBBB6),
-                  borderRadius: BorderRadius.circular(60),
-                ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 11,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 64.0, bottom: 16),
-                        child: Stack(
-                          children: [
-                            Center(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 50.0,
-                                  bottom: 100,
-                                  left: 30,
-                                  right: 30,
-                                ),
-                                child: SizedBox(
-                                  height: 2 *
-                                      MediaQuery.of(context).size.height /
-                                      5,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFF9DCCC7),
-                                      borderRadius: BorderRadius.circular(60),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: SizedBox(
-                                height: MediaQuery.of(context).size.height / 2,
-                                child: Image.asset(
-                                  widget.cards[widget.index].image,
-                                ),
-                              ),
-                            ),
-                          ],
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF5A7493),
+                          borderRadius: BorderRadius.circular(60),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: IconButton(
-                                  onPressed: () {
-                                    setState(
-                                      () {
-                                        widget.index -= 1;
-                                        if (widget.index < 0) {
-                                          widget.index =
-                                              widget.cards.length - 1;
-                                        }
-                                      },
-                                    );
-                                  },
-                                  icon: const Icon(
-                                    Icons.arrow_back_ios,
-                                    size: 13,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 8.0, right: 8.0),
-                                child: Text(
-                                  widget.cards[widget.index].name,
-                                  style: const TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: IconButton(
-                                  onPressed: () {
-                                    setState(
-                                      () {
-                                        widget.index += 1;
-                                        if (widget.index ==
-                                            widget.cards.length) {
-                                          widget.index = 0;
-                                        }
-                                      },
-                                    );
-                                  },
-                                  icon: const Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: 13,
-                                  ),
-                                ),
-                              ),
-                            ],
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 8.0,
+                            right: 8.0,
+                            top: 4.0,
+                            bottom: 4.0,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                          child: Row(
                             children: [
                               SizedBox(
-                                height: 15,
-                                width: 15,
+                                height: 20,
+                                width: 20,
                                 child: Image.asset('assest/images/diamond.png'),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Text('$gain'),
+                                padding: const EdgeInsets.only(left: 3.0),
+                                child: Text('$totalScore'),
                               ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
+              Expanded(
+                flex: 12,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 20.0, right: 16, left: 16),
+                  child: Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xFF3D878B),
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color(0xFF5A7493),
+                          Color(0xFF8CBBB6),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
                       borderRadius: BorderRadius.circular(60),
                     ),
-                    child: IconButton(
-                      onPressed: () {
-                        if (!isPlaying) {
-                          sound.setAsset(widget.cards[widget.index].sound);
-                          sound.play();
-                          setState(() {
-                            isPlaying = true;
-                          });
-                        } else {
-                          sound.stop();
-                          setState(() {
-                            isPlaying = false;
-                          });
-                        }
-                      },
-                      icon: Icon(
-                        isPlaying ? Icons.pause : Icons.play_arrow,
-                        color: const Color(0xFFD9D9D9),
-                      ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 11,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(top: 64.0, bottom: 16),
+                            child: Stack(
+                              children: [
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 50.0,
+                                      bottom: 100,
+                                      left: 30,
+                                      right: 30,
+                                    ),
+                                    child: SizedBox(
+                                      height: 2 *
+                                          MediaQuery.of(context).size.height /
+                                          5,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFF5A7493),
+                                          borderRadius:
+                                              BorderRadius.circular(60),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height / 2,
+                                    child: Image.asset(
+                                      widget.cards[widget.index].image,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: IconButton(
+                                      onPressed: () {
+                                        setState(
+                                          () {
+                                            widget.index -= 1;
+                                            if (widget.index < 0) {
+                                              widget.index =
+                                                  widget.cards.length - 1;
+                                            }
+                                          },
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.arrow_back_ios,
+                                        size: 13,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, right: 8.0),
+                                    child: Text(
+                                      widget.cards[widget.index].name,
+                                      style: const TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: IconButton(
+                                      onPressed: () {
+                                        setState(
+                                          () {
+                                            widget.index += 1;
+                                            if (widget.index ==
+                                                widget.cards.length) {
+                                              widget.index = 0;
+                                            }
+                                          },
+                                        );
+                                      },
+                                      icon: const Icon(
+                                        Icons.arrow_forward_ios,
+                                        size: 13,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 15,
+                                    width: 15,
+                                    child: Image.asset(
+                                        'assest/images/diamond.png'),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text('$gain'),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20.0),
-                    child: Text(
-                      'Repeat with me',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Color(0x20094251),
-                shape: BoxShape.circle,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color(0x50094251),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF094251),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Color(0xFF5A7493),
+                          shape: BoxShape.circle,
+                        ),
                         child: IconButton(
-                          onPressed: () async {
-                            if (isRecoring) {
-                              String? filePath = await audioRecorder.stop();
-                              if (filePath != null) {
-                                setState(() {
-                                  isRecoring = false;
-                                  recordingPath = filePath;
-                                });
-                              }
+                          onPressed: () {
+                            if (!isPlaying) {
+                              sound.setAsset(widget.cards[widget.index].sound);
+                              sound.play();
+                              setState(() {
+                                isPlaying = true;
+                              });
                             } else {
-                              if (await audioRecorder.hasPermission()) {
-                                final Directory appDocumentsDir =
-                                    await getApplicationDocumentsDirectory();
-                                final String filePath = p.join(
-                                    appDocumentsDir.path, "recording.wav");
-                                try {
-                                  audioRecorder.start(
-                                    const RecordConfig(),
-                                    path: filePath,
-                                  );
-                                  setState(() {
-                                    isRecoring = true;
-                                    recordingPath = null;
-                                  });
-                                } catch (e) {
-                                  print("error!!!!!!!!!!");
-                                }
-                              }
+                              sound.stop();
+                              setState(() {
+                                isPlaying = false;
+                              });
                             }
                           },
                           icon: Icon(
-                            isRecoring ? Icons.stop : Icons.mic,
-                            color: Colors.white,
-                            size: 40,
+                            isPlaying ? Icons.pause : Icons.play_arrow,
+                            color: const Color(0xFFD9D9D9),
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
+                        child: Text(
+                          'كرر الكلمة',
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0x20094251),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Color(0x50094251),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [
+                                Color(0xFF5A7493),
+                                Color(0xFF8CBBB6),
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: IconButton(
+                              onPressed: () async {
+                                if (isRecoring) {
+                                  String? filePath = await audioRecorder.stop();
+                                  if (filePath != null) {
+                                    setState(() {
+                                      isRecoring = false;
+                                      recordingPath = filePath;
+                                    });
+                                  }
+                                } else {
+                                  if (await audioRecorder.hasPermission()) {
+                                    final Directory appDocumentsDir =
+                                        await getApplicationDocumentsDirectory();
+                                    final String filePath = p.join(
+                                        appDocumentsDir.path, "recording.wav");
+                                    try {
+                                      audioRecorder.start(
+                                        const RecordConfig(),
+                                        path: filePath,
+                                      );
+                                      setState(() {
+                                        isRecoring = true;
+                                        recordingPath = null;
+                                      });
+                                    } catch (e) {
+                                      print("error!!!!!!!!!!");
+                                    }
+                                  }
+                                }
+                              },
+                              icon: Icon(
+                                isRecoring ? Icons.stop : Icons.mic,
+                                color: Colors.white,
+                                size: 40,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -325,9 +359,9 @@ class _Itemofcards extends State<Itemofcards> {
                   ),
                 ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
