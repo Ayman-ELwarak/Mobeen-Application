@@ -17,7 +17,7 @@ class Menu extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: PopupMenuButton(
-        color: const Color(0xFF1E3A3D),
+        color: const Color(0xFF5A7493),
         icon: const Icon(
           Icons.menu,
           size: 30,
@@ -26,7 +26,7 @@ class Menu extends StatelessWidget {
         onSelected: (String rslt) {
           switch (rslt) {
             case 'Home':
-               Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
@@ -36,7 +36,7 @@ class Menu extends StatelessWidget {
               );
               break;
             case 'Diagnosis':
-               Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
@@ -66,7 +66,7 @@ class Menu extends StatelessWidget {
               );
               break;
             case 'Exercises':
-               Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
