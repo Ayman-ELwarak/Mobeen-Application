@@ -18,7 +18,7 @@ class Welcomepage extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assest/images/WelcomeBackground.jpg"),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Column(

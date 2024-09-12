@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/ArticleModel.dart';
 import 'package:mobile_app/screens/All_Exercises.dart';
 import 'package:mobile_app/screens/Articles.dart';
@@ -48,7 +49,7 @@ class Homepage extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assest/images/backgroundHomePage.jpg"),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -64,11 +65,14 @@ class Homepage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 10.0),
-                  child: Text(
-                    "كيف يمكنني مساعدتك ؟",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Textaa(
+                    child: const Text(
+                      "كيف يمكنني مساعدتك ؟",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 Padding(
@@ -84,12 +88,13 @@ class Homepage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return Diagnosis();
+                                    return const Diagnosis();
                                   },
                                 ),
                               );
                             },
                             child: Container(
+                              height: MediaQuery.of(context).size.height / 4.5,
                               width:
                                   (MediaQuery.of(context).size.width - 42) / 2,
                               decoration: BoxDecoration(
@@ -99,26 +104,36 @@ class Homepage extends StatelessWidget {
                               ),
                               child: Column(
                                 children: [
-                                  const Padding(
+                                  Padding(
                                     padding: EdgeInsets.only(
-                                      top: 20,
+                                      top: screenheight / 40,
+                                      left: 4,
+                                      right: 4,
                                     ),
-                                    child: Text(
-                                      "التشخيص",
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
+                                    child: SizedBox(
+                                      height: screenheight / 23,
+                                      child: Textaa(
+                                        child: const Text(
+                                          "التشخيص",
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 50.0,
+                                    padding: EdgeInsets.only(
+                                        top: screenheight / 18,
                                         left: 90,
-                                        bottom: 20,
+                                        bottom: screenheight / 40,
                                         right: 20),
-                                    child: Image.asset(
-                                        'assest/images/Diagnosis.png'),
+                                    child: SizedBox(
+                                      height: screenheight / 13,
+                                      child: Image.asset(
+                                          'assest/images/Diagnosis.png'),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -132,12 +147,14 @@ class Homepage extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return Translator();
+                                      return const Translator();
                                     },
                                   ),
                                 );
                               },
                               child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height / 4.5,
                                 width:
                                     (MediaQuery.of(context).size.width - 42) /
                                         2,
@@ -148,27 +165,36 @@ class Homepage extends StatelessWidget {
                                 ),
                                 child: Column(
                                   children: [
-                                    const Padding(
+                                    Padding(
                                       padding: EdgeInsets.only(
-                                        top: 20,
-                                        left: 30,
+                                        top: screenheight / 40,
+                                        left: 4,
+                                        right: 4,
                                       ),
-                                      child: Text(
-                                        "المترجم",
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
+                                      child: SizedBox(
+                                        height: screenheight / 23,
+                                        child: Textaa(
+                                          child: const Text(
+                                            "المترجم",
+                                            style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 50.0,
+                                      padding: EdgeInsets.only(
+                                          top: screenheight / 18,
                                           left: 70,
-                                          bottom: 20,
+                                          bottom: screenheight / 40,
                                           right: 20),
-                                      child: Image.asset(
-                                          'assest/images/Voice_Reconstructor.png'),
+                                      child: SizedBox(
+                                        height: screenheight / 13,
+                                        child: Image.asset(
+                                            'assest/images/Voice_Reconstructor.png'),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -193,6 +219,8 @@ class Homepage extends StatelessWidget {
                                 );
                               },
                               child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height / 4.5,
                                 width:
                                     (MediaQuery.of(context).size.width - 42) /
                                         2,
@@ -203,25 +231,35 @@ class Homepage extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 20,
+                                      padding: EdgeInsets.only(
+                                        top: screenheight / 40,
+                                        left: 4,
+                                        right: 4,
                                       ),
-                                      child: Text(
-                                        "بطاقات التخاطب",
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
+                                      child: SizedBox(
+                                        height: screenheight / 23,
+                                        child: Textaa(
+                                          child: const Text(
+                                            "بطاقات التخاطب",
+                                            style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 50.0,
-                                          left: 90,
-                                          bottom: 20,
+                                      padding: EdgeInsets.only(
+                                          top: screenheight / 40,
+                                          left: 70,
+                                          bottom: screenheight / 45,
                                           right: 20),
-                                      child: Image.asset(
-                                          'assest/images/Cards_Game.png'),
+                                      child: SizedBox(
+                                        height: screenheight / 9,
+                                        child: Image.asset(
+                                            'assest/images/Cards_Game.png'),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -235,42 +273,54 @@ class Homepage extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return AllExercises();
+                                        return const AllExercises();
                                       },
                                     ),
                                   );
                                 },
                                 child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 4.5,
                                   width:
                                       (MediaQuery.of(context).size.width - 42) /
                                           2,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFFFD233).withOpacity(0.48),
+                                    color: const Color(0xFFFFD233)
+                                        .withOpacity(0.48),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: Column(
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 20,
-                                          left: 30,
+                                        padding: EdgeInsets.only(
+                                          top: screenheight / 40,
+                                          left: 4,
+                                          right: 4,
                                         ),
-                                        child: Text(
-                                          "التمارين",
-                                          style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
+                                        child: SizedBox(
+                                          height: screenheight / 23,
+                                          child: Textaa(
+                                            child: const Text(
+                                              "التمارين",
+                                              style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 79.0,
+                                        padding: EdgeInsets.only(
+                                            top: screenheight / 18,
                                             left: 70,
-                                            bottom: 20,
+                                            bottom: screenheight / 40,
                                             right: 20),
-                                        child: Image.asset(
-                                            'assest/images/Exercises.png'),
+                                        child: SizedBox(
+                                          height: screenheight / 13,
+                                          child: Image.asset(
+                                              'assest/images/Exercises.png'),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -284,9 +334,10 @@ class Homepage extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  height: screenheight / 10,
                   decoration: BoxDecoration(
-                    color: Color(0xFFD9D9D9).withOpacity(0.90),
-                    borderRadius: BorderRadius.only(
+                    color: const Color(0xFFD9D9D9).withOpacity(0.90),
+                    borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(35),
                         topRight: Radius.circular(35)),
                   ),
@@ -294,19 +345,24 @@ class Homepage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 16.0),
-                        child: const Text(
-                          'المقالات',
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w900,
+                        child: SizedBox(
+                          height: screenheight / 20,
+                          child: Textaa(
+                            child: const Text(
+                              'المقالات',
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: 35.0),
+                        padding: const EdgeInsets.only(bottom: 10.0),
                         child: Divider(
-                          color: Color(0xFF86BEFF).withOpacity(0.54),
+                          color: const Color(0xFF86BEFF).withOpacity(0.54),
                           height: 0,
                           indent: 175,
                           endIndent: 175,
@@ -337,11 +393,17 @@ class Homepage extends StatelessWidget {
                               children: [
                                 Column(
                                   children: [
-                                    Text(
-                                      "العلامات المبكرة للاضطرابات اللغوية",
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 4.0,
+                                        right: 4,
+                                      ),
+                                      child: Text(
+                                        "العلامات المبكرة للاضطرابات اللغوية",
+                                        style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                     Padding(
@@ -349,12 +411,12 @@ class Homepage extends StatelessWidget {
                                           left: 8, right: 8),
                                       child: Row(
                                         children: [
-                                          Expanded(
+                                          const Expanded(
                                             flex: 2,
                                             child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 3.0),
-                                              child: const Text(
+                                              padding:
+                                                  EdgeInsets.only(left: 3.0),
+                                              child: Text(
                                                 " هو خلل في نطق الطفل لبعض الأصوات اللغوية يظهر في واحد أو أكثر من الاضطرابات التالية: إبدال (نطق صوت بدلاً من صوت آخر)، أو حذف (نطق الكلمة ناقصة صوتاً أو أكثر)، أو تحريف وتشويه (نطق الصوت بصورة تشبه الصوت الأصلي غير أنه لا يماثله تماماً)، أو إضافة وضع صوتاً زائدًا إلى الكلمة",
                                                 style: TextStyle(
                                                   fontSize: 13,
@@ -382,7 +444,8 @@ class Homepage extends StatelessWidget {
                               child: Container(
                                 height: 15,
                                 width: MediaQuery.of(context).size.width,
-                                color: Color(0xFFD9D9D9).withOpacity(0.90),
+                                color:
+                                    const Color(0xFFD9D9D9).withOpacity(0.90),
                               ),
                             )
                           ],

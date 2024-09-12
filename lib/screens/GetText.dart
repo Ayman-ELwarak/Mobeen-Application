@@ -76,7 +76,7 @@ class _GettextState extends State<Gettext> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assest/images/GetTextbackground.jpg"),
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.fill,
             ),
           ),
           child: Column(

@@ -2,6 +2,7 @@
 import 'dart:io';
 // ignore: depend_on_referenced_packages
 import 'package:just_audio/just_audio.dart';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
@@ -95,7 +96,7 @@ class _Itemofcards extends State<Itemofcards> {
                 ),
               ),
               Expanded(
-                flex: 12,
+                flex: 9,
                 child: Padding(
                   padding:
                       const EdgeInsets.only(top: 20.0, right: 16, left: 16),
@@ -116,15 +117,17 @@ class _Itemofcards extends State<Itemofcards> {
                         Expanded(
                           flex: 11,
                           child: Padding(
-                            padding:
-                                const EdgeInsets.only(top: 64.0, bottom: 16),
+                            padding: EdgeInsets.only(
+                              top: screenheight / 20,
+                              bottom: screenheight / 40,
+                            ),
                             child: Stack(
                               children: [
                                 Center(
                                   child: Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 50.0,
-                                      bottom: 100,
+                                    padding: EdgeInsets.only(
+                                      top: screenheight / 18.0,
+                                      bottom: screenheight / 10,
                                       left: 30,
                                       right: 30,
                                     ),
@@ -159,76 +162,99 @@ class _Itemofcards extends State<Itemofcards> {
                           flex: 2,
                           child: Column(
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    flex: 1,
-                                    child: IconButton(
-                                      onPressed: () {
-                                        setState(
-                                          () {
-                                            widget.index -= 1;
-                                            if (widget.index < 0) {
-                                              widget.index =
-                                                  widget.cards.length - 1;
-                                            }
-                                          },
-                                        );
-                                      },
-                                      icon: const Icon(
-                                        Icons.arrow_back_ios,
-                                        size: 13,
+                              Expanded(
+                                flex: 2,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: IconButton(
+                                        onPressed: () {
+                                          setState(
+                                            () {
+                                              widget.index -= 1;
+                                              if (widget.index < 0) {
+                                                widget.index =
+                                                    widget.cards.length - 1;
+                                              }
+                                            },
+                                          );
+                                        },
+                                        icon: const Icon(
+                                          Icons.arrow_back_ios,
+                                          size: 13,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 8.0),
-                                    child: Text(
-                                      widget.cards[widget.index].name,
-                                      style: const TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0),
+                                      child: SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                4,
+                                        height: screenheight / 20,
+                                        child: Textaa(
+                                          child: Text(
+                                            widget.cards[widget.index].name,
+                                            style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: IconButton(
-                                      onPressed: () {
-                                        setState(
-                                          () {
-                                            widget.index += 1;
-                                            if (widget.index ==
-                                                widget.cards.length) {
-                                              widget.index = 0;
-                                            }
-                                          },
-                                        );
-                                      },
-                                      icon: const Icon(
-                                        Icons.arrow_forward_ios,
-                                        size: 13,
+                                    Expanded(
+                                      flex: 1,
+                                      child: IconButton(
+                                        onPressed: () {
+                                          setState(
+                                            () {
+                                              widget.index += 1;
+                                              if (widget.index ==
+                                                  widget.cards.length) {
+                                                widget.index = 0;
+                                              }
+                                            },
+                                          );
+                                        },
+                                        icon: const Icon(
+                                          Icons.arrow_forward_ios,
+                                          size: 13,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 15,
-                                    width: 15,
-                                    child: Image.asset(
-                                        'assest/images/diamond.png'),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: screenheight / 70,
+                                    bottom: screenheight / 80),
+                                child: Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: 15,
+                                        width: 15,
+                                        child: Image.asset(
+                                            'assest/images/diamond.png'),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 8.0),
+                                        child: Text(
+                                          '$gain',
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text('$gain'),
-                                  ),
-                                ],
+                                ),
                               ),
                             ],
                           ),
@@ -285,80 +311,9 @@ class _Itemofcards extends State<Itemofcards> {
                   ),
                 ),
               ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Color(0x20094251),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Color(0x50094251),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [
-                                Color(0xFF5A7493),
-                                Color(0xFF8CBBB6),
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: IconButton(
-                              onPressed: () async {
-                                if (isRecoring) {
-                                  String? filePath = await audioRecorder.stop();
-                                  if (filePath != null) {
-                                    setState(() {
-                                      isRecoring = false;
-                                      recordingPath = filePath;
-                                    });
-                                  }
-                                } else {
-                                  if (await audioRecorder.hasPermission()) {
-                                    final Directory appDocumentsDir =
-                                        await getApplicationDocumentsDirectory();
-                                    final String filePath = p.join(
-                                        appDocumentsDir.path, "recording.wav");
-                                    try {
-                                      audioRecorder.start(
-                                        const RecordConfig(),
-                                        path: filePath,
-                                      );
-                                      setState(() {
-                                        isRecoring = true;
-                                        recordingPath = null;
-                                      });
-                                    } catch (e) {
-                                      print("error!!!!!!!!!!");
-                                    }
-                                  }
-                                }
-                              },
-                              icon: Icon(
-                                isRecoring ? Icons.stop : Icons.mic,
-                                color: Colors.white,
-                                size: 40,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              SizedBox(
+                height: screenheight / 10,
+              )
             ],
           ),
         ),

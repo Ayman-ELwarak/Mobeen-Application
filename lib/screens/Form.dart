@@ -39,7 +39,7 @@ class _FormPageState extends State<FormPage> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assest/images/Frombackground.jpg"),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Column(

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/GetText.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
@@ -67,7 +68,7 @@ class _TranslatorState extends State<Translator> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assest/images/Translatorbackground.jpg"),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Padding(
@@ -89,9 +90,11 @@ class _TranslatorState extends State<Translator> {
                   flex: 2,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 60.0),
-                    child: Text(
-                      '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
-                      style: const TextStyle(fontSize: 48),
+                    child: Textaa(
+                      child: Text(
+                        '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
+                        style: const TextStyle(fontSize: 48),
+                      ),
                     ),
                   ),
                 ),

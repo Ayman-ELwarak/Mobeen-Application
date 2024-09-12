@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/Form.dart';
 
 // ignore: depend_on_referenced_packages
@@ -95,7 +96,7 @@ class _DiagnosisState extends State<Diagnosis> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assest/images/Translatorbackground.jpg"),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Padding(
@@ -117,9 +118,11 @@ class _DiagnosisState extends State<Diagnosis> {
                   flex: 2,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 60.0),
-                    child: Text(
-                      '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
-                      style: const TextStyle(fontSize: 48),
+                    child: Textaa(
+                      child: Text(
+                        '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
+                        style: const TextStyle(fontSize: 30),
+                      ),
                     ),
                   ),
                 ),

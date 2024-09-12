@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/video_model.dart';
 import 'package:video_player/video_player.dart';
 
@@ -56,16 +57,20 @@ class _ExercisePageState extends State<ExercisePage> {
                   ],
                 ),
               ),
-              Expanded(
-                flex: 1,
+              SizedBox(
+                width: MediaQuery.of(context).size.height,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 60.0),
-                  child: Text(
-                    widget.exerciseVideos[widget.index].title,
-                    style: TextStyle(
+                  padding:
+                      const EdgeInsets.only(top: 60.0, left: 10, right: 10),
+                  child: Textaa(
+                    child: Text(
+                      widget.exerciseVideos[widget.index].title,
+                      style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 30),
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ),
               ),

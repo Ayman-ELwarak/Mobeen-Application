@@ -26,26 +26,37 @@ class Report extends StatelessWidget {
             ),
             SizedBox(
               width: double.infinity,
-              child: Image.asset('assest/images/Report_avatar.jpg'),
+              child: Container(
+                height: MediaQuery.of(context).size.height / 2.208,
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assest/images/Report_avatar.jpg"),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
             ),
-            Column(
-              children: [
-                ReportSection(
-                  title: 'ملخص التقييم',
-                  content:
-                      'بعد الاستماع إلى كلام الطفل، يبدو أن هناك مشكلة ملحوظة في إنتاج الكلام لديه.',    
-                ),
-                ReportSection(
-                  title: 'الملاحظات والتشخيص',
-                  content:
-                      'يعاني الطفل من صعوبة في نطق بعض الأصوات. يشير نمط الكلام إلى وجود اضطراب في الأصوات. هناك أيضًا دليل على التلعثم مما قد يشير إلى الحاجة إلى مزيد من التقييم والعلاج النطقي المستهدف.',
-                ),
-                ReportSection(
-                  title: ' الاقتراحات',
-                  content:
-                      ' يوصى بإجراء تقييم شامل للكلام لتحديد مجالات الصعوبة المحددة وتطوير خطة علاج فردية لمعالجة هذه المخاوف.',
-                ),
-              ],
+            Expanded(
+              child: ListView(
+                children: [
+                  ReportSection(
+                    title: 'ملخص التقييم',
+                    content:
+                        'بعد الاستماع إلى كلام الطفل، يبدو أن هناك مشكلة ملحوظة في إنتاج الكلام لديه.',
+                  ),
+                  ReportSection(
+                    title: 'الملاحظات والتشخيص',
+                    content:
+                        'يعاني الطفل من صعوبة في نطق بعض الأصوات. يشير نمط الكلام إلى وجود اضطراب في الأصوات. هناك أيضًا دليل على التلعثم مما قد يشير إلى الحاجة إلى مزيد من التقييم والعلاج النطقي المستهدف.',
+                  ),
+                  ReportSection(
+                    title: ' الاقتراحات',
+                    content:
+                        ' يوصى بإجراء تقييم شامل للكلام لتحديد مجالات الصعوبة المحددة وتطوير خطة علاج فردية لمعالجة هذه المخاوف.',
+                  ),
+                ],
+              ),
             ),
           ],
         ),
