@@ -4,46 +4,46 @@ import 'package:mobile_app/models/video_model.dart';
 class Cheek_list
 {
   static List<String> Cheek_title = [
-    'Open jaw wide',
-    'Cheek stretch',
-    'Cheek stretch right',
-    'Cheek stretch left',
-    'Alternating cheek stretch',
-    'Cheek stretch with spoon right',
-    'Cheek stretch with spoon left',
-    'Cheek suck',
+    'افتح الفك على اتساعه',
+    'شد الخد',
+    'شد الخد إلى اليمين',
+    'شد الخد إلى اليسار',
+    'شد الخد بالتناوب',
+    'شد الخد بالملعقة إلى اليمين',
+    'شد الخد بالملعقة الي اليسار',
+    'شفط الخد',
   ];
   static List<Video> Cheek_Video = [
     Video(
-        title: 'Open jaw wide',
+        title: 'افتح الفك على اتساعه',
         assetPath: 'assest/Videos/exercises/cheek/open_jaw_wide.mp4'
     ),
     Video(
-        title: 'Cheek stretch',
+        title: 'شد الخد',
         assetPath: 'assest/Videos/exercises/cheek/cheek_stretch.mp4'
     ),
     Video(
-        title: 'Cheek stretch right',
+        title: 'شد الخد إلى اليمين',
         assetPath: 'assest/Videos/exercises/cheek/cheek_stretch_right.mp4'
     ),
     Video(
-        title: 'Cheek stretch left',
+        title: 'شد الخد إلى اليسار',
         assetPath: 'assest/Videos/exercises/cheek/cheek_stretch_left.mp4'
     ),
     Video(
-        title: 'Alternating cheek stretch',
+        title: 'شد الخد بالتناوب',
         assetPath: 'assest/Videos/exercises/cheek/alternating_cheek_stretch.mp4'
     ),
     Video(
-        title: 'Cheek stretch with spoon right',
+        title: 'شد الخد بالملعقة إلى اليمين',
         assetPath: 'assest/Videos/exercises/cheek/cheek_stretch_with_spoon_right.mp4'
     ),
     Video(
-        title: 'Cheek stretch with spoon left',
+        title: 'شد الخد بالملعقة الي اليسار',
         assetPath: 'assest/Videos/exercises/cheek/cheek_stretch_with_spoon_left.mp4'
     ),
     Video(
-        title: 'Cheek suck',
+        title: 'شفط الخد',
         assetPath: 'assest/Videos/exercises/cheek/cheek_suck.mp4'
     ),
   ];

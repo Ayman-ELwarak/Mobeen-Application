@@ -3,102 +3,102 @@ import 'package:mobile_app/models/video_model.dart';
 
 class Lip_list {
   static List<String> Lip_title = [
-    'Lip closure with pressure',
-    'Lip opening',
-    'Lip pucker',
-    'Lip pucker - difficult',
-    'Lip pucker - lips slightly open',
-    'Retracted smile',
-    'Retracted smile - lips slightly open',
-    'Upper lip wrap',
-    'Lower lip wrap',
-    'Upper and lower lip wraps',
-    'Lower lip curl',
-    'Upper lip stretch',
-    'Lower lip stretch',
-    'Upper and lower lip stretch',
-    'Open mouth and pucker',
-    'Open mouth and smile',
-    'Lip closure while holding air',
-    'Lip closure while holding air - difficult',
-    'Smile and pucker',
+    'إغلاق الشفاه بالضغط',
+    'فتح الشفاه',
+    'تجعيد الشفاه',
+    'تجعيد الشفاه - صعب',
+    'تجعيد الشفاه - الشفاه مفتوحة قليلا',
+    'ابتسامة منكمشة',
+    'ابتسامة منكمشة - الشفاه مفتوحة قليلا',
+    'لف الشفة العليا',
+    'لف الشفة السفلية',
+    'لفافات الشفة العلوية والسفلية',
+    'تجعيد الشفة السفلية',
+    'شد الشفة العليا',
+    'شد الشفة السفلية',
+    'شد الشفة العلوية والسفلية',
+    'افتح فمك وتجعد',
+    'افتح فمك وابتسم',
+    'إغلاق الشفاه أثناء حبس الهواء',
+    'إغلاق الشفاه أثناء حبس الهواء - صعب',
+    'ابتسم وتجعد',
   ];
   static List<Video> Lip_video = [
     Video(
-        title: 'Lip closure with pressure',
+        title: 'إغلاق الشفاه بالضغط',
         assetPath: 'assest/Videos/exercises/lip/lip_closure_with_pressure.mp4'
     ),
     Video(
-        title: 'Lip opening',
+        title: 'فتح الشفاه',
         assetPath: 'assest/Videos/exercises/lip/lip_opening.mp4'
     ),
     Video(
-        title: 'Lip pucker',
+        title: 'تجعيد الشفاه',
         assetPath: 'assest/Videos/exercises/lip/lip_pucker.mp4'
     ),
     Video(
-        title: 'Lip pucker - difficult',
+        title: 'تجعيد الشفاه - صعب',
         assetPath: 'assest/Videos/exercises/lip/lip_pucker_difficult.mp4'
     ),
     Video(
-        title: 'Lip pucker - lips slightly open',
+        title: 'تجعيد الشفاه - الشفاه مفتوحة قليلا',
         assetPath: 'assest/Videos/exercises/lip/lip_pucker_lips_slightly_open.mp4'
     ),
     Video(
-        title: 'Retracted smile',
+        title: 'ابتسامة منكمشة',
         assetPath: 'assest/Videos/exercises/lip/retracted_smile.mp4'
     ),
     Video(
-        title: 'Retracted smile - lips slightly open',
+        title: 'ابتسامة منكمشة - الشفاه مفتوحة قليلا',
         assetPath: 'assest/Videos/exercises/lip/retracted_smile_lips_slightly_open.mp4'
     ),
     Video(
-        title: 'Upper lip wrap',
+        title: 'لف الشفة العليا',
         assetPath: 'assest/Videos/exercises/lip/upper_lip_wrap.mp4'
     ),
     Video(
-        title: 'Lower lip wrap',
+        title: 'لف الشفة السفلية',
         assetPath: 'assest/Videos/exercises/lip/lower_lip_wrap.mp4'
     ),
     Video(
-        title: 'Upper and lower lip wraps',
+        title: 'لفافات الشفة العلوية والسفلية',
         assetPath: 'assest/Videos/exercises/lip/Upper_and_lower_lip_wraps.mp4'
     ),
     Video(
-        title: 'Lower lip curl',
+        title: 'تجعيد الشفة السفلية',
         assetPath: 'assest/Videos/exercises/lip/lower_lip_curl.mp4'
     ),
     Video(
-        title: 'Upper lip stretch',
+        title: 'شد الشفة العليا',
         assetPath: 'assest/Videos/exercises/lip/upper_lip_stretch.mp4'
     ),
     Video(
-        title: 'Lower lip stretch',
+        title: 'شد الشفة السفلية',
         assetPath: 'assest/Videos/exercises/lip/lower_lip_stretch.mp4'
     ),
     Video(
-        title: 'Upper and lower lip stretch',
+        title: 'شد الشفة العلوية والسفلية',
         assetPath: 'assest/Videos/exercises/lip/upper_and_lower_lip_stretch.mp4'
     ),
     Video(
-        title: 'Open mouth and pucker',
+        title: 'افتح فمك وتجعد',
         assetPath: 'assest/Videos/exercises/lip/open_mouth_and_pucker.mp4'
     ),
     Video(
-        title:  'Open mouth and smile',
+        title:  'افتح فمك وابتسم',
         assetPath: 'assest/Videos/exercises/lip/open_mouth_and_smile.mp4'
     ),
     Video(
-        title: 'Lip closure while holding air',
+        title: 'إغلاق الشفاه أثناء حبس الهواء',
         assetPath: 'assest/Videos/exercises/lip/lip_closure_while_holding_air.mp4'
     ),
     Video(
-        title: 'Lip closure while holding air - difficult',
+        title: 'إغلاق الشفاه أثناء حبس الهواء - صعب',
         assetPath: 'assest/Videos/exercises/lip/lip_closure_while_holding_air_difficult.mp4'
     ),
     Video(
-        title: 'assest/Videos/exercises/lip/smile_and_pucker.mp4',
-        assetPath: ''
+        title:'ابتسم وتجعد',
+        assetPath: 'assest/Videos/exercises/lip/smile_and_pucker.mp4'
     )
   ];
 
