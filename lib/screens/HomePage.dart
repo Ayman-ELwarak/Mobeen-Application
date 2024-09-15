@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/components/TextaA.dart';
-import 'package:mobile_app/models/ArticleModel.dart';
+import 'package:mobile_app/components/article_list.dart';
 import 'package:mobile_app/screens/All_Exercises.dart';
 import 'package:mobile_app/screens/Articles.dart';
 import 'package:mobile_app/screens/CardsPage.dart';
@@ -12,26 +12,11 @@ import 'package:mobile_app/screens/Translator.dart';
 // ignore: must_be_immutable
 class Homepage extends StatelessWidget {
   // ignore: non_constant_identifier_names
-  List<Articlemodel> Articles = [
-    Articlemodel(
-        image: 'assest/images/Article.jpg',
-        title: 'Early signs of speech disorders'),
-    Articlemodel(
-        image: 'assest/images/Article.jpg',
-        title: 'Early signs of speech disorders'),
-    Articlemodel(
-        image: 'assest/images/Article.jpg',
-        title: 'Early signs of speech disorders'),
-    Articlemodel(
-        image: 'assest/images/Article.jpg',
-        title: 'Early signs of speech disorders'),
-    Articlemodel(
-        image: 'assest/images/Article.jpg',
-        title: 'Early signs of speech disorders'),
-    Articlemodel(
-        image: 'assest/images/Article.jpg',
-        title: 'Early signs of speech disorders'),
-  ];
+
+  static List<String> images = Article_list.img;
+  static List<String> name = Article_list.title;
+  static List<Text> captian = Article_list.Homecap;
+
   Homepage({super.key});
 
   @override
@@ -114,7 +99,7 @@ class Homepage extends StatelessWidget {
                                       height: screenheight / 23,
                                       child: Textaa(
                                         child: const Text(
-                                          "التشخيص",
+                                          "التقييم الاولي",
                                           style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold,
@@ -374,7 +359,7 @@ class Homepage extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: Articles.length,
+                    itemCount: name.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -382,7 +367,9 @@ class Homepage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return ArticlePage(index: 0);
+                                return ArticlePage(
+                                  index: index,
+                                );
                               },
                             ),
                           );
@@ -393,16 +380,18 @@ class Homepage extends StatelessWidget {
                               children: [
                                 Column(
                                   children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(
+                                    Padding(
+                                      padding: const EdgeInsets.only(
                                         left: 4.0,
                                         right: 4,
                                       ),
-                                      child: Text(
-                                        "صعوبات النطق والكلام عند الأطفال",
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
+                                      child: Textaa(
+                                        child: Text(
+                                          name[index],
+                                          style: const TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -411,24 +400,25 @@ class Homepage extends StatelessWidget {
                                           left: 8, right: 8),
                                       child: Row(
                                         children: [
-                                          const Expanded(
+                                          Expanded(
                                             flex: 2,
                                             child: Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 3.0),
-                                              child: Text(
-                                                " صعوبات النطق والكلام عند الأطفال، أو اضطرابات النطق والكلام عند الأطفال، أو مشاكل النطق والكلام عند الأطفال؛ جميعُها تراكيب تهدف إلى وصف المشاكل المتعلّقة بإنشاء أو تكوين أصوات الكلام الضروريّة لتواصل الطفل مع الآخرين؛ فما الكلام إلّا عملية لإنتاج أصواتٍ مُعينة تحمل المعنى المُراد للشخص المُستمع، وبالكلام يستطيع الأشخاص نقل أفكارهم، والتعبير عن مشاعرهم وإيصالها للآخرين، إذ يعدّ الكلام إحدى طُرق التواصل الرئيسيّة والتي يحتاجُ إنجازها إلى التنسيق الدقيق والتوافق بين أجزاءٍ متعددة من الجسم؛ بما في ذلك الرأس، والرقبة، والصدر، والبطن",
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
+                                              padding: const EdgeInsets.only(
+                                                  left: 3.0, right: 3),
+                                              child: captian[index],
                                             ),
                                           ),
                                           Expanded(
                                             flex: 1,
-                                            child: Image.asset(
-                                              "assest/images/photo.png",
+                                            child: SizedBox(
+                                              height: screenheight / 8,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  3,
+                                              child: Image.asset(
+                                                images[index],
+                                              ),
                                             ),
                                           ),
                                         ],
