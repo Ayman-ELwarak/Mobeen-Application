@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'dart:ffi';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:mobile_app/components/TextaA.dart';
+import 'package:mobile_app/models/ReportModel.dart';
 import 'package:mobile_app/screens/Form.dart';
+import 'package:mobile_app/screens/Report.dart';
 
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as p;
@@ -20,6 +23,28 @@ class Diagnosis extends StatefulWidget {
 }
 
 class _DiagnosisState extends State<Diagnosis> {
+  List<Reportmodel> Reports = [
+    Reportmodel(
+      s1: 'بعد الاستماع إلى كلام الطفل، يبدو أن حالته ممتازة ولا توجد أي مشاكل في إنتاج الكلام.',
+      s2: 'الطفل ينطق الأصوات بشكل سليم وبلا صعوبات ملحوظة. نمط الكلام طبيعي، ولا يوجد دليل على أي اضطراب في الأصوات. الأداء اللفظي يشير إلى تطور طبيعي.',
+      s3: 'لا يُوصى بأي تدخل علاجي حاليًا. الاستمرار في المتابعة للتأكد من الحفاظ على تطور النطق.',
+    ),
+    Reportmodel(
+      s1: 'بعد الاستماع إلى كلام الطفل، يبدو أن هناك بعض الصعوبات الطفيفة في إنتاج الكلام.',
+      s2: 'الطفل يعاني من بعض الصعوبات في نطق أصوات معينة، إلا أن نمط الكلام بشكل عام جيد. قد يشير ذلك إلى بعض التحديات في التعلم.',
+      s3: 'يوصى بإجراء بعض التمارين اللغوية لتحسين النطق وتطوير المهارات الكلامية. المتابعة مهمة للتأكد من تقدم الطفل.',
+    ),
+    Reportmodel(
+      s1: 'بعد الاستماع إلى كلام الطفل، يبدو أن هناك مشكلة ملحوظة في إنتاج الكلام لديه.',
+      s2: 'الطفل يعاني من صعوبة في نطق بعض الأصوات. يشير نمط الكلام إلى وجود اضطراب في الأصوات. هناك أيضًا دليل على التلعثم مما قد يشير إلى الحاجة إلى مزيد من التقييم.',
+      s3: 'يوصى بإجراء تقييم شامل للكلام لتحديد مجالات الصعوبة وتطوير خطة علاج فردية لمعالجة هذه التحديات.',
+    ),
+    Reportmodel(
+      s1: 'بعد الاستماع إلى كلام الطفل، يبدو أن هناك مشاكل كبيرة في إنتاج الكلام.',
+      s2: 'الطفل يعاني من صعوبة كبيرة في نطق الأصوات والكلام بشكل عام غير واضح. يظهر وجود اضطراب شديد في الكلام قد يكون مرتبطًا بمشكلة عصبية أو نفسية.',
+      s3: 'يوصى ببدء علاج فوري يشمل جلسات علاجية مركزة للنطق ومتابعة طبية لتقييم الحالة الشاملة.',
+    ),
+  ];
   Timer? _timer;
   int _start = 0;
   var url = 'https://dd-api-ef261231066c.herokuapp.com/detect';
@@ -60,7 +85,29 @@ class _DiagnosisState extends State<Diagnosis> {
           },
         ),
       );
-
+      Map<String, dynamic> Json = response.data;
+      int prediction = Json['prediction'];
+      if (prediction >= 0 && prediction < 25) {
+        setState(() {
+          index = 0;
+          UploadComplete = 2;
+        });
+      } else if (prediction >= 25 && prediction < 50) {
+        setState(() {
+          index = 1;
+          UploadComplete = 2;
+        });
+      } else if (prediction >= 50 && prediction < 75) {
+        setState(() {
+          index = 2;
+          UploadComplete = 2;
+        });
+      } else {
+        setState(() {
+          index = 3;
+          UploadComplete = 2;
+        });
+      }
       print('Upload response: ${response.data}');
     } catch (e) {
       print('Error uploading file: $e');
@@ -75,10 +122,75 @@ class _DiagnosisState extends State<Diagnosis> {
     }
   }
 
+  Widget Action() {
+    if (UploadComplete == 0) {
+      return const SizedBox(
+        width: 50,
+        height: 50,
+      );
+    } else if (UploadComplete == 1) {
+      return Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0x83346266),
+              Color(0x83753A88),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          shape: BoxShape.circle,
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(3.0),
+          child: SizedBox(
+            width: 50,
+            height: 50,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+              strokeWidth: 6,
+            ),
+          ),
+        ),
+      );
+    } else {
+      return Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0x83346266),
+              Color(0x83753A88),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          shape: BoxShape.circle,
+        ),
+        child: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return Report(Reports: Reports, index: index);
+              }),
+            );
+          },
+          icon: const Icon(
+            Icons.call_to_action_outlined,
+            color: Colors.white,
+            size: 30,
+          ),
+        ),
+      );
+    }
+  }
+
   String? recordingPath;
   bool isRecoring = false;
   File? file;
   final AudioRecorder audioRecorder = AudioRecorder();
+  int index = -1;
+  int UploadComplete = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -162,6 +274,7 @@ class _DiagnosisState extends State<Diagnosis> {
                         ),
                         child: IconButton(
                           onPressed: () {
+                            UploadComplete = 0;
                             _reset();
                           },
                           icon: const Icon(
@@ -213,6 +326,7 @@ class _DiagnosisState extends State<Diagnosis> {
                                           isRecoring = false;
                                           recordingPath = filePath;
                                           file = File(filePath);
+                                          UploadComplete = 1;
                                           _uploadFile();
                                           _stopTimer();
                                         });
@@ -260,37 +374,7 @@ class _DiagnosisState extends State<Diagnosis> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 30.0),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0x83346266),
-                              Color(0x83753A88),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return const FormPage();
-                                }),
-                              );
-                            },
-                            icon: const Icon(
-                              Icons.call_to_action_outlined,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          ),
-                        ),
-                      ),
+                      child: Action(),
                     ),
                   ],
                 )

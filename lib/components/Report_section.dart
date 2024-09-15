@@ -31,6 +31,7 @@ class ReportSection extends StatelessWidget {
           ),
           SizedBox(height: 8),
           RichText(
+            textAlign: TextAlign.end,
             text: TextSpan(
               text: '',
               style: TextStyle(color: Colors.black),

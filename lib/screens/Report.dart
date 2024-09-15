@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
+import 'package:mobile_app/models/ReportModel.dart';
 import '../components/Report_section.dart';
 
+// ignore: must_be_immutable
 class Report extends StatelessWidget {
-  @override
+  // ignore: non_constant_identifier_names
+  List<Reportmodel> Reports;
+  int index;
+
+  // ignore: non_constant_identifier_names
+  Report({super.key, required this.Reports, required this.index});
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -43,17 +51,17 @@ class Report extends StatelessWidget {
                   ReportSection(
                     title: 'ملخص التقييم',
                     content:
-                        'بعد الاستماع إلى كلام الطفل، يبدو أن هناك مشكلة ملحوظة في إنتاج الكلام لديه.',
+                        Reports[index].s1,
                   ),
                   ReportSection(
                     title: 'الملاحظات والتشخيص',
                     content:
-                        'يعاني الطفل من صعوبة في نطق بعض الأصوات. يشير نمط الكلام إلى وجود اضطراب في الأصوات. هناك أيضًا دليل على التلعثم مما قد يشير إلى الحاجة إلى مزيد من التقييم والعلاج النطقي المستهدف.',
+                       Reports[index].s2,
                   ),
                   ReportSection(
                     title: ' الاقتراحات',
                     content:
-                        ' يوصى بإجراء تقييم شامل للكلام لتحديد مجالات الصعوبة المحددة وتطوير خطة علاج فردية لمعالجة هذه المخاوف.',
+                      Reports[index].s3,
                   ),
                 ],
               ),
