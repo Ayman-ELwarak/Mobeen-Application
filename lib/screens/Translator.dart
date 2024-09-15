@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/GetText.dart';
 import 'package:path/path.dart' as p;
@@ -9,6 +11,7 @@ import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
+import 'package:retry/retry.dart';
 
 class Translator extends StatefulWidget {
   const Translator({super.key});
@@ -50,9 +53,116 @@ class _TranslatorState extends State<Translator> {
     }
   }
 
-  @override
+  Future<void> upload(String filePath) async {
+    final file = File(filePath);
+    final bytes = await file.readAsBytes();
+
+    Dio dio = Dio();
+
+    const r = RetryOptions(maxAttempts: 3);
+
+    try {
+      final response = await r.retry(
+        () => dio.post(
+          "https://api-inference.huggingface.co/models/jonatasgrosman/wav2vec2-large-xlsr-53-arabic",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer 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",
+            },
+            validateStatus: (status) =>
+                status! < 500, // Retry only for server errors
+          ),
+          data: bytes,
+        ),
+        retryIf: (e) => e is DioError && e.response?.statusCode == 503,
+      );
+
+      if (response.statusCode == 200) {
+        print(response.data);
+        Map<String, dynamic> jsonData = response.data;
+        setState(() {
+          data = jsonData['text']!;
+          UploadComplete = 2;
+        });
+      } else {
+        throw Exception("Failed to load data: ${response.statusCode}");
+      }
+    } on DioError catch (e) {
+      throw Exception("Dio error: ${e.message}");
+    }
+  }
+
+  Widget Action() {
+    if (UploadComplete == 0) {
+      return const SizedBox(
+        width: 50,
+        height: 50,
+      );
+    } else if (UploadComplete == 1) {
+      return Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0x83346266),
+              Color(0x83753A88),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          shape: BoxShape.circle,
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(3.0),
+          child: SizedBox(
+            width: 50,
+            height: 50,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+              strokeWidth: 6,
+            ),
+          ),
+        ),
+      );
+    } else {
+      return Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0x83346266),
+              Color(0x83753A88),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          shape: BoxShape.circle,
+        ),
+        child: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return Gettext(
+                  recordingPath: recordingPath,
+                  text: data,
+                );
+              }),
+            );
+          },
+          icon: const Icon(
+            Icons.call_to_action_outlined,
+            color: Colors.white,
+            size: 30,
+          ),
+        ),
+      );
+    }
+  }
+
+  // ignore: non_constant_identifier_names
+  int UploadComplete = 0;
   String? recordingPath;
   bool isRecoring = false;
+  String data = "";
   final AudioRecorder audioRecorder = AudioRecorder();
   Widget build(BuildContext context) {
     final double screenheight =
@@ -134,6 +244,7 @@ class _TranslatorState extends State<Translator> {
                         ),
                         child: IconButton(
                           onPressed: () {
+                            UploadComplete = 0;
                             _reset();
                           },
                           icon: const Icon(
@@ -182,8 +293,10 @@ class _TranslatorState extends State<Translator> {
                                           await audioRecorder.stop();
                                       if (filePath != null) {
                                         setState(() {
+                                          UploadComplete = 1;
                                           isRecoring = false;
                                           recordingPath = filePath;
+                                          upload(recordingPath!);
                                           _stopTimer();
                                         });
                                       }
@@ -196,7 +309,9 @@ class _TranslatorState extends State<Translator> {
                                             "recording.wav");
                                         try {
                                           audioRecorder.start(
-                                            const RecordConfig(),
+                                            const RecordConfig(
+                                              encoder: AudioEncoder.wav,
+                                            ),
                                             path: filePath,
                                           );
                                           setState(() {
@@ -228,39 +343,7 @@ class _TranslatorState extends State<Translator> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 30.0),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0x83346266),
-                              Color(0x83753A88),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return Gettext(
-                                    recordingPath: recordingPath,
-                                  );
-                                }),
-                              );
-                            },
-                            icon: const Icon(
-                              Icons.call_to_action_outlined,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          ),
-                        ),
-                      ),
+                      child: Action(),
                     ),
                   ],
                 )

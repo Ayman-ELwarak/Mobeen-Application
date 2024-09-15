@@ -96,7 +96,7 @@ class _DiagnosisState extends State<Diagnosis> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assest/images/Translatorbackground.jpg"),
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           child: Padding(

@@ -1,12 +1,12 @@
-import 'dart:io';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
 
+// ignore: must_be_immutable
 class Gettext extends StatefulWidget {
   String? recordingPath;
-  Gettext({super.key, required this.recordingPath});
+  String text = "";
+  Gettext({super.key, required this.recordingPath, required this.text});
 
   @override
   State<Gettext> createState() => _GettextState();
@@ -41,7 +41,7 @@ class _GettextState extends State<Gettext> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    player.setAsset('assest/sounds/001.mp3');
+    player.setFilePath(widget.recordingPath!);
     player.positionStream.listen((p) {
       setState(() {
         position = p;
@@ -134,11 +134,11 @@ class _GettextState extends State<Gettext> {
                             ),
                             height: 3 * MediaQuery.of(context).size.height / 10,
                             width: double.infinity,
-                            child: const Padding(
+                            child: Padding(
                               padding: EdgeInsets.all(16.0),
                               child: SingleChildScrollView(
                                 child: Text(
-                                  'كل شيء بخير',
+                                  widget.text,
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
                                     fontSize: 17,
