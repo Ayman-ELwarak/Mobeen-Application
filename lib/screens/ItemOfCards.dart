@@ -22,7 +22,7 @@ class Itemofcards extends StatefulWidget {
 
 class _Itemofcards extends State<Itemofcards> {
   int gain = 200;
-  int totalScore = 400;
+  int totalScore = 0;
   bool isRecoring = false;
   bool isPlaying = false;
   final AudioRecorder audioRecorder = AudioRecorder();
@@ -283,6 +283,7 @@ class _Itemofcards extends State<Itemofcards> {
                               sound.play();
                               setState(() {
                                 isPlaying = true;
+                                totalScore += gain;
                               });
                             } else {
                               sound.stop();

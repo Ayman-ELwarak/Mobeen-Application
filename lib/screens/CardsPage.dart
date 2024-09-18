@@ -92,7 +92,7 @@ class Cardspage extends StatelessWidget {
     Cardmodel(
       item_name: 'العائلة',
       color: const Color.fromARGB(255, 113, 110, 116),
-      image: 'assest/images/Family.png',
+      image: 'assest/images/family.png',
       items: Familylist().Family,
     ),
     Cardmodel(
