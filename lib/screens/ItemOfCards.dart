@@ -1,13 +1,9 @@
-// ignore_for_file: file_names
-import 'dart:io';
 // ignore: depend_on_referenced_packages
 import 'package:just_audio/just_audio.dart';
 import 'package:mobile_app/components/TextaA.dart';
-import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 
 // ignore: must_be_immutable
