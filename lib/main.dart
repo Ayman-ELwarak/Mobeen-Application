@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/screens/SoundLevels.dart';
 import 'package:mobile_app/screens/WelcomePage.dart';
 
 void main() {
@@ -11,9 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Soundlevels(),
+      home: Welcomepage(),
     );
   }
 }
