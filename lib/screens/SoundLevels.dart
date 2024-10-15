@@ -3,18 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/GetSoundLevels.dart';
 import 'package:mobile_app/components/Menu.dart';
+import 'package:mobile_app/models/CardsTypeModel.dart';
 import 'package:mobile_app/models/soundLevelModel.dart';
 
 // ignore: must_be_immutable
 class Soundlevels extends StatelessWidget {
   List<Soundlevelmodel> items = [
-    Soundlevelmodel(item_name: 'المستوي الاول', image: 'assest/images/1.jpg', items: List.empty()),
-    Soundlevelmodel(item_name: 'المستوي الثاني', image: 'assest/images/2.jpg', items: List.empty()),
-    Soundlevelmodel(item_name: 'المستوي الثالث', image: 'assest/images/3.jpg', items: List.empty()),
-    Soundlevelmodel(item_name: 'المستوي الرابع', image: 'assest/images/4.jpg', items: List.empty()),
-    Soundlevelmodel(item_name: 'المستوي الخامس', image: 'assest/images/5.jpg', items: List.empty()),
+    Soundlevelmodel(
+        item_name: 'المستوي الاول',
+        image: 'assest/images/1.jpg',
+        items: List.empty()),
+    Soundlevelmodel(
+        item_name: 'المستوي الثاني',
+        image: 'assest/images/2.jpg',
+        items: List.empty()),
+    Soundlevelmodel(
+        item_name: 'المستوي الثالث',
+        image: 'assest/images/3.jpg',
+        items: List.empty()),
+    Soundlevelmodel(
+        item_name: 'المستوي الرابع',
+        image: 'assest/images/4.jpg',
+        items: List.empty()),
+    Soundlevelmodel(
+        item_name: 'المستوي الخامس',
+        image: 'assest/images/5.jpg',
+        items: List.empty()),
   ];
-  Soundlevels({super.key});
+  List<Cardstypemodel> item = [];
+  Color color;
+  Soundlevels({super.key, required this.item, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +45,8 @@ class Soundlevels extends StatelessWidget {
         child: Container(
           height: screenheight,
           width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            color: Color(0xFFA78CB0),
+          decoration: BoxDecoration(
+            color: color,
           ),
           child: Column(
             children: [
