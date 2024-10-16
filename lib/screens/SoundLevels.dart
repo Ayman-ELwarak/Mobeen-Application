@@ -1,4 +1,6 @@
 // ignore_for_file: file_names
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/GetSoundLevels.dart';
@@ -36,6 +38,7 @@ class Soundlevels extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    item.shuffle(Random());
     final double screenheight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     const double paddingListview = 0;
@@ -65,7 +68,8 @@ class Soundlevels extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.only(top: paddingListview),
                     child: ListView(
-                      children: getSoundLevels(context, items, paddingListview),
+                      children:
+                          getSoundLevels(context, items, item, paddingListview, color),
                     ),
                   ),
                 ),

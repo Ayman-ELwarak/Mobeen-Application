@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Repeatagainalert extends StatelessWidget {
-  const Repeatagainalert({super.key});
-
-  void apper(BuildContext context) {
+void RepeatAgainAlert(BuildContext context) {
     final double screenheight = MediaQuery.of(context).size.height;
     showDialog(
       context: context,
@@ -40,12 +37,3 @@ class Repeatagainalert extends StatelessWidget {
       },
     );
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => apper(context),
-      child: const Text('Show Alert Dialog'),
-    );
-  }
-}

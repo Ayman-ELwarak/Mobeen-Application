@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/models/CardModel.dart';
-import 'package:mobile_app/models/CardsOfSoundLevelsModel.dart';
-import 'package:mobile_app/screens/CardTypePage.dart';
 import 'package:mobile_app/screens/SoundLevels.dart';
 
 List<GestureDetector> getItemCardsOfSoundLevels(

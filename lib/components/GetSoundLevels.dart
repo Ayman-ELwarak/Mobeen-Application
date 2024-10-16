@@ -1,9 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/models/CardsTypeModel.dart';
 import 'package:mobile_app/models/soundLevelModel.dart';
-import 'package:mobile_app/screens/CardTypePage.dart';
+import 'package:mobile_app/screens/LevelFivePage.dart';
+import 'package:mobile_app/screens/LevelFourPage.dart';
+import 'package:mobile_app/screens/LevelOnePage.dart';
+import 'package:mobile_app/screens/LevelThreePage.dart';
+import 'package:mobile_app/screens/LevelTwoPage.dart';
 
 List<GestureDetector> getSoundLevels(
-    BuildContext context, List<Soundlevelmodel> items, double paddingListview) {
+    BuildContext context,
+    List<Soundlevelmodel> items,
+    List<Cardstypemodel> Cards,
+    double paddingListview,
+    Color color) {
+  List<Widget> Go = [
+    Levelonepage(
+      cards: Cards,
+      index: 0,
+      color: color,
+    ),
+    Leveltwopage(
+      cards: Cards,
+      index: 0,
+      color: color,
+    ),
+    Levelthreepage(
+      cards: Cards,
+      index: 0,
+      color: color,
+    ),
+    Levelfourpage(
+      cards: Cards,
+      index: 0,
+      color: color,
+    ),
+    Levelfivepage(
+      cards: Cards,
+      index: 0,
+      color: color,
+    ),
+  ];
   // calculate the size of screen
   const int numOfItemsPerScreen = 4;
   final double screenheight = MediaQuery.of(context).size.height -
@@ -16,14 +52,14 @@ List<GestureDetector> getSoundLevels(
     item.add(
       GestureDetector(
         onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) {
-          //       // return Cardtypepage(items: items[i].items);
-          //     },
-          //   ),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return Go[i];
+              },
+            ),
+          );
         },
         child: Padding(
           padding: const EdgeInsets.only(bottom: 55, left: 20, right: 20),

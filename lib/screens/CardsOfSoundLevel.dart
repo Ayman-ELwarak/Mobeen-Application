@@ -11,7 +11,6 @@ import 'package:mobile_app/components/FeelingsList.dart';
 import 'package:mobile_app/components/FoundationList.dart';
 import 'package:mobile_app/components/FruitsList.dart';
 import 'package:mobile_app/components/GetItemCardsOfSoundLevels.dart';
-import 'package:mobile_app/components/GetItemsCard.dart';
 import 'package:mobile_app/components/HomeAppliancesList.dart';
 import 'package:mobile_app/components/InsectsList.dart';
 import 'package:mobile_app/components/JungleAnimalsList.dart';

@@ -1,10 +1,6 @@
-// ignore_for_file: file_names
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
-class Correctalert extends StatelessWidget {
-  const Correctalert({super.key});
-
-  void apper(BuildContext context) {
+void CorrectAlert(BuildContext context) {
     final double screenheight = MediaQuery.of(context).size.height;
     showDialog(
       context: context,
@@ -47,12 +43,3 @@ class Correctalert extends StatelessWidget {
       },
     );
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => apper(context),
-      child: const Text('Show Alert Dialog'),
-    );
-  }
-}
