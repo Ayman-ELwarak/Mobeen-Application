@@ -127,6 +127,7 @@ flutter:
     - assest/sounds/مهن/
     - assest/sounds/وسائل المواصلات/
     - assest/images/article/
+    - assest/images/sort_images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
