@@ -4,7 +4,7 @@ class sort_lists
   static List<List<String>> image_sort = [
     ['assest/images/sort_images/Teeth_brushing_1.png', 'assest/images/sort_images/Teeth_brushing_2.png', 'assest/images/sort_images/Teeth_brushing_3.png',  'assest/images/sort_images/Teeth_brushing_4.png'],
     ['assest/images/sort_images/Hand_washing_1.png'  , 'assest/images/sort_images/Hand_washing_2.png',   'assest/images/sort_images/Hand_washing_3.png',    'assest/images/sort_images/Hand_washing_4.png'],
-    ['assest/images/sort_images/sandwich_1.png      ', 'assest/images/sort_images/sandwich_2.png',       'assest/images/sort_images/sandwich_3.png',        'assest/images/sort_images/sandwich_4.png'],
+    ['assest/images/sort_images/sandwich_1.png', 'assest/images/sort_images/sandwich_2.png',       'assest/images/sort_images/sandwich_3.png',        'assest/images/sort_images/sandwich_4.png'],
     ['assest/images/sort_images/plants_1.png'        , 'assest/images/sort_images/plants_2.png',         'assest/images/sort_images/plants_3.png',          'assest/images/sort_images/plants_4.png'],
     ['assest/images/sort_images/ice_cream_1.png',      'assest/images/sort_images/ice_cream_2.png',      'assest/images/sort_images/ice_cream_3.png',       'assest/images/sort_images/ice_cream_4.png'],
     ['assest/images/sort_images/sand_castle_1.png',    'assest/images/sort_images/sand_castle_2.png',    'assest/images/sort_images/sand_castle_3.png',     'assest/images/sort_images/sand_castle_4.png'],
@@ -18,7 +18,7 @@ class sort_lists
   static List<Map<String, String>> stories_images = [
   {'image': 'assest/images/sort_images/Teeth_brushing.png', 'text': 'غسيل الاسنان'},
   {'image': 'assest/images/sort_images/Hand_washing.png', 'text': 'غسيل اليد'},
-  {'image': 'assest/images/sort_images/sandwich.png ', 'text': 'صنع سندوتش'},
+  {'image': 'assest/images/sort_images/sandwich.png', 'text': 'صنع سندوتش'},
   {'image': 'assest/images/sort_images/plants.png' , 'text': 'زراعة النبات'},
   {'image': 'assest/images/sort_images/ice_cream.png', 'text': 'اكل الايس كريم'},
   {'image': 'assest/images/sort_images/sand_castle.png', 'text': 'بناء قلعة رملية'},
