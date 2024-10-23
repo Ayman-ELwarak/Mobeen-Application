@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/models/video_model.dart';
-import '../components/Exercise_Type_Button.dart';
 import 'Exercises.dart';
 
 class ExercisesType extends StatelessWidget {

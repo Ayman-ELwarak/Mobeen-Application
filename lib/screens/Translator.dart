@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:mobile_app/components/TextaA.dart';

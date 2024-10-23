@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:mobile_app/models/video_model.dart';
 
 class Lip_list {
