@@ -28,7 +28,7 @@ void CorrectAlert(BuildContext context) {
                   child: Padding(
                     padding: EdgeInsets.only(top: 6.0),
                     child: Text(
-                      'Correct !',
+                      '!أحسنت',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,

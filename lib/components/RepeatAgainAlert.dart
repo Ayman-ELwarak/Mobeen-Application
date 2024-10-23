@@ -22,7 +22,7 @@ void RepeatAgainAlert(BuildContext context) {
                   child: Padding(
                     padding: EdgeInsets.only(top: 3.0),
                     child: Text(
-                      'Repeat again !',
+                      '!حاول مرة اخري',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,

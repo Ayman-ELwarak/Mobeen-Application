@@ -28,6 +28,5 @@ class sort_lists
   {'image': 'assest/images/sort_images/Eating_apples.png', 'text': 'اكل التفاح'},
   {'image': 'assest/images/sort_images/spider.png', 'text': 'تكوين شبكة العنكبوت'},
   {'image': 'assest/images/sort_images/Falling_leaves.png', 'text': 'تساقط اوراق الاشجار'},
-
   ];
 }
