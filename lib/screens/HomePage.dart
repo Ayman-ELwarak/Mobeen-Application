@@ -76,11 +76,13 @@ class Homepage extends StatelessWidget {
                                       );
                                     },
                                     child: Container(
-                                      height: MediaQuery.of(context).size.height /
-                                          4.5,
-                                      width: (MediaQuery.of(context).size.width -
-                                              42) /
-                                          2,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              4.5,
+                                      width:
+                                          (MediaQuery.of(context).size.width -
+                                                  42) /
+                                              2,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFFF55454)
                                             .withOpacity(0.48),
@@ -147,7 +149,8 @@ class Homepage extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: const Color(0xFFC78FF3)
                                               .withOpacity(0.48),
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                         ),
                                         child: Column(
                                           children: [
@@ -164,7 +167,8 @@ class Homepage extends StatelessWidget {
                                                     "المترجم",
                                                     style: TextStyle(
                                                       fontSize: 25,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                 ),
@@ -213,9 +217,10 @@ class Homepage extends StatelessWidget {
                                                     42) /
                                                 2,
                                         decoration: BoxDecoration(
-                                          color:
-                                              Color(0xFF86BEFF).withOpacity(0.48),
-                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFF86BEFF)
+                                              .withOpacity(0.48),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                         ),
                                         child: Column(
                                           children: [
@@ -232,7 +237,8 @@ class Homepage extends StatelessWidget {
                                                     "بطاقات التخاطب",
                                                     style: TextStyle(
                                                       fontSize: 25,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                 ),
@@ -255,7 +261,8 @@ class Homepage extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10.0),
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
                                       child: GestureDetector(
                                         onTap: () {
                                           Navigator.push(
@@ -268,13 +275,15 @@ class Homepage extends StatelessWidget {
                                           );
                                         },
                                         child: Container(
-                                          height:
-                                              MediaQuery.of(context).size.height /
-                                                  4.5,
-                                          width:
-                                              (MediaQuery.of(context).size.width -
-                                                      42) /
-                                                  2,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              4.5,
+                                          width: (MediaQuery.of(context)
+                                                      .size
+                                                      .width -
+                                                  42) /
+                                              2,
                                           decoration: BoxDecoration(
                                             color: const Color(0xFFFFD233)
                                                 .withOpacity(0.48),
@@ -333,7 +342,7 @@ class Homepage extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) {
-                                              return Cardspage();
+                                              return Scaffold();
                                             },
                                           ),
                                         );
@@ -347,9 +356,10 @@ class Homepage extends StatelessWidget {
                                                     42) /
                                                 2,
                                         decoration: BoxDecoration(
-                                          color:
-                                              Color(0xFFFAADAD).withOpacity(0.36),
-                                          borderRadius: BorderRadius.circular(15),
+                                          color: Color(0xFFFAADAD)
+                                              .withOpacity(0.36),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                         ),
                                         child: Column(
                                           children: [
@@ -366,7 +376,8 @@ class Homepage extends StatelessWidget {
                                                     "تنمية النطق",
                                                     style: TextStyle(
                                                       fontSize: 25,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                 ),
@@ -389,7 +400,8 @@ class Homepage extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10.0),
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
                                       child: GestureDetector(
                                         onTap: () {
                                           Navigator.push(
@@ -402,13 +414,15 @@ class Homepage extends StatelessWidget {
                                           );
                                         },
                                         child: Container(
-                                          height:
-                                              MediaQuery.of(context).size.height /
-                                                  4.5,
-                                          width:
-                                              (MediaQuery.of(context).size.width -
-                                                      42) /
-                                                  2,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              4.5,
+                                          width: (MediaQuery.of(context)
+                                                      .size
+                                                      .width -
+                                                  42) /
+                                              2,
                                           decoration: BoxDecoration(
                                             color: const Color(0xFF84BB7F)
                                                 .withOpacity(0.60),
@@ -504,92 +518,93 @@ class Homepage extends StatelessWidget {
                         ),
                       ),
                       SliverList(
-                        delegate: SliverChildBuilderDelegate((context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return ArticlePage(
-                                      index: index,
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Column(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 4.0,
-                                            right: 4,
-                                          ),
-                                          child: Textaa(
-                                            child: Text(
-                                              name[index],
-                                              style: const TextStyle(
-                                                fontSize: 25,
-                                                fontWeight: FontWeight.bold,
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return ArticlePage(
+                                        index: index,
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Column(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 4.0,
+                                              right: 4,
+                                            ),
+                                            child: Textaa(
+                                              child: Text(
+                                                name[index],
+                                                style: const TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8, right: 8),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                flex: 2,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 3.0,
-                                                          right: 3),
-                                                  child: captian[index],
-                                                ),
-                                              ),
-                                              Expanded(
-                                                flex: 1,
-                                                child: SizedBox(
-                                                  height: screenheight / 8,
-                                                  width:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width /
-                                                          3,
-                                                  child: Image.asset(
-                                                    images[index],
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8, right: 8),
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 3.0,
+                                                            right: 3),
+                                                    child: captian[index],
                                                   ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, bottom: 16),
-                                  child: Container(
-                                    height: 15,
-                                    width: MediaQuery.of(context).size.width,
-                                    color: const Color(0xFFD9D9D9)
-                                        .withOpacity(0.90),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: SizedBox(
+                                                    height: screenheight / 8,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            3,
+                                                    child: Image.asset(
+                                                      images[index],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                    ],
                                   ),
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                        childCount: name.length,
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 16.0, bottom: 16),
+                                    child: Container(
+                                      height: 15,
+                                      width: MediaQuery.of(context).size.width,
+                                      color: const Color(0xFFD9D9D9)
+                                          .withOpacity(0.90),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                          childCount: name.length,
                         ),
                       ),
                     ],
