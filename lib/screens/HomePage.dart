@@ -42,15 +42,18 @@ class Homepage extends StatelessWidget {
             ),
             Column(
               children: [
+                // SizedBox(
+                //   height: kToolbarHeight,
+                //   child: Row(
+                //     children: [
+                //       BackButtonContainer().create(context),
+                //       const Spacer(),
+                //       const Menu(),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   height: kToolbarHeight,
-                  child: Row(
-                    children: [
-                      BackButtonContainer().create(context),
-                      const Spacer(),
-                      const Menu(),
-                    ],
-                  ),
                 ),
                 Expanded(
                   child: CustomScrollView(
@@ -336,67 +339,53 @@ class Homepage extends StatelessWidget {
                                 padding: const EdgeInsets.only(top: 16.0),
                                 child: Row(
                                   children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) {
-                                              return Scaffold();
-                                            },
-                                          ),
-                                        );
-                                      },
-                                      child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height /
-                                                4.5,
-                                        width:
-                                            (MediaQuery.of(context).size.width -
-                                                    42) /
-                                                2,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFAADAD)
-                                              .withOpacity(0.36),
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                top: screenheight / 40,
-                                                left: 4,
-                                                right: 4,
-                                              ),
-                                              child: SizedBox(
-                                                height: screenheight / 23,
-                                                child: Textaa(
-                                                  child: const Text(
-                                                    "تنمية النطق",
-                                                    style: TextStyle(
-                                                      fontSize: 25,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              4.5,
+                                      width:
+                                          (MediaQuery.of(context).size.width -
+                                                  42) /
+                                              2,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xFF84BB7F)
+                                            .withOpacity(0.60),
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                              top: screenheight / 40,
+                                              left: 4,
+                                              right: 4,
+                                            ),
+                                            child: SizedBox(
+                                              height: screenheight / 23,
+                                              child: Textaa(
+                                                child: const Text(
+                                                  "تنمية المهارات",
+                                                  style: TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: screenheight / 40,
-                                                  left: 70,
-                                                  bottom: screenheight / 45,
-                                                  right: 20),
-                                              child: SizedBox(
-                                                height: screenheight / 9,
-                                                child: Image.asset(
-                                                    'assest/images/Speech_development.png'),
-                                              ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                top: screenheight / 18,
+                                                left: 70,
+                                                bottom: screenheight / 40,
+                                                right: 20),
+                                            child: SizedBox(
+                                              height: screenheight / 13,
+                                              child: Image.asset(
+                                                  'assest/images/Skills_development.png'),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     Padding(
@@ -424,8 +413,8 @@ class Homepage extends StatelessWidget {
                                                   42) /
                                               2,
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFF84BB7F)
-                                                .withOpacity(0.60),
+                                            color: Color(0xFFFAADAD)
+                                                .withOpacity(0.36),
                                             borderRadius:
                                                 BorderRadius.circular(15),
                                           ),
@@ -441,7 +430,7 @@ class Homepage extends StatelessWidget {
                                                   height: screenheight / 23,
                                                   child: Textaa(
                                                     child: const Text(
-                                                      "تنمية المهارات",
+                                                      "تنمية نطق",
                                                       style: TextStyle(
                                                         fontSize: 25,
                                                         fontWeight:
@@ -453,14 +442,14 @@ class Homepage extends StatelessWidget {
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.only(
-                                                    top: screenheight / 18,
+                                                    top: screenheight / 40,
                                                     left: 70,
-                                                    bottom: screenheight / 40,
+                                                    bottom: screenheight / 45,
                                                     right: 20),
                                                 child: SizedBox(
-                                                  height: screenheight / 13,
+                                                  height: screenheight / 9,
                                                   child: Image.asset(
-                                                      'assest/images/Skills_development.png'),
+                                                      'assest/images/Speech_development.png'),
                                                 ),
                                               ),
                                             ],

@@ -216,13 +216,13 @@ class _DiagnosisState extends State<Diagnosis> {
               children: [
                 SizedBox(
                   height: kToolbarHeight,
-                  child: Row(
-                    children: [
-                      BackButtonContainer().create(context),
-                      const Spacer(),
-                      const Menu(),
-                    ],
-                  ),
+                  // child: Row(
+                  //   children: [
+                  //     BackButtonContainer().create(context),
+                  //     const Spacer(),
+                  //     const Menu(),
+                  //   ],
+                  // ),
                 ),
                 Expanded(
                   flex: 2,

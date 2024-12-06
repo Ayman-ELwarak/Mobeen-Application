@@ -23,13 +23,13 @@ class Report extends StatelessWidget {
               height: kToolbarHeight,
               child: Container(
                 color: const Color(0xFF5A7493),
-                child: Row(
-                  children: [
-                    BackButtonContainer().create(context),
-                    const Spacer(),
-                    const Menu(),
-                  ],
-                ),
+                // child: Row(
+                //   children: [
+                //     BackButtonContainer().create(context),
+                //     const Spacer(),
+                //     const Menu(),
+                //   ],
+                // ),
               ),
             ),
             SizedBox(

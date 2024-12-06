@@ -29,13 +29,13 @@ class ArticlePage extends StatelessWidget {
             children: [
               SizedBox(
                 height: kToolbarHeight,
-                child: Row(
-                  children: [
-                     BackButtonContainer().create(context), // Optional: Add back button if needed
-                    const Spacer(),
-                     Menu(), // Optional: Add menu if needed
-                  ],
-                ),
+                // child: Row(
+                //   children: [
+                //      BackButtonContainer().create(context), // Optional: Add back button if needed
+                //     const Spacer(),
+                //      Menu(), // Optional: Add menu if needed
+                //   ],
+                // ),
               ),
               Expanded(
                 child: ListView(

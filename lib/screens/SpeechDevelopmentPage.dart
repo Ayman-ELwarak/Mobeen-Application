@@ -22,11 +22,11 @@ class Speechdevelopmentpage extends StatelessWidget {
         image: 'assest/images/SoundLevel.png',
         color: Color(0xFF7A94B2),
         page: Cardsofsoundlevel()),
-    Speechdevelopmentmodel(
-        name: 'مخارج الحروف',
-        image: 'assest/images/PronunciationLetters.png',
-        color: Color(0xFFE0A6A6),
-        page: Scaffold()),
+    // Speechdevelopmentmodel(
+    //     name: 'مخارج الحروف',
+    //     image: 'assest/images/PronunciationLetters.png',
+    //     color: Color(0xFFE0A6A6),
+    //     page: Scaffold()),
   ];
   Speechdevelopmentpage({super.key});
 
@@ -48,13 +48,13 @@ class Speechdevelopmentpage extends StatelessWidget {
             children: [
               SizedBox(
                 height: kToolbarHeight,
-                child: Row(
-                  children: [
-                    BackButtonContainer().create(context),
-                    const Spacer(),
-                    const Menu(),
-                  ],
-                ),
+                // child: Row(
+                //   children: [
+                //     BackButtonContainer().create(context),
+                //     const Spacer(),
+                //     const Menu(),
+                //   ],
+                // ),
               ),
               Expanded(
                 child: Center(

@@ -51,11 +51,11 @@ class _ExercisePageState extends State<ExercisePage> {
             children: [
               SizedBox(
                 height: kToolbarHeight,
-                child: Row(
-                  children: [
-                    BackButtonContainer().create(context),
-                  ],
-                ),
+                // child: Row(
+                //   children: [
+                //     BackButtonContainer().create(context),
+                //   ],
+                // ),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.height,

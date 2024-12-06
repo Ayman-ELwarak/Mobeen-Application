@@ -54,42 +54,42 @@ class _Itemofcards extends State<Itemofcards> {
             children: [
               SizedBox(
                 height: kToolbarHeight,
-                child: Row(
-                  children: [
-                    BackButtonContainer().create(context),
-                    const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF5A7493),
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 8.0,
-                            right: 8.0,
-                            top: 4.0,
-                            bottom: 4.0,
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                height: 20,
-                                width: 20,
-                                child: Image.asset('assest/images/diamond.png'),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 3.0),
-                                child: Text('$totalScore'),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                // child: Row(
+                //   children: [
+                //     BackButtonContainer().create(context),
+                //     const Spacer(),
+                //     Padding(
+                //       padding: const EdgeInsets.only(right: 16.0),
+                //       child: Container(
+                //         decoration: BoxDecoration(
+                //           color: const Color(0xFF5A7493),
+                //           borderRadius: BorderRadius.circular(60),
+                //         ),
+                //         child: Padding(
+                //           padding: const EdgeInsets.only(
+                //             left: 8.0,
+                //             right: 8.0,
+                //             top: 4.0,
+                //             bottom: 4.0,
+                //           ),
+                //           child: Row(
+                //             children: [
+                //               SizedBox(
+                //                 height: 20,
+                //                 width: 20,
+                //                 child: Image.asset('assest/images/diamond.png'),
+                //               ),
+                //               Padding(
+                //                 padding: const EdgeInsets.only(left: 3.0),
+                //                 child: Text('$totalScore'),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //       ),
+                //     )
+                //   ],
+                // ),
               ),
               Expanded(
                 flex: 9,

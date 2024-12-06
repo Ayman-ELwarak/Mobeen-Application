@@ -186,13 +186,13 @@ class _TranslatorState extends State<Translator> {
               children: [
                 SizedBox(
                   height: kToolbarHeight,
-                  child: Row(
-                    children: [
-                      BackButtonContainer().create(context),
-                      const Spacer(),
-                      const Menu(),
-                    ],
-                  ),
+                  // child: Row(
+                  //   children: [
+                  //     BackButtonContainer().create(context),
+                  //     const Spacer(),
+                  //     const Menu(),
+                  //   ],
+                  // ),
                 ),
                 Expanded(
                   flex: 2,
