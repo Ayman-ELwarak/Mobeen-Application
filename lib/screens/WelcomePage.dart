@@ -1,59 +1,73 @@
-// ignore_for_file: file_names
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/HomePage.dart';
 
-class Welcomepage extends StatelessWidget {
+class Welcomepage extends StatefulWidget {
   const Welcomepage({super.key});
+
+  @override
+  State<Welcomepage> createState() => _WelcomepageState();
+}
+
+class _WelcomepageState extends State<Welcomepage> {
+  double _opacity = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        _opacity = 1.0;
+      });
+    });
+
+    Future.delayed(Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) {
+          return Homepage();
+        }),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final double screenheight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+    final double screenwidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: Container(
-          height: screenheight,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assest/images/WelcomeBackground.jpg"),
-              fit: BoxFit.fill,
-            ),
-          ),
-          child: Column(
-            children: [
-              Spacer(
-                flex: 1,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedOpacity(
+              opacity: _opacity,
+              duration: Duration(seconds: 2),
+              child: SizedBox(
+                width: screenwidth / 2,
+                height: screenheight / 6,
+                child: Image.asset('assest/images/logo.png'),
               ),
-              Row(
-                children: [
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 30.0, right: 16),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return Homepage();
-                            },
-                          ),
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.arrow_forward_outlined,
-                        size: 50,
-                      ),
+            ),
+            AnimatedOpacity(
+              opacity: _opacity,
+              duration: Duration(seconds: 2),
+              child: SizedBox(
+                child: Textaa(
+                  child: Text(
+                    'مۘــبــﯧْۧــنۨ',
+                    style: TextStyle(
+                      fontSize: screenwidth / 8,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
-              )
-            ],
-          ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

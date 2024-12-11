@@ -185,14 +185,7 @@ class _TranslatorState extends State<Translator> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: kToolbarHeight,
-                  // child: Row(
-                  //   children: [
-                  //     BackButtonContainer().create(context),
-                  //     const Spacer(),
-                  //     const Menu(),
-                  //   ],
-                  // ),
+                  height: kToolbarHeight / 2,
                 ),
                 Expanded(
                   flex: 2,

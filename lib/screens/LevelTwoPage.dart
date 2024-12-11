@@ -83,14 +83,7 @@ class _LevelonepageState extends State<Leveltwopage> {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     BackButtonContainer().create(context),
-                //     const Spacer(),
-                //     const Menu(),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               Text(
                 'اختر ما يناسب الصوت',
@@ -105,7 +98,7 @@ class _LevelonepageState extends State<Leveltwopage> {
               ),
               SizedBox(
                 width: screenwidth / 2,
-                height: screenwidth / 2,
+                height: screenheight / 4,
                 child: GestureDetector(
                   onTap: () {
                     if (CheckResult(
@@ -126,7 +119,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                     children: [
                       Container(
                         width: screenwidth / 2,
-                        height: screenwidth / 2,
+                        height: screenheight / 4,
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.white,
@@ -140,7 +133,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                         padding: const EdgeInsets.all(16.0),
                         child: Container(
                           width: screenwidth / 2,
-                          height: screenwidth / 2,
+                          height: screenheight / 4,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color.fromARGB(255, 236, 234, 225),
@@ -151,7 +144,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                         padding: const EdgeInsets.all(20.0),
                         child: SizedBox(
                           width: screenwidth / 2,
-                          height: screenwidth / 2,
+                          height: screenheight / 4,
                           child: Image.asset(myList[0].image),
                         ),
                       ),
@@ -163,7 +156,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                 children: [
                   SizedBox(
                     width: screenwidth / 2,
-                    height: screenwidth / 2,
+                    height: screenheight / 4,
                     child: Padding(
                       padding: const EdgeInsets.only(right: 2.0),
                       child: GestureDetector(
@@ -186,7 +179,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                           children: [
                             Container(
                               width: screenwidth / 2,
-                              height: screenwidth / 2,
+                              height: screenheight / 4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Colors.white,
@@ -200,7 +193,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color.fromARGB(255, 236, 234, 225),
@@ -211,7 +204,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                               padding: const EdgeInsets.all(20.0),
                               child: SizedBox(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 child: Image.asset(myList[1].image),
                               ),
                             ),
@@ -222,7 +215,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                   ),
                   SizedBox(
                     width: screenwidth / 2,
-                    height: screenwidth / 2,
+                    height: screenheight / 4,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 2.0),
                       child: GestureDetector(
@@ -245,7 +238,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                           children: [
                             Container(
                               width: screenwidth / 2,
-                              height: screenwidth / 2,
+                              height: screenheight / 4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Colors.white,
@@ -259,7 +252,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color.fromARGB(255, 236, 234, 225),
@@ -270,7 +263,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                               padding: const EdgeInsets.all(20.0),
                               child: SizedBox(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 child: Image.asset(myList[2].image),
                               ),
                             ),
@@ -283,10 +276,10 @@ class _LevelonepageState extends State<Leveltwopage> {
               ),
               Spacer(),
               Padding(
-                padding: const EdgeInsets.only(bottom: 30),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Container(
                   width: screenwidth / 5,
-                  height: screenwidth / 5,
+                  height: screenheight / 7,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Color(0xFF90609F),
@@ -309,7 +302,7 @@ class _LevelonepageState extends State<Leveltwopage> {
                     icon: Icon(
                       isPlaying ? Icons.pause : Icons.play_arrow,
                       color: const Color(0xFFD9D9D9),
-                      size: screenwidth / 6,
+                      size: screenwidth / 7,
                     ),
                   ),
                 ),

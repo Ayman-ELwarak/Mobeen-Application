@@ -15,7 +15,8 @@ class ArticlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+    final double screenHeight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
@@ -28,14 +29,7 @@ class ArticlePage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //      BackButtonContainer().create(context), // Optional: Add back button if needed
-                //     const Spacer(),
-                //      Menu(), // Optional: Add menu if needed
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               Expanded(
                 child: ListView(
@@ -55,9 +49,9 @@ class ArticlePage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
-                      child: captian[index]
-                    ),
+                        padding:
+                            const EdgeInsets.only(top: 20, left: 15, right: 15),
+                        child: captian[index]),
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 20, left: 15, right: 15, bottom: 10),

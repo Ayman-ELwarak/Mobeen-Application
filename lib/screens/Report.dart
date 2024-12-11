@@ -20,16 +20,9 @@ class Report extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: kToolbarHeight,
+              height: kToolbarHeight / 2,
               child: Container(
                 color: const Color(0xFF5A7493),
-                // child: Row(
-                //   children: [
-                //     BackButtonContainer().create(context),
-                //     const Spacer(),
-                //     const Menu(),
-                //   ],
-                // ),
               ),
             ),
             SizedBox(
@@ -50,18 +43,15 @@ class Report extends StatelessWidget {
                 children: [
                   ReportSection(
                     title: 'ملخص التقييم',
-                    content:
-                        Reports[index].s1,
+                    content: Reports[index].s1,
                   ),
                   ReportSection(
                     title: 'الملاحظات والتشخيص',
-                    content:
-                       Reports[index].s2,
+                    content: Reports[index].s2,
                   ),
                   ReportSection(
                     title: ' الاقتراحات',
-                    content:
-                      Reports[index].s3,
+                    content: Reports[index].s3,
                   ),
                 ],
               ),

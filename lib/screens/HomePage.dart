@@ -42,18 +42,8 @@ class Homepage extends StatelessWidget {
             ),
             Column(
               children: [
-                // SizedBox(
-                //   height: kToolbarHeight,
-                //   child: Row(
-                //     children: [
-                //       BackButtonContainer().create(context),
-                //       const Spacer(),
-                //       const Menu(),
-                //     ],
-                //   ),
-                // ),
                 SizedBox(
-                  height: kToolbarHeight,
+                  height: kToolbarHeight / 2,
                 ),
                 Expanded(
                   child: CustomScrollView(
@@ -89,7 +79,7 @@ class Homepage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: const Color(0xFFF55454)
                                             .withOpacity(0.48),
-                                        borderRadius: BorderRadius.circular(15),
+                                        borderRadius: BorderRadius.circular(30),
                                       ),
                                       child: Column(
                                         children: [
@@ -153,7 +143,7 @@ class Homepage extends StatelessWidget {
                                           color: const Color(0xFFC78FF3)
                                               .withOpacity(0.48),
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                              BorderRadius.circular(30),
                                         ),
                                         child: Column(
                                           children: [
@@ -223,7 +213,7 @@ class Homepage extends StatelessWidget {
                                           color: Color(0xFF86BEFF)
                                               .withOpacity(0.48),
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                              BorderRadius.circular(30),
                                         ),
                                         child: Column(
                                           children: [
@@ -291,7 +281,7 @@ class Homepage extends StatelessWidget {
                                             color: const Color(0xFFFFD233)
                                                 .withOpacity(0.48),
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                                BorderRadius.circular(30),
                                           ),
                                           child: Column(
                                             children: [
@@ -338,56 +328,57 @@ class Homepage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 16.0),
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              4.5,
-                                      width:
-                                          (MediaQuery.of(context).size.width -
-                                                  42) /
-                                              2,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFF84BB7F)
-                                            .withOpacity(0.60),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                              top: screenheight / 40,
-                                              left: 4,
-                                              right: 4,
-                                            ),
-                                            child: SizedBox(
-                                              height: screenheight / 23,
-                                              child: Textaa(
-                                                child: const Text(
-                                                  "تنمية المهارات",
-                                                  style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                top: screenheight / 18,
-                                                left: 70,
-                                                bottom: screenheight / 40,
-                                                right: 20),
-                                            child: SizedBox(
-                                              height: screenheight / 13,
-                                              child: Image.asset(
-                                                  'assest/images/Skills_development.png'),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                    // Container(
+                                    //   height:
+                                    //       MediaQuery.of(context).size.height /
+                                    //           4.5,
+                                    //   width:
+                                    //       (MediaQuery.of(context).size.width -
+                                    //               42) /
+                                    //           2,
+                                    //   decoration: BoxDecoration(
+                                    //     color: const Color(0xFF84BB7F)
+                                    //         .withOpacity(0.60),
+                                    //     borderRadius: BorderRadius.circular(30),
+                                    //   ),
+                                    //   child: Column(
+                                    //     children: [
+                                    //       Padding(
+                                    //         padding: EdgeInsets.only(
+                                    //           top: screenheight / 40,
+                                    //           left: 4,
+                                    //           right: 4,
+                                    //         ),
+                                    //         child: SizedBox(
+                                    //           height: screenheight / 23,
+                                    //           child: Textaa(
+                                    //             child: const Text(
+                                    //               "تنمية المهارات",
+                                    //               style: TextStyle(
+                                    //                 fontSize: 25,
+                                    //                 fontWeight: FontWeight.bold,
+                                    //               ),
+                                    //             ),
+                                    //           ),
+                                    //         ),
+                                    //       ),
+                                    //       Padding(
+                                    //         padding: EdgeInsets.only(
+                                    //             top: screenheight / 18,
+                                    //             left: 70,
+                                    //             bottom: screenheight / 40,
+                                    //             right: 20),
+                                    //         child: SizedBox(
+                                    //           height: screenheight / 13,
+                                    //           child: Image.asset(
+                                    //               'assest/images/Skills_development.png'),
+                                    //         ),
+                                    //       ),
+                                    //     ],
+                                    //   ),
+                                    // ),
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(left: 10.0),
@@ -416,7 +407,7 @@ class Homepage extends StatelessWidget {
                                             color: Color(0xFFFAADAD)
                                                 .withOpacity(0.36),
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                                BorderRadius.circular(30),
                                           ),
                                           child: Column(
                                             children: [

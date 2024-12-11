@@ -82,28 +82,7 @@ class _GettextState extends State<Gettext> {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     Container(
-                //       margin: const EdgeInsets.only(left: 16.0),
-                //       decoration: const BoxDecoration(
-                //         color: Color(0xFF5A7493),
-                //         shape: BoxShape.circle,
-                //       ),
-                //       child: IconButton(
-                //         icon: const Icon(Icons.arrow_back),
-                //         color: Colors.white,
-                //         onPressed: () {
-                //           player.stop();
-                //           Navigator.of(context).pop();
-                //         },
-                //       ),
-                //     ),
-                //     const Spacer(),
-                //     const Menu(),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               Center(
                 child: SizedBox(

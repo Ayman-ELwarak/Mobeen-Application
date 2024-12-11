@@ -6,6 +6,7 @@ import 'package:mobile_app/components/CheckResult.dart';
 import 'package:mobile_app/components/CorrectAlert.dart';
 import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/components/RepeatAgainAlert.dart';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 
 class Levelonepage extends StatefulWidget {
@@ -83,21 +84,16 @@ class _LevelonepageState extends State<Levelonepage> {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     BackButtonContainer().create(context),
-                //     const Spacer(),
-                //     const Menu(),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
-              Text(
-                'اختر ما يناسب الصوت',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
+              Textaa(
+                child: Text(
+                  'اختر ما يناسب الصوت',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(
@@ -107,7 +103,7 @@ class _LevelonepageState extends State<Levelonepage> {
                 children: [
                   SizedBox(
                     width: screenwidth / 2,
-                    height: screenwidth / 2,
+                    height: screenheight / 4,
                     child: Padding(
                       padding: const EdgeInsets.only(right: 2.0),
                       child: GestureDetector(
@@ -130,7 +126,7 @@ class _LevelonepageState extends State<Levelonepage> {
                           children: [
                             Container(
                               width: screenwidth / 2,
-                              height: screenwidth / 2,
+                              height: screenheight / 4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Colors.white,
@@ -144,7 +140,7 @@ class _LevelonepageState extends State<Levelonepage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color.fromARGB(255, 236, 234, 225),
@@ -155,7 +151,7 @@ class _LevelonepageState extends State<Levelonepage> {
                               padding: const EdgeInsets.all(20.0),
                               child: SizedBox(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 child: Image.asset(myList[0].image),
                               ),
                             ),
@@ -166,7 +162,7 @@ class _LevelonepageState extends State<Levelonepage> {
                   ),
                   SizedBox(
                     width: screenwidth / 2,
-                    height: screenwidth / 2,
+                    height: screenheight / 4,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 2.0),
                       child: GestureDetector(
@@ -189,7 +185,7 @@ class _LevelonepageState extends State<Levelonepage> {
                           children: [
                             Container(
                               width: screenwidth / 2,
-                              height: screenwidth / 2,
+                              height: screenheight / 4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Colors.white,
@@ -203,7 +199,7 @@ class _LevelonepageState extends State<Levelonepage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color.fromARGB(255, 236, 234, 225),
@@ -214,7 +210,7 @@ class _LevelonepageState extends State<Levelonepage> {
                               padding: const EdgeInsets.all(20.0),
                               child: SizedBox(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 child: Image.asset(myList[1].image),
                               ),
                             ),
@@ -227,10 +223,10 @@ class _LevelonepageState extends State<Levelonepage> {
               ),
               Spacer(),
               Padding(
-                padding: const EdgeInsets.only(bottom: 30),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Container(
                   width: screenwidth / 5,
-                  height: screenwidth / 5,
+                  height: screenheight / 7,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Color(0xFF90609F),
@@ -253,7 +249,7 @@ class _LevelonepageState extends State<Levelonepage> {
                     icon: Icon(
                       isPlaying ? Icons.pause : Icons.play_arrow,
                       color: const Color(0xFFD9D9D9),
-                      size: screenwidth / 6,
+                      size: screenwidth / 7,
                     ),
                   ),
                 ),

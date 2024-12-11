@@ -32,25 +32,7 @@ class _StoryTypeState extends State<StoryType> {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     Container(
-                //       margin: const EdgeInsets.only(left: 16.0),
-                //       decoration: const BoxDecoration(
-                //         color: Color(0xFF3F0352),
-                //         shape: BoxShape.circle,
-                //       ),
-                //       child: IconButton(
-                //         icon: const Icon(Icons.arrow_back),
-                //         color: Colors.white,
-                //         onPressed: () {
-                //           Navigator.of(context).pop();
-                //         },
-                //       ),
-                //     ),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               SizedBox(
                 height: screenHeight / 12,

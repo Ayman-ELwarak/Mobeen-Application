@@ -54,22 +54,15 @@ class Soundlevels extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     BackButtonContainer().create(context),
-                //     const Spacer(),
-                //     const Menu(),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               Expanded(
                 child: Center(
                   child: Container(
                     padding: const EdgeInsets.only(top: paddingListview),
                     child: ListView(
-                      children:
-                          getSoundLevels(context, items, item, paddingListview, color),
+                      children: getSoundLevels(
+                          context, items, item, paddingListview, color),
                     ),
                   ),
                 ),

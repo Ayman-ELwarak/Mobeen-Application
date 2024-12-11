@@ -26,25 +26,18 @@ class Cardtypepage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     BackButtonContainer().create(context),
-                //     const Spacer(),
-                //     const Menu(),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               Expanded(
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      top: paddingListview,
                       left: paddingListview,
                       right: paddingListview,
                     ),
                     child: ListView(
-                      children: getItemscardtype(context, items, paddingListview),
+                      children:
+                          getItemscardtype(context, items, paddingListview),
                     ),
                   ),
                 ),

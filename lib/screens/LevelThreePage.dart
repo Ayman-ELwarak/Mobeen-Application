@@ -83,14 +83,7 @@ class _LevelonepageState extends State<Levelthreepage> {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     BackButtonContainer().create(context),
-                //     const Spacer(),
-                //     const Menu(),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               Text(
                 'اختر ما يناسب الصوت',
@@ -107,7 +100,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                 children: [
                   SizedBox(
                     width: screenwidth / 2,
-                    height: screenwidth / 2,
+                    height: screenheight / 4,
                     child: Padding(
                       padding: const EdgeInsets.only(right: 2.0),
                       child: GestureDetector(
@@ -130,7 +123,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                           children: [
                             Container(
                               width: screenwidth / 2,
-                              height: screenwidth / 2,
+                              height: screenheight / 4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Colors.white,
@@ -144,7 +137,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color.fromARGB(255, 236, 234, 225),
@@ -155,7 +148,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                               padding: const EdgeInsets.all(20.0),
                               child: SizedBox(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 child: Image.asset(myList[0].image),
                               ),
                             ),
@@ -166,7 +159,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                   ),
                   SizedBox(
                     width: screenwidth / 2,
-                    height: screenwidth / 2,
+                    height: screenheight / 4,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 2.0),
                       child: GestureDetector(
@@ -189,7 +182,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                           children: [
                             Container(
                               width: screenwidth / 2,
-                              height: screenwidth / 2,
+                              height: screenheight / 4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Colors.white,
@@ -203,7 +196,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color.fromARGB(255, 236, 234, 225),
@@ -214,7 +207,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                               padding: const EdgeInsets.all(20.0),
                               child: SizedBox(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 child: Image.asset(myList[1].image),
                               ),
                             ),
@@ -229,7 +222,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                 children: [
                   SizedBox(
                     width: screenwidth / 2,
-                    height: screenwidth / 2,
+                    height: screenheight / 4,
                     child: Padding(
                       padding: const EdgeInsets.only(right: 2.0),
                       child: GestureDetector(
@@ -252,7 +245,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                           children: [
                             Container(
                               width: screenwidth / 2,
-                              height: screenwidth / 2,
+                              height: screenheight / 4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Colors.white,
@@ -266,7 +259,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color.fromARGB(255, 236, 234, 225),
@@ -277,7 +270,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                               padding: const EdgeInsets.all(20.0),
                               child: SizedBox(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 child: Image.asset(myList[2].image),
                               ),
                             ),
@@ -288,7 +281,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                   ),
                   SizedBox(
                     width: screenwidth / 2,
-                    height: screenwidth / 2,
+                    height: screenheight / 4,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 2.0),
                       child: GestureDetector(
@@ -311,7 +304,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                           children: [
                             Container(
                               width: screenwidth / 2,
-                              height: screenwidth / 2,
+                              height: screenheight / 4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Colors.white,
@@ -325,7 +318,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color.fromARGB(255, 236, 234, 225),
@@ -336,7 +329,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                               padding: const EdgeInsets.all(20.0),
                               child: SizedBox(
                                 width: screenwidth / 2,
-                                height: screenwidth / 2,
+                                height: screenheight / 4,
                                 child: Image.asset(myList[3].image),
                               ),
                             ),
@@ -348,34 +341,36 @@ class _LevelonepageState extends State<Levelthreepage> {
                 ],
               ),
               Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30),
-                child: Container(
-                  width: screenwidth / 5,
-                  height: screenwidth / 5,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFF90609F),
-                  ),
-                  child: IconButton(
-                    onPressed: () {
-                      if (!isPlaying) {
-                        sound.setAsset(widget.cards[widget.index].sound);
-                        sound.play();
-                        setState(() {
-                          isPlaying = true;
-                        });
-                      } else {
-                        sound.stop();
-                        setState(() {
-                          isPlaying = false;
-                        });
-                      }
-                    },
-                    icon: Icon(
-                      isPlaying ? Icons.pause : Icons.play_arrow,
-                      color: const Color(0xFFD9D9D9),
-                      size: screenwidth / 6,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Container(
+                    width: screenwidth / 5,
+                    height: screenheight / 7,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFF90609F),
+                    ),
+                    child: IconButton(
+                      onPressed: () {
+                        if (!isPlaying) {
+                          sound.setAsset(widget.cards[widget.index].sound);
+                          sound.play();
+                          setState(() {
+                            isPlaying = true;
+                          });
+                        } else {
+                          sound.stop();
+                          setState(() {
+                            isPlaying = false;
+                          });
+                        }
+                      },
+                      icon: Icon(
+                        isPlaying ? Icons.pause : Icons.play_arrow,
+                        color: const Color(0xFFD9D9D9),
+                        size: screenwidth / 7,
+                      ),
                     ),
                   ),
                 ),

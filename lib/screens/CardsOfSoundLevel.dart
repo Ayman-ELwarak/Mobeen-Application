@@ -175,21 +175,15 @@ class Cardsofsoundlevel extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     BackButtonContainer().create(context),
-                //     const Spacer(),
-                //     const Menu(),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               Expanded(
                 child: Center(
                   child: Container(
                     padding: const EdgeInsets.only(top: paddingListview),
                     child: ListView(
-                      children: getItemCardsOfSoundLevels(context, items, paddingListview),
+                      children: getItemCardsOfSoundLevels(
+                          context, items, paddingListview),
                     ),
                   ),
                 ),

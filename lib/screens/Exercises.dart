@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/video_model.dart';
@@ -50,12 +48,7 @@ class _ExercisePageState extends State<ExercisePage> {
           child: Column(
             children: [
               SizedBox(
-                height: kToolbarHeight,
-                // child: Row(
-                //   children: [
-                //     BackButtonContainer().create(context),
-                //   ],
-                // ),
+                height: kToolbarHeight / 2,
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.height,
