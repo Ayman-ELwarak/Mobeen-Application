@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/components/article_list.dart';
 import 'package:mobile_app/screens/All_Exercises.dart';
@@ -252,7 +250,7 @@ class Homepage extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                    ),
+                                    ), 
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(left: 10.0),
@@ -421,7 +419,7 @@ class Homepage extends StatelessWidget {
                                                   height: screenheight / 23,
                                                   child: Textaa(
                                                     child: const Text(
-                                                      "تنمية نطق",
+                                                      "تنمية النطق",
                                                       style: TextStyle(
                                                         fontSize: 25,
                                                         fontWeight:
