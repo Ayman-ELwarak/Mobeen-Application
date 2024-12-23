@@ -21,7 +21,10 @@ class Cardtypepage extends StatelessWidget {
           height: screenheight,
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
-            color: Color(0xFF5A7493),
+            image: DecorationImage(
+              image: AssetImage("assest/images/CardsTypeBackground.jpg"),
+              fit: BoxFit.fill,
+            ),
           ),
           child: Column(
             children: [
@@ -30,15 +33,8 @@ class Cardtypepage extends StatelessWidget {
               ),
               Expanded(
                 child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: paddingListview,
-                      right: paddingListview,
-                    ),
-                    child: ListView(
-                      children:
-                          getItemscardtype(context, items, paddingListview),
-                    ),
+                  child: ListView(
+                    children: getItemscardtype(context, items, paddingListview),
                   ),
                 ),
               ),

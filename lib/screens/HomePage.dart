@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/components/article_list.dart';
-import 'package:mobile_app/screens/All_Exercises.dart';
 import 'package:mobile_app/screens/Articles.dart';
-import 'package:mobile_app/screens/CardsPage.dart';
 import 'package:mobile_app/screens/Diagnosis.dart';
-import 'package:mobile_app/screens/SpeechDevelopmentPage.dart';
 import 'package:mobile_app/screens/Translator.dart';
 
 // ignore: must_be_immutable
@@ -30,487 +27,252 @@ class Homepage extends StatelessWidget {
           children: [
             Container(
               height: screenheight,
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assest/images/backgroundHomePage.jpg"),
-                  fit: BoxFit.fill,
-                ),
-              ),
+              width: screenwidth,
+              color: Colors.white,
             ),
-            Column(
-              children: [
-                SizedBox(
-                  height: kToolbarHeight / 2,
-                ),
-                Expanded(
-                  child: CustomScrollView(
-                    physics: BouncingScrollPhysics(),
-                    slivers: [
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 16.0, right: 16, bottom: 16),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return const Diagnosis();
-                                          },
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              4.5,
-                                      width:
-                                          (MediaQuery.of(context).size.width -
-                                                  42) /
-                                              2,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF55454)
-                                            .withOpacity(0.48),
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                              top: screenheight / 40,
-                                              left: 4,
-                                              right: 4,
-                                            ),
-                                            child: SizedBox(
-                                              height: screenheight / 23,
-                                              child: Textaa(
-                                                child: const Text(
-                                                  "التقييم الاولي",
-                                                  style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                top: screenheight / 18,
-                                                left: 90,
-                                                bottom: screenheight / 40,
-                                                right: 20),
-                                            child: SizedBox(
-                                              height: screenheight / 13,
-                                              child: Image.asset(
-                                                  'assest/images/Diagnosis.png'),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) {
-                                              return const Translator();
-                                            },
-                                          ),
-                                        );
-                                      },
-                                      child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height /
-                                                4.5,
-                                        width:
-                                            (MediaQuery.of(context).size.width -
-                                                    42) /
-                                                2,
-                                        decoration: BoxDecoration(
-                                          color: const Color(0xFFC78FF3)
-                                              .withOpacity(0.48),
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                top: screenheight / 40,
-                                                left: 4,
-                                                right: 4,
-                                              ),
-                                              child: SizedBox(
-                                                height: screenheight / 23,
-                                                child: Textaa(
-                                                  child: const Text(
-                                                    "المترجم",
-                                                    style: TextStyle(
-                                                      fontSize: 25,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: screenheight / 18,
-                                                  left: 70,
-                                                  bottom: screenheight / 40,
-                                                  right: 20),
-                                              child: SizedBox(
-                                                height: screenheight / 13,
-                                                child: Image.asset(
-                                                    'assest/images/Voice_Reconstructor.png'),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
+            Padding(
+              padding: EdgeInsets.only(
+                right: screenwidth / 25,
+                left: screenwidth / 25,
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: kToolbarHeight / 2,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: screenheight / 30),
+                    child: Row(
+                      children: [
+                        Spacer(),
+                        SizedBox(
+                          height: screenheight / 23,
+                          child: Textaa(
+                            child: Text(
+                              'كيف يمكنني مساعدتك ؟',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Color(0xFF727171),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: screenheight / 30),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: screenwidth / 40),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return Translator();
+                                  },
+                                ),
+                              );
+                            },
+                            child: Container(
+                              height: screenheight / 3.5,
+                              width: screenwidth / 2.3,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFD3F6F9),
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.3),
+                                    blurRadius: 10,
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) {
-                                              return Cardspage();
-                                            },
-                                          ),
-                                        );
-                                      },
-                                      child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height /
-                                                4.5,
-                                        width:
-                                            (MediaQuery.of(context).size.width -
-                                                    42) /
-                                                2,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF86BEFF)
-                                              .withOpacity(0.48),
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                top: screenheight / 40,
-                                                left: 4,
-                                                right: 4,
-                                              ),
-                                              child: SizedBox(
-                                                height: screenheight / 23,
-                                                child: Textaa(
-                                                  child: const Text(
-                                                    "بطاقات التخاطب",
-                                                    style: TextStyle(
-                                                      fontSize: 25,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: screenheight / 40,
-                                                  left: 70,
-                                                  bottom: screenheight / 45,
-                                                  right: 20),
-                                              child: SizedBox(
-                                                height: screenheight / 9,
-                                                child: Image.asset(
-                                                    'assest/images/Cards_Game.png'),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ), 
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) {
-                                                return const AllExercises();
-                                              },
-                                            ),
-                                          );
-                                        },
-                                        child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              4.5,
-                                          width: (MediaQuery.of(context)
-                                                      .size
-                                                      .width -
-                                                  42) /
-                                              2,
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xFFFFD233)
-                                                .withOpacity(0.48),
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                  top: screenheight / 40,
-                                                  left: 4,
-                                                  right: 4,
-                                                ),
-                                                child: SizedBox(
-                                                  height: screenheight / 23,
-                                                  child: Textaa(
-                                                    child: const Text(
-                                                      "التمارين",
-                                                      style: TextStyle(
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: screenheight / 18,
-                                                    left: 70,
-                                                    bottom: screenheight / 40,
-                                                    right: 20),
-                                                child: SizedBox(
-                                                  height: screenheight / 13,
-                                                  child: Image.asset(
-                                                      'assest/images/Exercises.png'),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                              child: Column(
+                                children: [
+                                  Spacer(),
+                                  SizedBox(
+                                    height: screenheight / 10,
+                                    width: screenwidth / 3,
+                                    child: Image.asset(
+                                        'assest/images/Voice_Reconstructor.png'),
+                                  ),
+                                  Spacer(),
+                                  SizedBox(
+                                    height: screenheight / 23,
+                                    child: Textaa(
+                                      child: const Text(
+                                        "المترجم",
+                                        style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.w900,
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  Spacer(),
+                                ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    // Container(
-                                    //   height:
-                                    //       MediaQuery.of(context).size.height /
-                                    //           4.5,
-                                    //   width:
-                                    //       (MediaQuery.of(context).size.width -
-                                    //               42) /
-                                    //           2,
-                                    //   decoration: BoxDecoration(
-                                    //     color: const Color(0xFF84BB7F)
-                                    //         .withOpacity(0.60),
-                                    //     borderRadius: BorderRadius.circular(30),
-                                    //   ),
-                                    //   child: Column(
-                                    //     children: [
-                                    //       Padding(
-                                    //         padding: EdgeInsets.only(
-                                    //           top: screenheight / 40,
-                                    //           left: 4,
-                                    //           right: 4,
-                                    //         ),
-                                    //         child: SizedBox(
-                                    //           height: screenheight / 23,
-                                    //           child: Textaa(
-                                    //             child: const Text(
-                                    //               "تنمية المهارات",
-                                    //               style: TextStyle(
-                                    //                 fontSize: 25,
-                                    //                 fontWeight: FontWeight.bold,
-                                    //               ),
-                                    //             ),
-                                    //           ),
-                                    //         ),
-                                    //       ),
-                                    //       Padding(
-                                    //         padding: EdgeInsets.only(
-                                    //             top: screenheight / 18,
-                                    //             left: 70,
-                                    //             bottom: screenheight / 40,
-                                    //             right: 20),
-                                    //         child: SizedBox(
-                                    //           height: screenheight / 13,
-                                    //           child: Image.asset(
-                                    //               'assest/images/Skills_development.png'),
-                                    //         ),
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    // ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) {
-                                                return Speechdevelopmentpage();
-                                              },
-                                            ),
-                                          );
-                                        },
-                                        child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              4.5,
-                                          width: (MediaQuery.of(context)
-                                                      .size
-                                                      .width -
-                                                  42) /
-                                              2,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFFFAADAD)
-                                                .withOpacity(0.36),
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                  top: screenheight / 40,
-                                                  left: 4,
-                                                  right: 4,
-                                                ),
-                                                child: SizedBox(
-                                                  height: screenheight / 23,
-                                                  child: Textaa(
-                                                    child: const Text(
-                                                      "تنمية النطق",
-                                                      style: TextStyle(
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: screenheight / 40,
-                                                    left: 70,
-                                                    bottom: screenheight / 45,
-                                                    right: 20),
-                                                child: SizedBox(
-                                                  height: screenheight / 9,
-                                                  child: Image.asset(
-                                                      'assest/images/Speech_development.png'),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: Container(
-                          height: screenheight / 10,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFD9D9D9).withOpacity(0.90),
-                            borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(35),
-                                topRight: Radius.circular(35)),
-                          ),
+                        Padding(
+                          padding: EdgeInsets.only(left: screenwidth / 40),
                           child: Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: SizedBox(
-                                  height: screenheight / 20,
-                                  child: Textaa(
-                                    child: const Text(
-                                      'المقالات',
-                                      style: TextStyle(
-                                        fontSize: 30,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w900,
+                                padding:
+                                    EdgeInsets.only(bottom: screenheight / 150),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Diagnosis();
+                                        },
                                       ),
+                                    );
+                                  },
+                                  child: Container(
+                                    height: screenheight / 7,
+                                    width: screenwidth / 2.3,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFDDED9),
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          blurRadius: 10,
+                                        ),
+                                      ],
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Spacer(),
+                                        SizedBox(
+                                          height: screenheight / 15,
+                                          width: screenwidth / 3,
+                                          child: Image.asset(
+                                              'assest/images/Diagnosis.png'),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(
+                                          height: screenheight / 23,
+                                          child: Textaa(
+                                            child: const Text(
+                                              "التشخيص",
+                                              style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Spacer(),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 10.0),
-                                child: Divider(
-                                  color:
-                                      const Color(0xFF86BEFF).withOpacity(0.54),
-                                  height: 0,
-                                  indent: 175,
-                                  endIndent: 175,
-                                  thickness: 4,
+                                padding:
+                                    EdgeInsets.only(top: screenheight / 150),
+                                child: Container(
+                                  height: screenheight / 7,
+                                  width: screenwidth / 2.3,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFDDD1EC),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        blurRadius: 10,
+                                        offset: Offset(0, 5),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Spacer(),
+                                      SizedBox(
+                                        height: screenheight / 15,
+                                        width: screenwidth / 2.5,
+                                        child: Image.asset(
+                                            'assest/images/Speech_development.png'),
+                                      ),
+                                      Spacer(),
+                                      SizedBox(
+                                        height: screenheight / 23,
+                                        child: Textaa(
+                                          child: const Text(
+                                            "التأهيل",
+                                            style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.w900,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return ArticlePage(
-                                        index: index,
-                                      );
-                                    },
-                                  ),
-                                );
-                              },
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: screenheight / 30,
+                    ),
+                    child: Row(
+                      children: [
+                        Spacer(),
+                        SizedBox(
+                          height: screenheight / 17,
+                          child: Textaa(
+                            child: Text(
+                              'المقالات',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: name.length,
+                      itemBuilder: (context, int index) {
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: screenheight / 60),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return ArticlePage(
+                                      index: index,
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFF3F1F1),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
                               child: Column(
                                 children: [
                                   Column(
@@ -518,9 +280,10 @@ class Homepage extends StatelessWidget {
                                       Column(
                                         children: [
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                              left: 4.0,
-                                              right: 4,
+                                            padding: EdgeInsets.only(
+                                              left: screenwidth / 30,
+                                              right: screenwidth / 30,
+                                              top: screenheight / 90,
                                             ),
                                             child: Textaa(
                                               child: Text(
@@ -533,10 +296,38 @@ class Homepage extends StatelessWidget {
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8, right: 8),
+                                            padding: EdgeInsets.only(
+                                              left: screenwidth / 30,
+                                              right: screenwidth / 30,
+                                              bottom: screenheight / 90,
+                                            ),
                                             child: Row(
                                               children: [
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: SizedBox(
+                                                    height: screenheight / 12,
+                                                    width: screenwidth / 5,
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: Colors.grey),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15),
+                                                      ),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15),
+                                                        child: Image.asset(
+                                                          images[index],
+                                                          fit: BoxFit.fill,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
                                                 Expanded(
                                                   flex: 2,
                                                   child: Padding(
@@ -547,20 +338,6 @@ class Homepage extends StatelessWidget {
                                                     child: captian[index],
                                                   ),
                                                 ),
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: SizedBox(
-                                                    height: screenheight / 8,
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3,
-                                                    child: Image.asset(
-                                                      images[index],
-                                                    ),
-                                                  ),
-                                                ),
                                               ],
                                             ),
                                           )
@@ -568,27 +345,16 @@ class Homepage extends StatelessWidget {
                                       )
                                     ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 16.0, bottom: 16),
-                                    child: Container(
-                                      height: 15,
-                                      width: MediaQuery.of(context).size.width,
-                                      color: const Color(0xFFD9D9D9)
-                                          .withOpacity(0.90),
-                                    ),
-                                  )
                                 ],
                               ),
-                            );
-                          },
-                          childCount: name.length,
-                        ),
-                      ),
-                    ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 import 'package:mobile_app/screens/ItemOfCards.dart';
 
@@ -10,6 +11,8 @@ List<GestureDetector> getItemscardtype(
       (MediaQuery.of(context).padding.top + kToolbarHeight + paddingListview);
   const double totalspace = (numOfItemsPerScreen) * 45;
   final double itemheight = (screenheight - totalspace) / numOfItemsPerScreen;
+  final double screenwidth = MediaQuery.of(context).size.width;
+
   //
   List<GestureDetector> item = [];
   for (int i = 0; i < items.length; i++) {
@@ -27,30 +30,41 @@ List<GestureDetector> getItemscardtype(
           );
         },
         child: Padding(
-          padding: const EdgeInsets.only(
-            bottom: 32,
-          ),
+          padding: EdgeInsets.only(
+              bottom: screenheight / 30,
+              left: screenwidth / 30,
+              right: screenwidth / 30),
           child: Container(
             height: itemheight,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(60),
+              borderRadius: BorderRadius.circular(40),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.5),
+                  blurRadius: 10,
+                  offset: Offset(0, 5),
+                ),
+              ],
             ),
             child: Row(
               children: [
+                Spacer(),
                 Expanded(
                   flex: 3,
-                  child: FittedBox(
-                    fit: BoxFit.fitWidth,
+                  child: Image.asset(items[i].image),
+                ),
+                Expanded(
+                  flex: 4,
+                  child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 16.0, top: 32, right: 16, bottom: 32.0),
-                      child: Center(
+                      padding: EdgeInsets.only(left: screenwidth / 30),
+                      child: Textaa(
                         child: Text(
                           items[i].name, // text
                           style: const TextStyle(
                             color: Colors.black,
-                            fontSize: 15,
+                            fontSize: 40,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -58,13 +72,7 @@ List<GestureDetector> getItemscardtype(
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: Image.asset(items[i].image),
-                  ),
-                ),
+                Spacer(),
               ],
             ),
           ),

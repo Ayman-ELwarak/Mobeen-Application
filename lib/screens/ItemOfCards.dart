@@ -64,8 +64,8 @@ class _Itemofcards extends State<Itemofcards> {
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [
-                          Color(0xFF5A7493),
-                          Color(0xFF8CBBB6),
+                          Color(0xFFFFE3D3),
+                          Color(0xFF86C1C7),
                         ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
