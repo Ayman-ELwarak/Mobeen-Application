@@ -1,73 +1,170 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/GetSoundLevels.dart';
+import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/CardModel.dart';
-import 'package:mobile_app/screens/SoundLevels.dart';
 
-List<GestureDetector> getItemCardsOfSoundLevels(
-    BuildContext context, List<Cardmodel> items, double paddingListview) {
-  // calculate the size of screen
-  const int numOfItemsPerScreen = 4;
-  final double screenheight = MediaQuery.of(context).size.height -
-      (MediaQuery.of(context).padding.top + kToolbarHeight + paddingListview);
-  const double totalspace = (numOfItemsPerScreen) * 70;
-  final double itemheight = (screenheight - totalspace) / numOfItemsPerScreen;
-  //
-  List<GestureDetector> item = [];
-  for (int i = 0; i < items.length; i++) {
-    item.add(
-      GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return Soundlevels(item: items[i].items, color: items[i].color);
-              },
+class getItemCardsOfSoundLevels extends StatefulWidget {
+  final List<Cardmodel> items;
+  final double paddingListview;
+
+  const getItemCardsOfSoundLevels({
+    Key? key,
+    required this.items,
+    required this.paddingListview,
+  }) : super(key: key);
+
+  @override
+  _ItemCardsOfSoundLevelsState createState() => _ItemCardsOfSoundLevelsState();
+}
+
+class _ItemCardsOfSoundLevelsState extends State<getItemCardsOfSoundLevels> {
+  late double screenHeight;
+  late double screenWidth;
+  late double itemHeight;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Calculate dimensions on dependency changes
+    const int numOfItemsPerScreen = 3;
+    const double totalSpace = numOfItemsPerScreen * 70;
+    screenHeight = MediaQuery.of(context).size.height -
+        (MediaQuery.of(context).padding.top +
+            kToolbarHeight +
+            widget.paddingListview);
+    screenWidth = MediaQuery.of(context).size.width;
+    itemHeight = (screenHeight - totalSpace) / numOfItemsPerScreen;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      padding: EdgeInsets.zero,
+      itemCount: widget.items.length,
+      itemBuilder: (context, index) {
+        final item = widget.items[index];
+        final isOdd = index % 2 == 1;
+
+        if (!widget.items[index].flagLevel) {
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.items[index].flagLevel = true;
+              });
+            },
+            child: Container(
+              height: itemHeight,
+              decoration: BoxDecoration(
+                color: item.color,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    blurRadius: 10,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: isOdd ? _buildOddRow(item) : _buildEvenRow(item),
+              ),
             ),
           );
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 55, left: 20, right: 20),
-          child: Container(
-            height: itemheight,
-            decoration: BoxDecoration(
-              color: items[i].color,
-              borderRadius: BorderRadius.circular(60),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 16.0, top: 32, right: 16, bottom: 32.0),
-                      child: Center(
-                        child: Text(
-                          items[i].item_name, // text
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+        } else {
+          return Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    widget.items[index].flagLevel = false;
+                  });
+                },
+                child: Container(
+                  height: itemHeight,
+                  decoration: BoxDecoration(
+                    color: item.color,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.5),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
                       ),
-                    ),
+                    ],
+                  ),
+                  child: Row(
+                    children: isOdd ? _buildOddRow(item) : _buildEvenRow(item),
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Image.asset(items[i].image),
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: screenHeight / 30,
                 ),
-              ],
+                child: Getsoundlevels(
+                  cards: widget.items[index].items,
+                ),
+              ),
+            ],
+          );
+        }
+      },
+    );
+  }
+
+  List<Widget> _buildOddRow(Cardmodel item) {
+    return [
+      const Spacer(),
+      Expanded(
+        flex: 4,
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(right: screenWidth / 30),
+            child: Textaa(
+              child: Text(
+                item.item_name,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ),
       ),
-    );
+      Expanded(
+        flex: 3,
+        child: Image.asset(item.image),
+      ),
+      const Spacer(),
+    ];
   }
-  return item;
+
+  List<Widget> _buildEvenRow(Cardmodel item) {
+    return [
+      const Spacer(),
+      Expanded(
+        flex: 3,
+        child: Image.asset(item.image),
+      ),
+      Expanded(
+        flex: 4,
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(left: screenWidth / 30),
+            child: Textaa(
+              child: Text(
+                item.item_name,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      const Spacer(),
+    ];
+  }
 }

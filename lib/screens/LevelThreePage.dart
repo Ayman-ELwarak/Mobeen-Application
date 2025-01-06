@@ -1,23 +1,19 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/CheckResult.dart';
 import 'package:mobile_app/components/CorrectAlert.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/components/RepeatAgainAlert.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 
 class Levelthreepage extends StatefulWidget {
   List<Cardstypemodel> cards;
   int index;
-  Color color;
-
-  Levelthreepage(
-      {super.key,
-      required this.cards,
-      required this.index,
-      required this.color});
+  Levelthreepage({
+    super.key,
+    required this.cards,
+    required this.index,
+  });
 
   @override
   State<Levelthreepage> createState() => _LevelonepageState();
@@ -78,7 +74,7 @@ class _LevelonepageState extends State<Levelthreepage> {
           height: screenheight,
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
-            color: Color(0xFF7FA0C5),
+            color: Color(0xFFBDB3EB),
           ),
           child: Column(
             children: [
@@ -130,7 +126,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                                   width: 3,
                                 ),
                                 shape: BoxShape.circle,
-                                color: Color(0xFF7FA0C5),
+                                color: Color(0xFFBDB3EB),
                               ),
                             ),
                             Padding(
@@ -189,7 +185,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                                   width: 3,
                                 ),
                                 shape: BoxShape.circle,
-                                color: Color(0xFF7FA0C5),
+                                color: Color(0xFFBDB3EB),
                               ),
                             ),
                             Padding(
@@ -252,7 +248,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                                   width: 3,
                                 ),
                                 shape: BoxShape.circle,
-                                color: Color(0xFF7FA0C5),
+                                color: Color(0xFFBDB3EB),
                               ),
                             ),
                             Padding(
@@ -311,7 +307,7 @@ class _LevelonepageState extends State<Levelthreepage> {
                                   width: 3,
                                 ),
                                 shape: BoxShape.circle,
-                                color: Color(0xFF7FA0C5),
+                                color: Color(0xFFBDB3EB),
                               ),
                             ),
                             Padding(

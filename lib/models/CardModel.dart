@@ -7,13 +7,14 @@ class Cardmodel {
   final String item_name;
   final String image;
   final Color color;
+  bool flagLevel;
+
   List<Cardstypemodel> items = [];
   Cardmodel(
       // ignore: non_constant_identifier_names
-      {
-    required this.item_name,
-    required this.color,
-    required this.image,
-    required this.items,
-  });
+      {required this.item_name,
+      required this.color,
+      required this.image,
+      required this.items,
+      this.flagLevel = false});
 }
