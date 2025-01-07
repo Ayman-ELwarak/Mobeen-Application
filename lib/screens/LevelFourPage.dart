@@ -1,10 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/CheckResult.dart';
 import 'package:mobile_app/components/CorrectAlert.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/components/RepeatAgainAlert.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 

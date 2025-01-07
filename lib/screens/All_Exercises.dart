@@ -1,7 +1,5 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/components/cheek_list.dart';
 import 'package:mobile_app/components/jaw_list.dart';
 import 'package:mobile_app/components/lip_list.dart';

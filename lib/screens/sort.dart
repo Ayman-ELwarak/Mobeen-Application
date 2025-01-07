@@ -92,7 +92,7 @@ class _SortState extends State<Sort> {
           height: screenHeight,
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
-            color: Color(0xFFA78CB0),
+            color: Color(0xFF9CD8DE),
           ),
           child: Column(
             children: [
@@ -155,7 +155,7 @@ class _SortState extends State<Sort> {
                                         child: Container(
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
-                                            color: Color(0xFF3F0352),
+                                            color: Color(0xFF407378),
                                           ),
                                           padding: EdgeInsets.all(10.0),
                                           child: Text(

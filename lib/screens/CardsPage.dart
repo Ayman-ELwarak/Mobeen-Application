@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/BirdsList.dart';
 import 'package:mobile_app/components/BodyPartsList.dart';
 import 'package:mobile_app/components/ClothesList.dart';
@@ -15,7 +14,6 @@ import 'package:mobile_app/components/HomeAppliancesList.dart';
 import 'package:mobile_app/components/InsectsList.dart';
 import 'package:mobile_app/components/JungleAnimalsList.dart';
 import 'package:mobile_app/components/LettersList.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/components/NumbersList.dart';
 import 'package:mobile_app/components/PlacesList.dart';
 import 'package:mobile_app/components/ProfessionsList.dart';

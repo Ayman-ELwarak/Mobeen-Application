@@ -8,8 +8,6 @@ import 'package:mobile_app/screens/Report.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 

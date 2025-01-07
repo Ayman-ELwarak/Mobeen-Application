@@ -2,7 +2,6 @@
 import 'package:just_audio/just_audio.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 import 'package:record/record.dart';
 

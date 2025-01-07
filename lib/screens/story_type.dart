@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'sort.dart';
 
 class StoryType extends StatefulWidget {
@@ -27,7 +26,7 @@ class _StoryTypeState extends State<StoryType> {
           height: screenHeight,
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
-            color: Color(0xFFA78CB0),
+            color: Color(0xFF9CD8DE),
           ),
           child: Column(
             children: [

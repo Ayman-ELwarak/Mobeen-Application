@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/models/video_model.dart';
 import 'Exercises.dart';
 

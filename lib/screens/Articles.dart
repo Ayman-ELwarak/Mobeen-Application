@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:mobile_app/components/article_list.dart';
-import 'package:mobile_app/components/BackBotton.dart';
-import 'package:mobile_app/components/Menu.dart';
 
 // ignore: must_be_immutable
 class ArticlePage extends StatelessWidget {

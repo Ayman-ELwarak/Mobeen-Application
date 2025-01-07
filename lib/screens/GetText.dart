@@ -1,6 +1,5 @@
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/Menu.dart';
 
 // ignore: must_be_immutable
 class Gettext extends StatefulWidget {

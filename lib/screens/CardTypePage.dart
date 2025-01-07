@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/GetItemCardsType.dart';
-import 'package:mobile_app/components/BackBotton.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 
 // ignore: must_be_immutable

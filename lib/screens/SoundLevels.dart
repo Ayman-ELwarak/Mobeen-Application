@@ -2,9 +2,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
 import 'package:mobile_app/components/GetSoundLevels.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 import 'package:mobile_app/models/soundLevelModel.dart';
 

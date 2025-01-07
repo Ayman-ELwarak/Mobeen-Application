@@ -4,6 +4,7 @@ import 'package:mobile_app/components/article_list.dart';
 import 'package:mobile_app/screens/Articles.dart';
 import 'package:mobile_app/screens/Diagnosis.dart';
 import 'package:mobile_app/screens/Translator.dart';
+import 'package:mobile_app/screens/rehabilitation.dart';
 
 // ignore: must_be_immutable
 class Homepage extends StatelessWidget {
@@ -180,6 +181,17 @@ class Homepage extends StatelessWidget {
                               Padding(
                                 padding:
                                     EdgeInsets.only(top: screenheight / 150),
+                                     child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return RehabilitationPage();
+                                        },
+                                      ),
+                                    );
+                                  },
                                 child: Container(
                                   height: screenheight / 7,
                                   width: screenwidth / 2.3,
@@ -221,6 +233,7 @@ class Homepage extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                          ),
                             ],
                           ),
                         ),

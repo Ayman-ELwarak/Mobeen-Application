@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/screens/WelcomePage.dart';
+import 'package:mobile_app/screens/HomePage.dart';
+import 'package:mobile_app/screens/rehabilitation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Welcomepage(),
+      home: Homepage(),
     );
   }
 }

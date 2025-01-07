@@ -5,8 +5,6 @@ import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/GetText.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/BackBotton.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 import 'package:retry/retry.dart';
@@ -72,7 +70,7 @@ class _TranslatorState extends State<Translator> {
           ),
           data: bytes,
         ),
-        retryIf: (e) => e is DioError && e.response?.statusCode == 503,
+        retryIf: (e) => e is DioException && e.response?.statusCode == 503,
       );
 
       if (response.statusCode == 200) {
@@ -85,7 +83,7 @@ class _TranslatorState extends State<Translator> {
       } else {
         throw Exception("Failed to load data: ${response.statusCode}");
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw Exception("Dio error: ${e.message}");
     }
   }

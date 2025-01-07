@@ -3,7 +3,6 @@ import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/video_model.dart';
 import 'package:video_player/video_player.dart';
 
-import '../components/BackBotton.dart';
 
 class ExercisePage extends StatefulWidget {
   final List<Video> exerciseVideos;

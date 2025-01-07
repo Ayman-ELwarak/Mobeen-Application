@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/components/Menu.dart';
 import 'story_type.dart';
 
 class Stories extends StatelessWidget {
@@ -35,7 +34,7 @@ class Stories extends StatelessWidget {
           height: screenHeight,
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
-            color: Color(0xFFA78CB0),
+            color: Color(0xFF9CD8DE),
           ),
           child: Column(
             children: [
