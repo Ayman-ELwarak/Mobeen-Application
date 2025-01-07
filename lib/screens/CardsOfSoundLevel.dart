@@ -26,135 +26,157 @@ import 'package:mobile_app/models/CardModel.dart';
 
 // ignore: must_be_immutable
 class Cardsofsoundlevel extends StatelessWidget {
+  Cardsofsoundlevel({super.key});
+
   List<Cardmodel> items = [
     Cardmodel(
       item_name: 'الأرقام',
-      color: const Color(0xFFFFD18B),
+      color: const Color(0xFFFFF7DB),
       image: 'assest/images/Numbers.png',
       items: Numberslist().Numbers,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الحروف',
-      color: const Color(0xFF618184),
+      color: const Color(0xFFFFE7D5),
       image: 'assest/images/Letters.png',
       items: Letterslist().Letters,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الفواكه',
-      color: const Color(0xFF8CBBB6),
+      color: const Color(0xFFFBE3EC),
       image: 'assest/images/Fruits.png',
       items: Fruitslist().Fruits,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الأشكال',
-      color: const Color(0xFF23ff55),
+      color: const Color(0xFFD5CCFF),
       image: 'assest/images/Shapes.png',
       items: Shapeslist().Shapes,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الألوان',
-      color: const Color.fromARGB(255, 39, 15, 175),
+      color: const Color(0xFFD3F6F9),
       image: 'assest/images/Colors.png',
       items: Colorslist().Colors,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الطيور',
-      color: const Color.fromARGB(255, 11, 191, 197),
+      color: const Color(0xFFFFF7DB),
       image: 'assest/images/Birds.png',
       items: Birdslist().Birds,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'وسائل المواصلات',
-      color: const Color.fromARGB(255, 197, 11, 42),
+      color: const Color(0xFFFFE7D5),
       image: 'assest/images/Transportation.png',
       items: Transportationlist().Transportation,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'أدوات المطبخ',
-      color: const Color.fromARGB(255, 42, 197, 11),
+      color: const Color(0xFFFBE3EC),
       image: 'assest/images/Kitchenwaer.png',
       items: Kitchenwarelist().Kitchenware,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'أجهزة منزلية',
-      color: const Color.fromARGB(255, 5, 224, 213),
+      color: const Color(0xFFD5CCFF),
       image: 'assest/images/Homeappliances.png',
       items: Homeapplianceslist().HomeAppliances,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'أجزاء الجسم',
-      color: const Color.fromARGB(255, 140, 25, 218),
+      color: const Color(0xFFD3F6F9),
       image: 'assest/images/BodyParts.png',
       items: Bodypartslist().Bodyparts,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'العائلة',
-      color: const Color.fromARGB(255, 113, 110, 116),
+      color: const Color(0xFFFFF7DB),
       image: 'assest/images/family.png',
       items: Familylist().Family,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الحشرات',
-      color: const Color.fromARGB(255, 95, 133, 255),
+      color: const Color(0xFFFFE7D5),
       image: 'assest/images/Insects.png',
       items: Insectslist().insects,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'حيوانات الغابة',
-      color: const Color.fromARGB(255, 179, 206, 57),
+      color: const Color(0xFFFBE3EC),
       image: 'assest/images/JungleAnimals.png',
       items: Jungleanimalslist().Jungleanimals,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'حيوانات المزرعة',
-      color: const Color.fromARGB(255, 9, 47, 56),
+      color: const Color(0xFFD5CCFF),
       image: 'assest/images/FarmAnimals.png',
       items: Farmanimalslist().Farmanimals,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الخضروات',
-      color: const Color.fromARGB(255, 182, 22, 161),
+      color: const Color(0xFFD3F6F9),
       image: 'assest/images/Vegetables.png',
       items: Vegetableslist().Vegetables,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'أساس البيت',
-      color: const Color.fromARGB(255, 52, 206, 21),
+      color: const Color(0xFFFFF7DB),
       image: 'assest/images/Foundation.png',
       items: Foundationlist().Foundation,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الملابس',
-      color: const Color.fromARGB(255, 206, 131, 18),
+      color: const Color(0xFFFFE7D5),
       image: 'assest/images/Clothes.png',
       items: Clotheslist().Clothes,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'المهن',
-      color: const Color.fromARGB(255, 43, 11, 119),
+      color: const Color(0xFFFBE3EC),
       image: 'assest/images/Professions.png',
       items: Professionslist().Professions,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'المشاعر',
-      color: const Color.fromARGB(255, 12, 196, 73),
+      color: const Color(0xFFD5CCFF),
       image: 'assest/images/Feelings.png',
       items: Feelingslist().Feelings,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الأفعال',
-      color: const Color.fromARGB(255, 226, 94, 7),
+      color: const Color(0xFFD3F6F9),
       image: 'assest/images/Verbs.png',
       items: Verbslist().Verbs,
+      flagLevel: false,
     ),
     Cardmodel(
       item_name: 'الأماكن',
-      color: const Color.fromARGB(255, 36, 12, 80),
+      color: const Color(0xFFFFF7DB),
       image: 'assest/images/Places.png',
       items: Placeslist().Places,
+      flagLevel: false,
     ),
   ];
-  Cardsofsoundlevel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -179,9 +201,9 @@ class Cardsofsoundlevel extends StatelessWidget {
                 child: Center(
                   child: Container(
                     padding: const EdgeInsets.only(top: paddingListview),
-                    child: ListView(
-                      children: getItemCardsOfSoundLevels(
-                          context, items, paddingListview),
+                    child: getItemCardsOfSoundLevels(
+                      items: items,
+                      paddingListview: paddingListview,
                     ),
                   ),
                 ),
