@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 import 'package:mobile_app/models/ItemLevel.dart';

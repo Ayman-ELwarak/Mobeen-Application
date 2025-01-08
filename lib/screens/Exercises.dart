@@ -42,7 +42,7 @@ class _ExercisePageState extends State<ExercisePage> {
           height: screenheight,
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
-            color: Color(0xFF5A7493),
+            color: Colors.black,
           ),
           child: Column(
             children: [
@@ -58,7 +58,7 @@ class _ExercisePageState extends State<ExercisePage> {
                     child: Text(
                       widget.exerciseVideos[widget.index].title,
                       style: const TextStyle(
-                        color: Colors.black,
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
