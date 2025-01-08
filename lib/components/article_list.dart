@@ -192,9 +192,9 @@ class Article_list {
   static List<String> img = [
     'assest/images/article/img1.jpg',
     'assest/images/article/img2.jpg',
-    'assest/images/article/img3.jfif',
+    'assest/images/article/img3.jpg',
     'assest/images/article/img4.jpg',
-    'assest/images/article/img5.jfif',
+    'assest/images/article/img5.jpg',
   ];
 
   static List<Text> Homecap = [
