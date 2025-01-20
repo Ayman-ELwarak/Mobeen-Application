@@ -86,6 +86,7 @@ flutter:
     - assest/Videos/exercises/lip/
     - assest/Videos/exercises/soft_palate/
     - assest/Videos/exercises/tongue/
+    - assest/Videos/letters/
     - assest/images/اجزاء الجسم/
     - assest/images/اجهزة منزلية/
     - assest/images/ادوات المطبخ/
@@ -130,6 +131,7 @@ flutter:
     - assest/sounds/وسائل المواصلات/
     - assest/images/article/
     - assest/images/sort_images/
+    - assest/images/letters/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

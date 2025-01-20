@@ -4,6 +4,7 @@ import 'package:mobile_app/components/sort_list.dart';
 import 'package:mobile_app/screens/All_Exercises.dart';
 import 'package:mobile_app/screens/CardsOfSoundLevel.dart';
 import 'package:mobile_app/screens/CardsPage.dart';
+import 'package:mobile_app/screens/letters.dart';
 import 'package:mobile_app/screens/stories.dart';
 
 class RehabilitationPage extends StatefulWidget {
@@ -51,7 +52,7 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
     {'color': Color(0xFFD5CCFF), 'text': 'تمارين الفم', 'icon': Icons.face, 'page': AllExercises()},
     {'color': Color(0xFFFFF7DB), 'text': 'ترتيب الاحداث', 'icon': Icons.repeat, 'page': Stories(items: sort_lists.image_sort, buttons: sort_lists.stories_images,)},
     {'color': Color(0xFFFFE7D5), 'text': 'تمييز الكلمات', 'icon': Icons.queue_music, 'page': Cardsofsoundlevel()},
-    {'color': Color(0xFFFBE3EC), 'text': 'مخارج الحروف', 'icon': Icons.blur_on_sharp, 'page': Cardsofsoundlevel()},
+    {'color': Color(0xFFFBE3EC), 'text': 'مخارج الحروف', 'icon': Icons.blur_on_sharp, 'page': Letters_page()},
   ];
 
   void navigateToNext() {
