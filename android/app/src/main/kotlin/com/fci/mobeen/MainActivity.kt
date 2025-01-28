@@ -1,4 +1,4 @@
-package com.example.mobile_app
+package com.fci.mobeen
 
 import io.flutter.embedding.android.FlutterActivity
 
