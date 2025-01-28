@@ -5,6 +5,7 @@ import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/CreateAccountPage.dart';
 import 'package:mobile_app/screens/ForgetPassword.dart';
 import 'package:mobile_app/screens/HomePage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signinpage extends StatefulWidget {
   const Signinpage({super.key});
@@ -194,6 +195,12 @@ class _SigninpageState extends State<Signinpage> {
                                 data);
                             print(message);
                             if (message == 'success') {
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              await prefs.setBool('isLoggedIn', true);
+                              bool isLoggedIn =
+                                  prefs.getBool('isLoggedIn') ?? false;
+                              print(isLoggedIn);
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

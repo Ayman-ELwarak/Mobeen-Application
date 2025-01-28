@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/HomePage.dart';
 import 'package:mobile_app/screens/SigninPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Welcomepage extends StatefulWidget {
   const Welcomepage({super.key});
@@ -23,13 +24,25 @@ class _WelcomepageState extends State<Welcomepage> {
       });
     });
 
-    Future.delayed(Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) {
-          return Signinpage();
-        }),
-      );
+    Future.delayed(Duration(seconds: 5), () async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+      print(isLoggedIn);
+      if (isLoggedIn) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return Homepage();
+          }),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return Signinpage();
+          }),
+        );
+      }
     });
   }
 

@@ -3,8 +3,10 @@ import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/components/article_list.dart';
 import 'package:mobile_app/screens/Articles.dart';
 import 'package:mobile_app/screens/Diagnosis.dart';
+import 'package:mobile_app/screens/SigninPage.dart';
 import 'package:mobile_app/screens/Translator.dart';
 import 'package:mobile_app/screens/rehabilitation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class Homepage extends StatelessWidget {
@@ -45,6 +47,22 @@ class Homepage extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: screenheight / 30),
                     child: Row(
                       children: [
+                        ElevatedButton(
+                          onPressed: () async{
+                            SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              await prefs.setBool('isLoggedIn', false);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return Signinpage();
+                                  },
+                                ),
+                              );
+                          },
+                          child: Icon(Icons.logout),
+                        ),
                         Spacer(),
                         SizedBox(
                           height: screenheight / 23,
@@ -181,7 +199,7 @@ class Homepage extends StatelessWidget {
                               Padding(
                                 padding:
                                     EdgeInsets.only(top: screenheight / 150),
-                                     child: GestureDetector(
+                                child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                       context,
@@ -192,48 +210,48 @@ class Homepage extends StatelessWidget {
                                       ),
                                     );
                                   },
-                                child: Container(
-                                  height: screenheight / 7,
-                                  width: screenwidth / 2.3,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFDDD1EC),
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.2),
-                                        blurRadius: 10,
-                                        offset: Offset(0, 5),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Spacer(),
-                                      SizedBox(
-                                        height: screenheight / 15,
-                                        width: screenwidth / 2.5,
-                                        child: Image.asset(
-                                            'assest/images/Speech_development.png'),
-                                      ),
-                                      Spacer(),
-                                      SizedBox(
-                                        height: screenheight / 23,
-                                        child: Textaa(
-                                          child: const Text(
-                                            "التأهيل",
-                                            style: TextStyle(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.w900,
+                                  child: Container(
+                                    height: screenheight / 7,
+                                    width: screenwidth / 2.3,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFDDD1EC),
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.2),
+                                          blurRadius: 10,
+                                          offset: Offset(0, 5),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Spacer(),
+                                        SizedBox(
+                                          height: screenheight / 15,
+                                          width: screenwidth / 2.5,
+                                          child: Image.asset(
+                                              'assest/images/Speech_development.png'),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(
+                                          height: screenheight / 23,
+                                          child: Textaa(
+                                            child: const Text(
+                                              "التأهيل",
+                                              style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.w900,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      Spacer(),
-                                    ],
+                                        Spacer(),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                          ),
                             ],
                           ),
                         ),
