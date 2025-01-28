@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/AlertLogin.dart';
+import 'package:mobile_app/components/PostRequest.dart';
 import 'package:mobile_app/components/TextaA.dart';
+import 'package:mobile_app/components/ValidDataUser.dart';
+import 'package:mobile_app/screens/SigninPage.dart';
 
 class Createaccountpage extends StatefulWidget {
   const Createaccountpage({super.key});
@@ -12,6 +16,7 @@ class _CreateaccountpageState extends State<Createaccountpage> {
   bool _isObscured = true;
   bool _isObscured2 = true;
 
+  final TextEditingController name = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController confirm_password = TextEditingController();
@@ -70,6 +75,42 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                     ),
                     child: Column(
                       children: [
+                        SizedBox(
+                          height: screenheight / 30,
+                          child: Row(
+                            children: [
+                              Textaa(
+                                child: Text(
+                                  'اسم المستخدم',
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                              Spacer(),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: screenheight / 35),
+                          child: SizedBox(
+                            height: screenheight / 12,
+                            child: TextField(
+                              controller: name,
+                              decoration: InputDecoration(
+                                hintText: 'ادخل اسم المستخدم',
+                                hintStyle: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide(),
+                                ),
+                              ),
+                              keyboardType: TextInputType.emailAddress,
+                            ),
+                          ),
+                        ),
                         SizedBox(
                           height: screenheight / 30,
                           child: Row(
@@ -202,23 +243,48 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                             ),
                           ),
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height / 12,
-                          width: (MediaQuery.of(context).size.width),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF8EB3B7),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Center(
-                            child: SizedBox(
-                              height: screenheight / 22,
-                              child: Textaa(
-                                child: Text(
-                                  'انشاء حساب',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () async {
+                            Map<String, dynamic> data = {
+                              "name": name.text,
+                              "email": email.text,
+                              "password": password.text,
+                              "passwordConfirm": confirm_password.text
+                            };
+                            if (validateUser(data) == 'success') {
+                              String message = await postDataToApi(
+                                  'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/signup',
+                                  data);
+                              print(message);
+                              if (message == 'success') {
+                                AlertLogin(context, 'تم التسجيل بنجاح');
+                              } else if (message == 'account_exists') {
+                                AlertLogin(context, 'المستخدم موجود بالفعل');
+                              } else {
+                                AlertLogin(context, 'حدث مشكلة ما');
+                              }
+                            } else {
+                              AlertLogin(context, validateUser(data));
+                            }
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height / 12,
+                            width: (MediaQuery.of(context).size.width),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF8EB3B7),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Center(
+                              child: SizedBox(
+                                height: screenheight / 22,
+                                child: Textaa(
+                                  child: Text(
+                                    'انشاء حساب',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -288,18 +354,33 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: screenheight / 20),
+                          padding: EdgeInsets.only(
+                            top: screenheight / 20,
+                            bottom: screenheight / 20,
+                          ),
                           child: SizedBox(
                             height: screenheight / 30,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Textaa(
-                                  child: Text(
-                                    'سجل الدخول ',
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Signinpage();
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  child: Textaa(
+                                    child: Text(
+                                      'سجل الدخول ',
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),

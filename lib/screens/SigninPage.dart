@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/AlertLogin.dart';
+import 'package:mobile_app/components/PostRequest.dart';
 import 'package:mobile_app/components/TextaA.dart';
+import 'package:mobile_app/screens/CreateAccountPage.dart';
+import 'package:mobile_app/screens/ForgetPassword.dart';
+import 'package:mobile_app/screens/HomePage.dart';
 
 class Signinpage extends StatefulWidget {
   const Signinpage({super.key});
@@ -157,32 +162,69 @@ class _SigninpageState extends State<Signinpage> {
                           child: Row(
                             children: [
                               Spacer(),
-                              Text(
-                                'نسيت كلمة المرور ؟',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return Forgetpassword();
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'نسيت كلمة المرور ؟',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height / 12,
-                          width: (MediaQuery.of(context).size.width),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF8EB3B7),
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Center(
-                            child: SizedBox(
-                              height: screenheight / 22,
-                              child: Textaa(
-                                child: Text(
-                                  'تسجل الدخول',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () async {
+                            Map<String, dynamic> data = {
+                              "email": email.text,
+                              "password": password.text,
+                            };
+                            String message = await postDataToApi(
+                                'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/login',
+                                data);
+                            print(message);
+                            if (message == 'success') {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return Homepage();
+                                  },
+                                ),
+                              );
+                            } else {
+                              AlertLogin(context,
+                                  'البريد الإلكتروني أو كلمة المرور غير صحيحة');
+                            }
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height / 12,
+                            width: (MediaQuery.of(context).size.width),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF8EB3B7),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Center(
+                              child: SizedBox(
+                                height: screenheight / 22,
+                                child: Textaa(
+                                  child: Text(
+                                    'تسجل الدخول',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -258,12 +300,24 @@ class _SigninpageState extends State<Signinpage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Textaa(
-                                  child: Text(
-                                    'انشاء حساب ',
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Createaccountpage();
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  child: Textaa(
+                                    child: Text(
+                                      'انشاء حساب ',
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/HomePage.dart';
+import 'package:mobile_app/screens/SigninPage.dart';
 
 class Welcomepage extends StatefulWidget {
   const Welcomepage({super.key});
@@ -26,7 +27,7 @@ class _WelcomepageState extends State<Welcomepage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) {
-          return Homepage();
+          return Signinpage();
         }),
       );
     });
