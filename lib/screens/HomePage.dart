@@ -9,7 +9,7 @@ import 'package:mobile_app/screens/rehabilitation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   // ignore: non_constant_identifier_names
 
   static List<String> images = Article_list.img;
@@ -17,6 +17,13 @@ class Homepage extends StatelessWidget {
   static List<Text> captian = Article_list.Homecap;
 
   Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -48,18 +55,24 @@ class Homepage extends StatelessWidget {
                     child: Row(
                       children: [
                         ElevatedButton(
-                          onPressed: () async{
+                          onPressed: () async {
+                            setState(() {
+                              isLoading = true;
+                            });
                             SharedPreferences prefs =
-                                  await SharedPreferences.getInstance();
-                              await prefs.setBool('isLoggedIn', false);
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return Signinpage();
-                                  },
-                                ),
-                              );
+                                await SharedPreferences.getInstance();
+                            await prefs.setBool('isLoggedIn', false);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Signinpage();
+                                },
+                              ),
+                            );
+                            setState(() {
+                              isLoading = false;
+                            });
                           },
                           child: Icon(Icons.logout),
                         ),
@@ -282,7 +295,7 @@ class Homepage extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: name.length,
+                      itemCount: Homepage.name.length,
                       itemBuilder: (context, int index) {
                         return Padding(
                           padding: EdgeInsets.only(bottom: screenheight / 60),
@@ -318,7 +331,7 @@ class Homepage extends StatelessWidget {
                                             ),
                                             child: Textaa(
                                               child: Text(
-                                                name[index],
+                                                Homepage.name[index],
                                                 style: const TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -352,7 +365,8 @@ class Homepage extends StatelessWidget {
                                                             BorderRadius
                                                                 .circular(15),
                                                         child: Image.asset(
-                                                          images[index],
+                                                          Homepage
+                                                              .images[index],
                                                           fit: BoxFit.fill,
                                                         ),
                                                       ),
@@ -366,7 +380,8 @@ class Homepage extends StatelessWidget {
                                                         const EdgeInsets.only(
                                                             left: 3.0,
                                                             right: 3),
-                                                    child: captian[index],
+                                                    child:
+                                                        Homepage.captian[index],
                                                   ),
                                                 ),
                                               ],
@@ -386,6 +401,9 @@ class Homepage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Center(
+              child: isLoading ? CircularProgressIndicator() : SizedBox(),
             ),
           ],
         ),

@@ -14,6 +14,8 @@ class Forgetpassword extends StatefulWidget {
 }
 
 class _ForgetpasswordState extends State<Forgetpassword> {
+  bool isLoading = false;
+
   final TextEditingController email = TextEditingController();
 
   @override
@@ -33,118 +35,134 @@ class _ForgetpasswordState extends State<Forgetpassword> {
               fit: BoxFit.fill,
             ),
           ),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.only(
-                  right: screenwidth / 17,
-                  left: screenwidth / 17,
-                ),
-                child: Container(
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  width: (MediaQuery.of(context).size.width),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Textaa(
-                        child: Text(
-                          'نسيت كلمة المرور ؟',
-                          style: TextStyle(
-                            fontSize: 27,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
+          child: Stack(
+            children: [
+              Center(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      right: screenwidth / 17,
+                      left: screenwidth / 17,
+                    ),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height / 2.5,
+                      width: (MediaQuery.of(context).size.width),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: screenwidth / 17,
-                          left: screenwidth / 17,
-                          top: screenheight / 30,
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsets.only(bottom: screenheight / 35),
-                              child: SizedBox(
-                                height: screenheight / 12,
-                                child: TextField(
-                                  controller: email,
-                                  decoration: InputDecoration(
-                                    hintText: 'ادخل بريدك الالكتروني',
-                                    hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      borderSide: BorderSide(),
-                                    ),
-                                  ),
-                                  keyboardType: TextInputType.emailAddress,
-                                ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Textaa(
+                            child: Text(
+                              'نسيت كلمة المرور ؟',
+                              style: TextStyle(
+                                fontSize: 27,
+                                fontWeight: FontWeight.w900,
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () async {
-                                Map<String, dynamic> data = {
-                                  "email": email.text,
-                                };
-                                String message = await postDataToApi(
-                                    'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/forgotPassword',
-                                    data);
-                                print(message);
-                                if (message == 'success') {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return Pinpage(
-                                          email: email.text,
-                                        );
-                                      },
-                                    ),
-                                  );
-                                } else {
-                                  AlertLogin(
-                                      context, 'البريد الإلكتروني غير صحيحة');
-                                }
-                              },
-                              child: Container(
-                                height: MediaQuery.of(context).size.height / 12,
-                                width: (MediaQuery.of(context).size.width) / 3,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF8EB3B7),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Center(
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              right: screenwidth / 17,
+                              left: screenwidth / 17,
+                              top: screenheight / 30,
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: screenheight / 35),
                                   child: SizedBox(
-                                    height: screenheight / 22,
-                                    child: Textaa(
-                                      child: Text(
-                                        'تأكيد',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
+                                    height: screenheight / 12,
+                                    child: TextField(
+                                      controller: email,
+                                      decoration: InputDecoration(
+                                        hintText: 'ادخل بريدك الالكتروني',
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.emailAddress,
+                                    ),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () async {
+                                    Map<String, dynamic> data = {
+                                      "email": email.text,
+                                    };
+                                    setState(() {
+                                      isLoading = true;
+                                    });
+                                    String message = await postDataToApi(
+                                        'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/forgotPassword',
+                                        data);
+                                    print(message);
+                                    if (message == 'success') {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return Pinpage(
+                                              email: email.text,
+                                            );
+                                          },
+                                        ),
+                                      );
+                                    } else {
+                                      AlertLogin(context,
+                                          'البريد الإلكتروني غير صحيحة');
+                                    }
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                  },
+                                  child: Container(
+                                    height:
+                                        MediaQuery.of(context).size.height / 12,
+                                    width:
+                                        (MediaQuery.of(context).size.width) / 3,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF8EB3B7),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Center(
+                                      child: SizedBox(
+                                        height: screenheight / 22,
+                                        child: Textaa(
+                                          child: Text(
+                                            'تأكيد',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
+              Center(
+                child: isLoading ? CircularProgressIndicator() : SizedBox(),
+              ),
+            ],
           ),
         ),
       ),

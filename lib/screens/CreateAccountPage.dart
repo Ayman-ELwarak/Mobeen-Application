@@ -13,6 +13,8 @@ class Createaccountpage extends StatefulWidget {
 }
 
 class _CreateaccountpageState extends State<Createaccountpage> {
+  bool isLoading = false;
+
   bool _isObscured = true;
   bool _isObscured2 = true;
 
@@ -38,370 +40,400 @@ class _CreateaccountpageState extends State<Createaccountpage> {
               fit: BoxFit.fill,
             ),
           ),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: kToolbarHeight / 2,
-                    width: screenwidth,
-                  ),
-                  Row(
+          child: Stack(
+            children: [
+              Center(
+                child: SingleChildScrollView(
+                  child: Stack(
                     children: [
-                      Spacer(),
-                      Padding(
-                        padding: EdgeInsets.only(right: screenwidth / 17),
-                        child: SizedBox(
-                          height: screenheight / 13,
-                          child: Textaa(
-                            child: Text(
-                              'انشاء حساب',
-                              style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: kToolbarHeight / 2,
+                            width: screenwidth,
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      right: screenwidth / 17,
-                      left: screenwidth / 17,
-                      top: screenheight / 30,
-                    ),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: screenheight / 30,
-                          child: Row(
+                          Row(
                             children: [
-                              Textaa(
-                                child: Text(
-                                  'اسم المستخدم',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
                               Spacer(),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: screenheight / 35),
-                          child: SizedBox(
-                            height: screenheight / 12,
-                            child: TextField(
-                              controller: name,
-                              decoration: InputDecoration(
-                                hintText: 'ادخل اسم المستخدم',
-                                hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(),
-                                ),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: screenheight / 30,
-                          child: Row(
-                            children: [
-                              Textaa(
-                                child: Text(
-                                  'بريدك الالكتروني',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Spacer(),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: screenheight / 35),
-                          child: SizedBox(
-                            height: screenheight / 12,
-                            child: TextField(
-                              controller: email,
-                              decoration: InputDecoration(
-                                hintText: 'ادخل بريدك الالكتروني',
-                                hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(),
-                                ),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: screenheight / 30,
-                          child: Row(
-                            children: [
-                              Textaa(
-                                child: Text(
-                                  'كلمة المرور',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Spacer(),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: screenheight / 35),
-                          child: SizedBox(
-                            height: screenheight / 12,
-                            child: TextField(
-                              controller: password,
-                              obscureText: _isObscured,
-                              decoration: InputDecoration(
-                                hintText: 'أنشي كلمة المرور',
-                                hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(),
-                                ),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    _isObscured
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isObscured = !_isObscured;
-                                    });
-                                  },
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: screenheight / 30,
-                          child: Row(
-                            children: [
-                              Textaa(
-                                child: Text(
-                                  'تأكيد كلمة المرور',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Spacer(),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: screenheight / 35),
-                          child: SizedBox(
-                            height: screenheight / 12,
-                            child: TextField(
-                              controller: confirm_password,
-                              obscureText: _isObscured2,
-                              decoration: InputDecoration(
-                                hintText: 'اعد كتابة كلمة المرور',
-                                hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(),
-                                ),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    _isObscured2
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isObscured2 = !_isObscured2;
-                                    });
-                                  },
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () async {
-                            Map<String, dynamic> data = {
-                              "name": name.text,
-                              "email": email.text,
-                              "password": password.text,
-                              "passwordConfirm": confirm_password.text
-                            };
-                            if (validateUser(data) == 'success') {
-                              String message = await postDataToApi(
-                                  'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/signup',
-                                  data);
-                              print(message);
-                              if (message == 'success') {
-                                AlertLogin(context, 'تم التسجيل بنجاح');
-                              } else if (message == 'account_exists') {
-                                AlertLogin(context, 'المستخدم موجود بالفعل');
-                              } else {
-                                AlertLogin(context, 'حدث مشكلة ما');
-                              }
-                            } else {
-                              AlertLogin(context, validateUser(data));
-                            }
-                          },
-                          child: Container(
-                            height: MediaQuery.of(context).size.height / 12,
-                            width: (MediaQuery.of(context).size.width),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF8EB3B7),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Center(
-                              child: SizedBox(
-                                height: screenheight / 22,
-                                child: Textaa(
-                                  child: Text(
-                                    'انشاء حساب',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(right: screenwidth / 17),
+                                child: SizedBox(
+                                  height: screenheight / 13,
+                                  child: Textaa(
+                                    child: Text(
+                                      'انشاء حساب',
+                                      style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.w700,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: screenheight / 25),
-                          child: SizedBox(
-                            height: screenheight / 35,
-                            child: Row(
+                          Padding(
+                            padding: EdgeInsets.only(
+                              right: screenwidth / 17,
+                              left: screenwidth / 17,
+                              top: screenheight / 30,
+                            ),
+                            child: Column(
                               children: [
-                                Expanded(
-                                  child: Divider(
-                                    thickness: 1,
-                                    color: Color(0xFFD8DADC),
+                                SizedBox(
+                                  height: screenheight / 30,
+                                  child: Row(
+                                    children: [
+                                      Textaa(
+                                        child: Text(
+                                          'اسم المستخدم',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: screenwidth / 25),
+                                  padding: EdgeInsets.only(
+                                      bottom: screenheight / 35),
                                   child: SizedBox(
-                                    width: screenwidth / 3.2,
-                                    child: Textaa(
-                                      child: Text(
-                                        'او سجل عن طريق',
-                                        style: TextStyle(
-                                          color: const Color.fromARGB(
-                                              255, 63, 61, 61),
-                                          fontSize: 30,
+                                    height: screenheight / 12,
+                                    child: TextField(
+                                      controller: name,
+                                      decoration: InputDecoration(
+                                        hintText: 'ادخل اسم المستخدم',
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.emailAddress,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: screenheight / 30,
+                                  child: Row(
+                                    children: [
+                                      Textaa(
+                                        child: Text(
+                                          'بريدك الالكتروني',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: screenheight / 35),
+                                  child: SizedBox(
+                                    height: screenheight / 12,
+                                    child: TextField(
+                                      controller: email,
+                                      decoration: InputDecoration(
+                                        hintText: 'ادخل بريدك الالكتروني',
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(),
+                                        ),
+                                      ),
+                                      keyboardType: TextInputType.emailAddress,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: screenheight / 30,
+                                  child: Row(
+                                    children: [
+                                      Textaa(
+                                        child: Text(
+                                          'كلمة المرور',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: screenheight / 35),
+                                  child: SizedBox(
+                                    height: screenheight / 12,
+                                    child: TextField(
+                                      controller: password,
+                                      obscureText: _isObscured,
+                                      decoration: InputDecoration(
+                                        hintText: 'أنشي كلمة المرور',
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(),
+                                        ),
+                                        suffixIcon: IconButton(
+                                          icon: Icon(
+                                            _isObscured
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              _isObscured = !_isObscured;
+                                            });
+                                          },
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                Expanded(
-                                  child: Divider(
-                                    thickness: 1,
-                                    color: Color(0xFFD8DADC),
+                                SizedBox(
+                                  height: screenheight / 30,
+                                  child: Row(
+                                    children: [
+                                      Textaa(
+                                        child: Text(
+                                          'تأكيد كلمة المرور',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: screenheight / 35),
-                          child: Container(
-                            width: screenwidth / 3,
-                            height: screenheight / 11,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 1,
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: screenheight / 35),
+                                  child: SizedBox(
+                                    height: screenheight / 12,
+                                    child: TextField(
+                                      controller: confirm_password,
+                                      obscureText: _isObscured2,
+                                      decoration: InputDecoration(
+                                        hintText: 'اعد كتابة كلمة المرور',
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(),
+                                        ),
+                                        suffixIcon: IconButton(
+                                          icon: Icon(
+                                            _isObscured2
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              _isObscured2 = !_isObscured2;
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Image.asset(
-                                'assest/images/googleIcon.png',
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: screenheight / 20,
-                            bottom: screenheight / 20,
-                          ),
-                          child: SizedBox(
-                            height: screenheight / 30,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
                                 GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return Signinpage();
-                                        },
-                                      ),
-                                    );
+                                  onTap: () async {
+                                    Map<String, dynamic> data = {
+                                      "name": name.text,
+                                      "email": email.text,
+                                      "password": password.text,
+                                      "passwordConfirm": confirm_password.text
+                                    };
+                                    setState(() {
+                                      isLoading = true;
+                                    });
+                                    if (validateUser(data) == 'success') {
+                                      String message = await postDataToApi(
+                                          'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/signup',
+                                          data);
+                                      print(message);
+                                      if (message == 'success') {
+                                        AlertLogin(context, 'تم التسجيل بنجاح');
+                                      } else if (message == 'account_exists') {
+                                        AlertLogin(
+                                            context, 'المستخدم موجود بالفعل');
+                                      } else {
+                                        AlertLogin(context, 'حدث مشكلة ما');
+                                      }
+                                    } else {
+                                      AlertLogin(context, validateUser(data));
+                                    }
+                                    setState(() {
+                                      isLoading = false;
+                                    });
                                   },
-                                  child: Textaa(
-                                    child: Text(
-                                      'سجل الدخول ',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold,
+                                  child: Container(
+                                    height:
+                                        MediaQuery.of(context).size.height / 12,
+                                    width: (MediaQuery.of(context).size.width),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF8EB3B7),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Center(
+                                      child: SizedBox(
+                                        height: screenheight / 22,
+                                        child: Textaa(
+                                          child: Text(
+                                            'انشاء حساب',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                Textaa(
-                                  child: Text(
-                                    'بالفعل لديك حساب ؟',
-                                    style: TextStyle(
-                                      fontSize: 17,
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: screenheight / 25),
+                                  child: SizedBox(
+                                    height: screenheight / 35,
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Divider(
+                                            thickness: 1,
+                                            color: Color(0xFFD8DADC),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: screenwidth / 25),
+                                          child: SizedBox(
+                                            width: screenwidth / 3.2,
+                                            child: Textaa(
+                                              child: Text(
+                                                'او سجل عن طريق',
+                                                style: TextStyle(
+                                                  color: const Color.fromARGB(
+                                                      255, 63, 61, 61),
+                                                  fontSize: 30,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Divider(
+                                            thickness: 1,
+                                            color: Color(0xFFD8DADC),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: screenheight / 35),
+                                  child: Container(
+                                    width: screenwidth / 3,
+                                    height: screenheight / 11,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 1,
+                                        ),
+                                      ],
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Image.asset(
+                                        'assest/images/googleIcon.png',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: screenheight / 20,
+                                    bottom: screenheight / 20,
+                                  ),
+                                  child: SizedBox(
+                                    height: screenheight / 30,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) {
+                                                  return Signinpage();
+                                                },
+                                              ),
+                                            );
+                                          },
+                                          child: Textaa(
+                                            child: Text(
+                                              'سجل الدخول ',
+                                              style: TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Textaa(
+                                          child: Text(
+                                            'بالفعل لديك حساب ؟',
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
                           ),
-                        )
-                      ],
-                    ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+              Center(
+                child: isLoading ? CircularProgressIndicator() : SizedBox(),
+              ),
+            ],
           ),
         ),
       ),
