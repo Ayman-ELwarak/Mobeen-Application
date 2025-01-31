@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/AlertLogin.dart';
 import 'package:mobile_app/components/PostRequest.dart';
+import 'package:mobile_app/components/SignInWithGoogle.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/CreateAccountPage.dart';
 import 'package:mobile_app/screens/ForgetPassword.dart';
@@ -207,8 +208,8 @@ class _SigninpageState extends State<Signinpage> {
                                   SharedPreferences prefs =
                                       await SharedPreferences.getInstance();
                                   await prefs.setBool('isLoggedIn', true);
-                                  bool isLoggedIn =
-                                      prefs.getBool('isLoggedIn') ?? false;
+                                  bool? isLoggedIn =
+                                      prefs.getBool('isLoggedIn');
                                   print(isLoggedIn);
                                   Navigator.pushReplacement(
                                     context,
@@ -219,8 +220,8 @@ class _SigninpageState extends State<Signinpage> {
                                     ),
                                   );
                                 } else {
-                                  AlertLogin(context,
-                                      'البريد الإلكتروني أو كلمة المرور غير صحيحة');
+                                  AlertLogin(context, 'خطأ',
+                                      'البريد الإلكتروني أو كلمة المرور غير صحيحة', 'حاول مرة اخري');
                                 }
                                 setState(() {
                                   isLoading = false;
@@ -291,23 +292,53 @@ class _SigninpageState extends State<Signinpage> {
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: screenheight / 35),
-                              child: Container(
-                                width: screenwidth / 3,
-                                height: screenheight / 11,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 1,
+                              child: GestureDetector(
+                                onTap: () async {
+                                  setState(() {
+                                    isLoading = true;
+                                  });
+                                  String message = await signInWithGoogle();
+                                  if (message == 'success') {
+                                    SharedPreferences prefs =
+                                        await SharedPreferences.getInstance();
+                                    await prefs.setBool('isLoggedIn', true);
+                                    bool? isLoggedIn =
+                                        prefs.getBool('isLoggedIn');
+                                    print(isLoggedIn);
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Homepage();
+                                        },
+                                      ),
+                                    );
+                                  } else {
+                                    AlertLogin(context, 'خطأ', 'حدث خطأ ما',
+                                        'حاول مرة اخري');
+                                  }
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                },
+                                child: Container(
+                                  width: screenwidth / 3,
+                                  height: screenheight / 11,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 1,
+                                      ),
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Image.asset(
+                                      'assest/images/googleIcon.png',
                                     ),
-                                  ],
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Image.asset(
-                                    'assest/images/googleIcon.png',
                                   ),
                                 ),
                               ),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/AlertLogin.dart';
 import 'package:mobile_app/components/PostRequest.dart';
+import 'package:mobile_app/components/SignInWithGoogle.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/components/ValidDataUser.dart';
+import 'package:mobile_app/screens/HomePage.dart';
 import 'package:mobile_app/screens/SigninPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Createaccountpage extends StatefulWidget {
   const Createaccountpage({super.key});
@@ -274,15 +277,17 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                                           data);
                                       print(message);
                                       if (message == 'success') {
-                                        AlertLogin(context, 'تم التسجيل بنجاح');
+                                        AlertLogin(context, 'تهانينا', 'تم التسجيل بنجاح', "حسناً");
                                       } else if (message == 'account_exists') {
-                                        AlertLogin(
-                                            context, 'المستخدم موجود بالفعل');
+                                        AlertLogin(context, 'خطأ',
+                                      'المستخدم موجود بالفعل', 'حاول مرة اخري');
                                       } else {
-                                        AlertLogin(context, 'حدث مشكلة ما');
+                                        AlertLogin(context, 'خطأ',
+                                      'حدث خطأ ما', 'حاول مرة اخري');
                                       }
                                     } else {
-                                      AlertLogin(context, validateUser(data));
+                                      AlertLogin(context, 'خطأ',
+                                      validateUser(data), 'حاول مرة اخري');
                                     }
                                     setState(() {
                                       isLoading = false;
@@ -356,23 +361,54 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                                 Padding(
                                   padding:
                                       EdgeInsets.only(top: screenheight / 35),
-                                  child: Container(
-                                    width: screenwidth / 3,
-                                    height: screenheight / 11,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 1,
+                                  child: GestureDetector(
+                                    onTap: () async {
+                                      setState(() {
+                                        isLoading = true;
+                                      });
+                                      String message = await signInWithGoogle();
+                                      if (message == 'success') {
+                                        SharedPreferences prefs =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        await prefs.setBool('isLoggedIn', true);
+                                        bool? isLoggedIn =
+                                            prefs.getBool('isLoggedIn');
+                                        print(isLoggedIn);
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return Homepage();
+                                            },
+                                          ),
+                                        );
+                                      }else{
+                                         AlertLogin(context, 'خطأ',
+                                      'حدث خطأ ما', 'حاول مرة اخري');
+                                      }
+                                      setState(() {
+                                        isLoading = false;
+                                      });
+                                    },
+                                    child: Container(
+                                      width: screenwidth / 3,
+                                      height: screenheight / 11,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Image.asset(
+                                          'assest/images/googleIcon.png',
                                         ),
-                                      ],
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Image.asset(
-                                        'assest/images/googleIcon.png',
                                       ),
                                     ),
                                   ),

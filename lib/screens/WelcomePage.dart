@@ -72,7 +72,7 @@ class _WelcomepageState extends State<Welcomepage> {
               child: SizedBox(
                 child: Textaa(
                   child: Text(
-                    'مۘــبــﯧْۧــنۨ',
+                    'مُــبــﯧِــنْ',
                     style: TextStyle(
                       fontSize: screenwidth / 8,
                       fontWeight: FontWeight.bold,

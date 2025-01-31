@@ -56,7 +56,7 @@ class _PinpageState extends State<Pinpage> {
                         children: [
                           Textaa(
                             child: Text(
-                              'التأكيد باستخدام الكود',
+                              'التأكيد بإستخدام الرمز',
                               style: TextStyle(
                                 fontSize: 27,
                                 fontWeight: FontWeight.w900,
@@ -79,7 +79,7 @@ class _PinpageState extends State<Pinpage> {
                                     child: TextField(
                                       controller: pin,
                                       decoration: InputDecoration(
-                                        hintText: 'ادخل الكود',
+                                        hintText: 'ادخل الرمز التأكيدي',
                                         hintStyle: TextStyle(
                                           color: Colors.grey,
                                         ),
@@ -118,7 +118,11 @@ class _PinpageState extends State<Pinpage> {
                                         ),
                                       );
                                     } else {
-                                      AlertLogin(context, 'الكود غير صحيح');
+                                      AlertLogin(
+                                          context,
+                                          'خطأ',
+                                          'الرمز التأكيدي غير صحيح',
+                                          'حاول مرة اخري');
                                     }
                                     setState(() {
                                       isLoading = false;

@@ -117,8 +117,8 @@ class _ForgetpasswordState extends State<Forgetpassword> {
                                         ),
                                       );
                                     } else {
-                                      AlertLogin(context,
-                                          'البريد الإلكتروني غير صحيحة');
+                                      AlertLogin(context, 'خطأ',
+                                      'البريد الإلكتروني غير صحيح', 'حاول مرة اخري');
                                     }
                                     setState(() {
                                       isLoading = false;

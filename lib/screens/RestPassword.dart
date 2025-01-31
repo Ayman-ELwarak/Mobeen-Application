@@ -214,10 +214,12 @@ class _RestpasswordState extends State<Restpassword> {
                                           },
                                         );
                                       } else {
-                                        AlertLogin(context, 'حدث مشكلة ما');
+                                        AlertLogin(context, 'خطأ', 'حدث خطأ ما',
+                                            'حاول مرة اخري');
                                       }
                                     } else {
-                                      AlertLogin(context, validateUser(data));
+                                      AlertLogin(context, 'خطأ',
+                                          validateUser(data), 'حاول مرة اخري');
                                     }
                                     setState(() {
                                       isLoading = false;

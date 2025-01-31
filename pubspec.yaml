@@ -48,6 +48,7 @@ dependencies:
   animated_splash_screen: 
   fl_chart: 
   shared_preferences: 
+  google_sign_in: ^6.2.2
 
 dev_dependencies:
   flutter_test:
