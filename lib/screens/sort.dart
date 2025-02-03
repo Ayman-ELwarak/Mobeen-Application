@@ -114,14 +114,14 @@ class _SortState extends State<Sort> {
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return DragTarget<String>(
-                            onAccept: (data) {
+                            onAcceptWithDetails: (details) {
                               setState(() {
                                 if (answers[index] == null) {
-                                  if (data == widget.correctOrder[index]) {
-                                    answers[index] = data;
+                                  if (details.data == widget.correctOrder[index]) {
+                                    answers[index] = details.data;
                                     correct[index] = true;
-                                    squareImages[index] = Image.asset(data);
-                                    images.remove(data);
+                                    squareImages[index] = Image.asset(details.data);
+                                    images.remove(details.data);
                                     checkAnswers();
                                   } else {
                                     showErrorIcon(index);

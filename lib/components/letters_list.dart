@@ -21,11 +21,11 @@ class letter_list
     ),
     Video(
         title: 'ت',
-        assetPath: 'assest/Videos/letters/t.mp4'
+        assetPath: 'assest/Videos/letters/s.mp4'
     ),
     Video(
         title: 'ث',
-        assetPath: 'assest/Videos/letters/s.mp4'
+        assetPath: 'assest/Videos/letters/t.mp4'
     ),
     Video(
         title:'ج' ,

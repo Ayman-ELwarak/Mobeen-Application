@@ -83,7 +83,7 @@ class Letters_page extends StatelessWidget {
                             children: [
                               Flexible(
                                 child: Image.asset(
-                                  letter_list.letter_img[index]!,
+                                  letter_list.letter_img[index],
                                   height: screenHeight * 0.1,
                                   fit: BoxFit.contain,
                                 ),
