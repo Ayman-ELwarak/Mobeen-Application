@@ -7,7 +7,6 @@ class Cheek_list
     'شد الخد',
     'شد الخد إلى اليمين',
     'شد الخد إلى اليسار',
-    'شد الخد بالتناوب',
     'شد الخد بالملعقة إلى اليمين',
     'شد الخد بالملعقة الي اليسار',
     'شفط الخد',
@@ -28,10 +27,6 @@ class Cheek_list
     Video(
         title: 'شد الخد إلى اليسار',
         assetPath: 'assest/Videos/exercises/cheek/cheek_stretch_left.mp4'
-    ),
-    Video(
-        title: 'شد الخد بالتناوب',
-        assetPath: 'assest/Videos/exercises/cheek/alternating_cheek_stretch.mp4'
     ),
     Video(
         title: 'شد الخد بالملعقة إلى اليمين',

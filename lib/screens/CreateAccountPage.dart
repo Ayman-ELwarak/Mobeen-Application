@@ -277,17 +277,40 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                                           data);
                                       print(message);
                                       if (message == 'success') {
-                                        AlertLogin(context, 'تهانينا', 'تم التسجيل بنجاح', "حسناً");
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => AlertDialog(
+                                            title: Text('تهانينا'),
+                                            content: Text('تم التسجيل بنجاح'),
+                                            actions: [
+                                              TextButton(
+                                                child: Text("حسناً"),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    name.text = "";
+                                                    email.text = "";
+                                                    password.text = "";
+                                                    confirm_password.text = "";
+                                                  });
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        );
                                       } else if (message == 'account_exists') {
-                                        AlertLogin(context, 'خطأ',
-                                      'المستخدم موجود بالفعل', 'حاول مرة اخري');
+                                        AlertLogin(
+                                            context,
+                                            'خطأ',
+                                            'المستخدم موجود بالفعل',
+                                            'حاول مرة اخري');
                                       } else {
-                                        AlertLogin(context, 'خطأ',
-                                      'حدث خطأ ما', 'حاول مرة اخري');
+                                        AlertLogin(context, 'خطأ', 'حدث خطأ ما',
+                                            'حاول مرة اخري');
                                       }
                                     } else {
                                       AlertLogin(context, 'خطأ',
-                                      validateUser(data), 'حاول مرة اخري');
+                                          validateUser(data), 'حاول مرة اخري');
                                     }
                                     setState(() {
                                       isLoading = false;
@@ -383,9 +406,9 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                                             },
                                           ),
                                         );
-                                      }else{
-                                         AlertLogin(context, 'خطأ',
-                                      'حدث خطأ ما', 'حاول مرة اخري');
+                                      } else {
+                                        AlertLogin(context, 'خطأ', 'حدث خطأ ما',
+                                            'حاول مرة اخري');
                                       }
                                       setState(() {
                                         isLoading = false;
