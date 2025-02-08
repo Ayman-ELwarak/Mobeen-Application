@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';
 
+import 'package:mobile_app/components/CorrectAlert.dart';
+
 class Sort extends StatefulWidget {
   final List<String> correctOrder;
 
@@ -26,21 +28,7 @@ class _SortState extends State<Sort> {
 
   void checkAnswers() {
     if (correct.every((element) => element)) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("تهنئة!"),
-          content: Text("أحسنت! لقد أكملت المهمة بنجاح."),
-          actions: [
-            TextButton(
-              child: Text("حسناً"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        ),
-      );
+      CorrectAlert(context);
     }
   }
 
@@ -117,10 +105,12 @@ class _SortState extends State<Sort> {
                             onAcceptWithDetails: (details) {
                               setState(() {
                                 if (answers[index] == null) {
-                                  if (details.data == widget.correctOrder[index]) {
+                                  if (details.data ==
+                                      widget.correctOrder[index]) {
                                     answers[index] = details.data;
                                     correct[index] = true;
-                                    squareImages[index] = Image.asset(details.data);
+                                    squareImages[index] =
+                                        Image.asset(details.data);
                                     images.remove(details.data);
                                     checkAnswers();
                                   } else {

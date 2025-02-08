@@ -6,7 +6,6 @@ class Jaw_list {
     'الفك المفتوح مع المقاومة',
     'إغلاق الفك ضد المقاومة',
     'الفك من جانب إلى جانب',
-    'الفك من جانب إلى جانب مع المقاومة',
   ];
   static List<Video> Jaw_video = [
     Video(
@@ -24,10 +23,6 @@ class Jaw_list {
     Video(
         title:'الفك من جانب إلى جانب' ,
         assetPath: 'assest/Videos/exercises/jaw/jaw_side_to_side.mp4'
-    ),
-    Video(
-        title: 'الفك من جانب إلى جانب مع المقاومة' ,
-        assetPath: 'assest/Videos/exercises/jaw/jaw_side_to_side_with_resistance.mp4'
     ),
   ];
 }

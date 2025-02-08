@@ -333,7 +333,7 @@ class _HomepageState extends State<Homepage> {
                                               child: Text(
                                                 Homepage.name[index],
                                                 style: const TextStyle(
-                                                  fontSize: 25,
+                                                  fontSize: 22,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),

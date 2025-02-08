@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class Article_list {
   static List<String> title = [
-    'صعوبات النطق والكلام عند الأطفال',
-    'أنواع صعوبات النطق والكلام عند الأطفال',
-    'أعراض صعوبات النطق والكلام عند الأطفال',
-    'أسباب صعوبات النطق والكلام عند الأطفال',
-    'تشخيص صعوبات النطق والكلام عند الأطفال',
+    'صعوبات النطق',
+    'أنواع صعوبات النطق',
+    'أعراض صعوبات النطق',
+    'أسباب صعوبات النطق',
+    'تشخيص صعوبات النطق',
   ];
   static List<Text> cap = [
     const Text.rich(
@@ -291,7 +291,7 @@ class Article_list {
         maxLines: 2,
         textDirection: TextDirection.rtl,
         style: TextStyle(
-        color: Color(0xFF475766),
+          color: Color(0xFF475766),
           fontSize: 15,
           fontStyle: FontStyle.normal,
           fontFamily: 'Inter',
@@ -343,7 +343,7 @@ class Article_list {
         maxLines: 2,
         textDirection: TextDirection.rtl,
         style: TextStyle(
-        color: Color(0xFF475766),
+          color: Color(0xFF475766),
           fontSize: 15,
           fontStyle: FontStyle.normal,
           fontFamily: 'Inter',
@@ -373,7 +373,7 @@ class Article_list {
         maxLines: 2,
         textDirection: TextDirection.rtl,
         style: TextStyle(
-        color: Color(0xFF475766),
+          color: Color(0xFF475766),
           fontSize: 15,
           fontStyle: FontStyle.normal,
           fontFamily: 'Inter',
