@@ -389,12 +389,18 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                                       setState(() {
                                         isLoading = true;
                                       });
-                                      String message = await signInWithGoogle();
-                                      if (message == 'success') {
+                                      dynamic message =
+                                          await signInWithGoogle();
+                                      if (message == 'failed') {
+                                        AlertLogin(context, 'خطأ', 'حدث خطأ ما',
+                                            'حاول مرة اخري');
+                                      } else {
                                         SharedPreferences prefs =
                                             await SharedPreferences
                                                 .getInstance();
                                         await prefs.setBool('isLoggedIn', true);
+                                        await prefs.setString(
+                                            'token', message['token']);
                                         bool? isLoggedIn =
                                             prefs.getBool('isLoggedIn');
                                         print(isLoggedIn);
@@ -406,9 +412,6 @@ class _CreateaccountpageState extends State<Createaccountpage> {
                                             },
                                           ),
                                         );
-                                      } else {
-                                        AlertLogin(context, 'خطأ', 'حدث خطأ ما',
-                                            'حاول مرة اخري');
                                       }
                                       setState(() {
                                         isLoading = false;

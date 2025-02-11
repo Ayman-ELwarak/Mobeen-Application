@@ -1,11 +1,24 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:mobile_app/components/GetRequest.dart';
 import 'package:mobile_app/components/sort_list.dart';
 import 'package:mobile_app/screens/All_Exercises.dart';
 import 'package:mobile_app/screens/CardsOfSoundLevel.dart';
 import 'package:mobile_app/screens/CardsPage.dart';
 import 'package:mobile_app/screens/letters.dart';
 import 'package:mobile_app/screens/stories.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+List<dynamic> days = [
+  {'points': 0, 'date': "2025-02-05T00:00:00.000Z"},
+  {'points': 0, 'date': "2025-02-06T00:00:00.000Z"},
+  {'points': 0, 'date': "2025-02-07T00:00:00.000Z"},
+  {'points': 0, 'date': "2025-02-08T00:00:00.000Z"},
+  {'points': 0, 'date': "2025-02-09T00:00:00.000Z"},
+  {'points': 0, 'date': "2025-02-10T00:00:00.000Z"},
+  {'points': 0, 'date': "2025-02-11T00:00:00.000Z"},
+];
 
 class RehabilitationPage extends StatefulWidget {
   @override
@@ -13,34 +26,58 @@ class RehabilitationPage extends StatefulWidget {
 }
 
 class _RehabilitationPageState extends State<RehabilitationPage> {
-  String selectedWeek = 'هذا الأسبوع'; 
-  final Map<String, List<FlSpot>> weekData = {
+  String getDay(String date) {
+    DateTime d = DateTime.parse(date);
+    String dayName = DateFormat('EEE').format(d);
+    Map<String, String> daysInArabic = {
+      "Sun": "الأحد",
+      "Mon": "الإثنين",
+      "Tue": "الثلاثاء",
+      "Wed": "الأربعاء",
+      "Thu": "الخميس",
+      "Fri": "الجمعة",
+      "Sat": "السبت"
+    };
+    print(daysInArabic[dayName]);
+    return daysInArabic[dayName]!;
+  }
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      print(prefs.getString('token'));
+      Map<String, dynamic> response = await GetRequest(
+          'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/points/week',
+          prefs.getString('token')!) as Map<String, dynamic>;
+      Map<String, dynamic> data = response['data'];
+      setState(() {
+        days = data['week'];
+        weekData['هذا الأسبوع'] = [
+          FlSpot(0, days[0]['points'].toDouble()),
+          FlSpot(1, days[1]['points'].toDouble()),
+          FlSpot(2, days[2]['points'].toDouble()),
+          FlSpot(3, days[3]['points'].toDouble()),
+          FlSpot(4, days[4]['points'].toDouble()),
+          FlSpot(5, days[5]['points'].toDouble()),
+          FlSpot(6, days[6]['points'].toDouble()),
+        ];
+        print(days);
+      });
+    });
+    super.initState();
+  }
+
+  String selectedWeek = 'هذا الأسبوع';
+  Map<String, List<FlSpot>> weekData = {
     'هذا الأسبوع': [
-      FlSpot(0, 30),
-      FlSpot(1, 50),
-      FlSpot(2, 70),
-      FlSpot(3, 90),
-      FlSpot(4, 80),
-      FlSpot(5, 60),
-      FlSpot(6, 40),
-    ],
-    'الأسبوع الماضي': [
-      FlSpot(0, 20),
-      FlSpot(1, 40),
-      FlSpot(2, 60),
-      FlSpot(3, 70),
-      FlSpot(4, 50),
-      FlSpot(5, 30),
-      FlSpot(6, 20),
-    ],
-    'الأسبوع قبل الماضي': [
-      FlSpot(0, 10),
-      FlSpot(1, 30),
-      FlSpot(2, 50),
-      FlSpot(3, 80),
-      FlSpot(4, 90),
-      FlSpot(5, 70),
-      FlSpot(6, 40),
+      FlSpot(0, days[0]['points'].toDouble()),
+      FlSpot(1, days[1]['points'].toDouble()),
+      FlSpot(2, days[2]['points'].toDouble()),
+      FlSpot(3, days[3]['points'].toDouble()),
+      FlSpot(4, days[4]['points'].toDouble()),
+      FlSpot(5, days[5]['points'].toDouble()),
+      FlSpot(6, days[6]['points'].toDouble()),
     ],
   };
 
@@ -48,11 +85,38 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
 
   final List<Map<String, dynamic>> items = [
     {
-      'color': Color(0xFFD3F6F9), 'text': 'بطاقات التخاطب', 'icon': Icons.bakery_dining, 'page': Cardspage()},
-    {'color': Color(0xFFD5CCFF), 'text': 'تمارين الفم', 'icon': Icons.face, 'page': AllExercises()},
-    {'color': Color(0xFFFFF7DB), 'text': 'ترتيب الاحداث', 'icon': Icons.repeat, 'page': Stories(items: sort_lists.image_sort, buttons: sort_lists.stories_images,)},
-    {'color': Color(0xFFFFE7D5), 'text': 'تمييز الكلمات', 'icon': Icons.queue_music, 'page': Cardsofsoundlevel()},
-    {'color': Color(0xFFFBE3EC), 'text': 'مخارج الحروف', 'icon': Icons.blur_on_sharp, 'page': Letters_page()},
+      'color': Color(0xFFD3F6F9),
+      'text': 'بطاقات التخاطب',
+      'icon': Icons.bakery_dining,
+      'page': Cardspage()
+    },
+    {
+      'color': Color(0xFFD5CCFF),
+      'text': 'تمارين الفم',
+      'icon': Icons.face,
+      'page': AllExercises()
+    },
+    {
+      'color': Color(0xFFFFF7DB),
+      'text': 'ترتيب الاحداث',
+      'icon': Icons.repeat,
+      'page': Stories(
+        items: sort_lists.image_sort,
+        buttons: sort_lists.stories_images,
+      )
+    },
+    {
+      'color': Color(0xFFFFE7D5),
+      'text': 'تمييز الكلمات',
+      'icon': Icons.queue_music,
+      'page': Cardsofsoundlevel()
+    },
+    {
+      'color': Color(0xFFFBE3EC),
+      'text': 'مخارج الحروف',
+      'icon': Icons.blur_on_sharp,
+      'page': Letters_page()
+    },
   ];
 
   void navigateToNext() {
@@ -79,7 +143,6 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -119,33 +182,21 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: DropdownButton<String>(
-                      value: selectedWeek,
-                      style: TextStyle(
-                          fontSize: 12, color: const Color.fromARGB(255, 134, 133, 133)),
-                      items: weekData.keys.map((week) {
-                        return DropdownMenuItem(
-                          value: week,
-                          child: Text(week),
-                        );
-                      }).toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          selectedWeek = value!;
-                        });
-                      },
-                    ),
-                  ),
                   SizedBox(height: 10),
                   Expanded(
                     child: LineChart(
                       LineChartData(
                         minY: 0,
-                        maxY: 100,
+                        maxY: weekData['هذا الأسبوع']!
+                                .map((spot) => spot.y)
+                                .reduce((a, b) => a > b ? a : b) +
+                            (10 -
+                                (weekData['هذا الأسبوع']!
+                                        .map((spot) => spot.y)
+                                        .reduce((a, b) => a > b ? a : b)) %
+                                    10),
                         minX: 0,
-                        maxX: 6,
+                        maxX: 7,
                         gridData: FlGridData(
                           show: true,
                           drawHorizontalLine: true,
@@ -169,7 +220,8 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       '${value.toInt()}',
-                                      style: TextStyle(fontSize: 8, color: Colors.grey),
+                                      style: TextStyle(
+                                          fontSize: 8, color: Colors.grey),
                                     ),
                                   );
                                 }
@@ -190,19 +242,26 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
                               getTitlesWidget: (value, meta) {
                                 switch (value.toInt()) {
                                   case 6:
-                                    return Text('سبت', style: TextStyle(fontSize: 10));
+                                    return Text(getDay(days[0]['date']),
+                                        style: TextStyle(fontSize: 10));
                                   case 5:
-                                    return Text('حد', style: TextStyle(fontSize: 10));
+                                    return Text(getDay(days[1]['date']),
+                                        style: TextStyle(fontSize: 10));
                                   case 4:
-                                    return Text('اثنين', style: TextStyle(fontSize: 10));
+                                    return Text(getDay(days[2]['date']),
+                                        style: TextStyle(fontSize: 10));
                                   case 3:
-                                    return Text('ثلاثاء', style: TextStyle(fontSize: 10));
+                                    return Text(getDay(days[3]['date']),
+                                        style: TextStyle(fontSize: 10));
                                   case 2:
-                                    return Text('اربعاء', style: TextStyle(fontSize: 10));
+                                    return Text(getDay(days[4]['date']),
+                                        style: TextStyle(fontSize: 10));
                                   case 1:
-                                    return Text('خميس', style: TextStyle(fontSize: 10));
+                                    return Text(getDay(days[5]['date']),
+                                        style: TextStyle(fontSize: 10));
                                   case 0:
-                                    return Text('جمعة', style: TextStyle(fontSize: 10));
+                                    return Text(getDay(days[6]['date']),
+                                        style: TextStyle(fontSize: 10));
                                   default:
                                     return Container();
                                 }

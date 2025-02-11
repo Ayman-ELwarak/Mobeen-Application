@@ -1,12 +1,40 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/AlertLogin.dart';
-import 'package:mobile_app/components/PostRequest.dart';
 import 'package:mobile_app/components/SignInWithGoogle.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/screens/CreateAccountPage.dart';
 import 'package:mobile_app/screens/ForgetPassword.dart';
 import 'package:mobile_app/screens/HomePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+Future<dynamic> postData(String url, Map<String, dynamic> data) async {
+  try {
+    final response = await http.post(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      print('Data posted successfully!');
+      print(jsonDecode(response.body));
+      return jsonDecode(response.body);
+    } else if (response.body.indexOf('Duplicate field value') != -1) {
+      return 'account_exists';
+    } else {
+      print('Request failed with status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return 'failed';
+    }
+  } catch (e) {
+    print('Error posting data: $e');
+    return 'failed';
+  }
+}
 
 class Signinpage extends StatefulWidget {
   const Signinpage({super.key});
@@ -21,6 +49,8 @@ class _SigninpageState extends State<Signinpage> {
 
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
+
+  get http => null;
 
   @override
   Widget build(BuildContext context) {
@@ -200,14 +230,22 @@ class _SigninpageState extends State<Signinpage> {
                                 setState(() {
                                   isLoading = true;
                                 });
-                                String message = await postDataToApi(
+                                dynamic message = await postData(
                                     'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/login',
                                     data);
                                 print(message);
-                                if (message == 'success') {
+                                if (message == 'failed') {
+                                  AlertLogin(
+                                      context,
+                                      'خطأ',
+                                      'البريد الإلكتروني أو كلمة المرور غير صحيحة',
+                                      'حاول مرة اخري');
+                                } else {
                                   SharedPreferences prefs =
                                       await SharedPreferences.getInstance();
                                   await prefs.setBool('isLoggedIn', true);
+                                  await prefs.setString(
+                                      'token', message['token']);
                                   bool? isLoggedIn =
                                       prefs.getBool('isLoggedIn');
                                   print(isLoggedIn);
@@ -219,9 +257,6 @@ class _SigninpageState extends State<Signinpage> {
                                       },
                                     ),
                                   );
-                                } else {
-                                  AlertLogin(context, 'خطأ',
-                                      'البريد الإلكتروني أو كلمة المرور غير صحيحة', 'حاول مرة اخري');
                                 }
                                 setState(() {
                                   isLoading = false;
@@ -297,11 +332,16 @@ class _SigninpageState extends State<Signinpage> {
                                   setState(() {
                                     isLoading = true;
                                   });
-                                  String message = await signInWithGoogle();
-                                  if (message == 'success') {
+                                  dynamic message = await signInWithGoogle();
+                                  if (message == 'failed') {
+                                    AlertLogin(context, 'خطأ', 'حدث خطأ ما',
+                                        'حاول مرة اخري');
+                                  } else {
                                     SharedPreferences prefs =
                                         await SharedPreferences.getInstance();
                                     await prefs.setBool('isLoggedIn', true);
+                                    await prefs.setString(
+                                        'token', message['token']);
                                     bool? isLoggedIn =
                                         prefs.getBool('isLoggedIn');
                                     print(isLoggedIn);
@@ -313,9 +353,6 @@ class _SigninpageState extends State<Signinpage> {
                                         },
                                       ),
                                     );
-                                  } else {
-                                    AlertLogin(context, 'خطأ', 'حدث خطأ ما',
-                                        'حاول مرة اخري');
                                   }
                                   setState(() {
                                     isLoading = false;
