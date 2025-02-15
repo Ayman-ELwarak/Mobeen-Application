@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:mobile_app/components/CheckResult.dart';
 import 'package:mobile_app/components/CorrectAlert.dart';
+import 'package:mobile_app/components/PostRequestToUpdatePoints.dart';
 import 'package:mobile_app/components/RepeatAgainAlert.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Levelonepage extends StatefulWidget {
   List<Cardstypemodel> cards;
@@ -21,9 +23,30 @@ class Levelonepage extends StatefulWidget {
 }
 
 class _LevelonepageState extends State<Levelonepage> {
+  bool isLoading = false;
   bool isPlaying = false;
   bool Correct = false;
   AudioPlayer sound = AudioPlayer();
+
+  Future<void> action() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String message = await postReqToUpdatePoints(
+      'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/points',
+      prefs.getString('token')!,
+      {"points": "10"},
+    );
+    print('parint1');
+    print(message);
+    setState(() {
+      isLoading = false;
+    });
+    CorrectAlert(context);
+    print('parint2');
+    setState(() {
+      widget.index += 1;
+      Correct = false;
+    });
+  }
 
   List<Cardstypemodel> createList(
       {required List<Cardstypemodel> Cards, required int index}) {
@@ -77,178 +100,189 @@ class _LevelonepageState extends State<Levelonepage> {
           decoration: const BoxDecoration(
             color: Color(0xFFBDB3EB),
           ),
-          child: Column(
+          child: Stack(
             children: [
-              SizedBox(
-                height: kToolbarHeight / 2,
-              ),
-              Textaa(
-                child: Text(
-                  'اختر ما يناسب الصوت',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: screenheight / 4,
-              ),
-              Row(
+              Column(
                 children: [
                   SizedBox(
-                    width: screenwidth / 2,
-                    height: screenheight / 4,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 2.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          if (CheckResult(
-                              myList: myList,
-                              cards: widget.cards,
-                              index: widget.index,
-                              i: 0)) {
-                            CorrectAlert(context);
-                            setState(() {
-                              widget.index += 1;
-                              Correct = false;
-                            });
-                          } else {
-                            RepeatAgainAlert(context);
-                          }
-                        },
-                        child: Stack(
-                          children: [
-                            Container(
-                              width: screenwidth / 2,
-                              height: screenheight / 4,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 3,
-                                ),
-                                shape: BoxShape.circle,
-                                color: Color(0xFFBDB3EB),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(
-                                width: screenwidth / 2,
-                                height: screenheight / 4,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color.fromARGB(255, 236, 234, 225),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: SizedBox(
-                                width: screenwidth / 2,
-                                height: screenheight / 4,
-                                child: Image.asset(myList[0].image),
-                              ),
-                            ),
-                          ],
-                        ),
+                    height: kToolbarHeight / 2,
+                  ),
+                  Textaa(
+                    child: Text(
+                      'اختر ما يناسب الصوت',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   SizedBox(
-                    width: screenwidth / 2,
                     height: screenheight / 4,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 2.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          if (CheckResult(
-                              myList: myList,
-                              cards: widget.cards,
-                              index: widget.index,
-                              i: 1)) {
-                            CorrectAlert(context);
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: screenwidth / 2,
+                        height: screenheight / 4,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 2.0),
+                          child: GestureDetector(
+                            onTap: () async {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              if (CheckResult(
+                                  myList: myList,
+                                  cards: widget.cards,
+                                  index: widget.index,
+                                  i: 0)) {
+                                await action();
+                              } else {
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                RepeatAgainAlert(context);
+                              }
+                            },
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: screenwidth / 2,
+                                  height: screenheight / 4,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 3,
+                                    ),
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFBDB3EB),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Container(
+                                    width: screenwidth / 2,
+                                    height: screenheight / 4,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color.fromARGB(255, 236, 234, 225),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: SizedBox(
+                                    width: screenwidth / 2,
+                                    height: screenheight / 4,
+                                    child: Image.asset(myList[0].image),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidth / 2,
+                        height: screenheight / 4,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 2.0),
+                          child: GestureDetector(
+                            onTap: () async {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              if (CheckResult(
+                                  myList: myList,
+                                  cards: widget.cards,
+                                  index: widget.index,
+                                  i: 1)) {
+                                await action();
+                              } else {
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                RepeatAgainAlert(context);
+                              }
+                            },
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: screenwidth / 2,
+                                  height: screenheight / 4,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 3,
+                                    ),
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFBDB3EB),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Container(
+                                    width: screenwidth / 2,
+                                    height: screenheight / 4,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color.fromARGB(255, 236, 234, 225),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: SizedBox(
+                                    width: screenwidth / 2,
+                                    height: screenheight / 4,
+                                    child: Image.asset(myList[1].image),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Container(
+                      width: screenwidth / 5,
+                      height: screenheight / 7,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFF90609F),
+                      ),
+                      child: IconButton(
+                        onPressed: () {
+                          if (!isPlaying) {
+                            sound.setAsset(widget.cards[widget.index].sound);
+                            sound.play();
                             setState(() {
-                              widget.index += 1;
-                              Correct = false;
+                              isPlaying = true;
                             });
                           } else {
-                            RepeatAgainAlert(context);
+                            sound.stop();
+                            setState(() {
+                              isPlaying = false;
+                            });
                           }
                         },
-                        child: Stack(
-                          children: [
-                            Container(
-                              width: screenwidth / 2,
-                              height: screenheight / 4,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 3,
-                                ),
-                                shape: BoxShape.circle,
-                                color: Color(0xFFBDB3EB),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(
-                                width: screenwidth / 2,
-                                height: screenheight / 4,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color.fromARGB(255, 236, 234, 225),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: SizedBox(
-                                width: screenwidth / 2,
-                                height: screenheight / 4,
-                                child: Image.asset(myList[1].image),
-                              ),
-                            ),
-                          ],
+                        icon: Icon(
+                          isPlaying ? Icons.pause : Icons.play_arrow,
+                          color: const Color(0xFFD9D9D9),
+                          size: screenwidth / 7,
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Container(
-                  width: screenwidth / 5,
-                  height: screenheight / 7,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFF90609F),
-                  ),
-                  child: IconButton(
-                    onPressed: () {
-                      if (!isPlaying) {
-                        sound.setAsset(widget.cards[widget.index].sound);
-                        sound.play();
-                        setState(() {
-                          isPlaying = true;
-                        });
-                      } else {
-                        sound.stop();
-                        setState(() {
-                          isPlaying = false;
-                        });
-                      }
-                    },
-                    icon: Icon(
-                      isPlaying ? Icons.pause : Icons.play_arrow,
-                      color: const Color(0xFFD9D9D9),
-                      size: screenwidth / 7,
-                    ),
-                  ),
-                ),
+              Center(
+                child: isLoading ? CircularProgressIndicator() : SizedBox(),
               ),
             ],
           ),

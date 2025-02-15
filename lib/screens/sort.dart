@@ -3,6 +3,8 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:mobile_app/components/CorrectAlert.dart';
+import 'package:mobile_app/components/PostRequestToUpdatePoints.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Sort extends StatefulWidget {
   final List<String> correctOrder;
@@ -21,14 +23,33 @@ class _SortState extends State<Sort> {
   List<bool> showError = [false, false, false, false];
   List<int> errorAttempts = [0, 0, 0, 0];
 
+  bool isLoading = false;
+
+  Future<void> action() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String message = await postReqToUpdatePoints(
+      'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/points',
+      prefs.getString('token')!,
+      {"points": "50"},
+    );
+    print(message);
+    setState(() {
+      isLoading = false;
+    });
+    CorrectAlert(context);
+  }
+
   void initializeImages() {
     images = List.from(widget.correctOrder);
     images.shuffle(Random());
   }
 
-  void checkAnswers() {
+  Future<void> checkAnswers() async {
     if (correct.every((element) => element)) {
-      CorrectAlert(context);
+      setState(() {
+        isLoading = true;
+      });
+      await action();
     }
   }
 
@@ -76,132 +97,140 @@ class _SortState extends State<Sort> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: Container(
-          height: screenHeight,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            color: Color(0xFF9CD8DE),
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: kToolbarHeight / 2,
+        child: Stack(
+          children: [
+            Container(
+              height: screenHeight,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                color: Color(0xFF9CD8DE),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Column(
                 children: [
-                  Stack(
+                  SizedBox(
+                    height: kToolbarHeight / 2,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1,
-                        ),
-                        itemCount: 4,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return DragTarget<String>(
-                            onAcceptWithDetails: (details) {
-                              setState(() {
-                                if (answers[index] == null) {
-                                  if (details.data ==
-                                      widget.correctOrder[index]) {
-                                    answers[index] = details.data;
-                                    correct[index] = true;
-                                    squareImages[index] =
-                                        Image.asset(details.data);
-                                    images.remove(details.data);
-                                    checkAnswers();
-                                  } else {
-                                    showErrorIcon(index);
+                      Stack(
+                        children: [
+                          GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 1,
+                            ),
+                            itemCount: 4,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return DragTarget<String>(
+                                onAcceptWithDetails: (details) async {
+                                  if (answers[index] == null) {
+                                    if (details.data ==
+                                        widget.correctOrder[index]) {
+                                      answers[index] = details.data;
+                                      correct[index] = true;
+                                      squareImages[index] =
+                                          Image.asset(details.data);
+                                      images.remove(details.data);
+                                      await checkAnswers();
+                                    } else {
+                                      showErrorIcon(index);
+                                    }
                                   }
-                                }
-                              });
-                            },
-                            builder: (context, candidateData, rejectedData) {
-                              return Container(
-                                margin: EdgeInsets.all(8.0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      spreadRadius: 1,
-                                      blurRadius: 5,
-                                      offset: Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    squareImages[index],
-                                    if (answers[index] == null)
-                                      Positioned(
-                                        top: 5,
-                                        left: 5,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color(0xFF407378),
-                                          ),
-                                          padding: EdgeInsets.all(10.0),
-                                          child: Text(
-                                            ['١', '٢', '٣', '٤'][index],
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white),
-                                          ),
+                                  setState(() {});
+                                },
+                                builder:
+                                    (context, candidateData, rejectedData) {
+                                  return Container(
+                                    margin: EdgeInsets.all(8.0),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.1),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          offset: Offset(0, 3),
                                         ),
-                                      ),
-                                    if (correct[index])
-                                      Positioned(
-                                        child: Icon(Icons.check,
-                                            color: Colors.green, size: 60),
-                                      ),
-                                    if (showError[index])
-                                      Positioned(
-                                        child: Icon(Icons.close,
-                                            color: Colors.red, size: 60),
-                                      ),
-                                  ],
-                                ),
+                                      ],
+                                    ),
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        squareImages[index],
+                                        if (answers[index] == null)
+                                          Positioned(
+                                            top: 5,
+                                            left: 5,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Color(0xFF407378),
+                                              ),
+                                              padding: EdgeInsets.all(10.0),
+                                              child: Text(
+                                                ['١', '٢', '٣', '٤'][index],
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          ),
+                                        if (correct[index])
+                                          Positioned(
+                                            child: Icon(Icons.check,
+                                                color: Colors.green, size: 60),
+                                          ),
+                                        if (showError[index])
+                                          Positioned(
+                                            child: Icon(Icons.close,
+                                                color: Colors.red, size: 60),
+                                          ),
+                                      ],
+                                    ),
+                                  );
+                                },
                               );
                             },
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: List.generate(images.length, (index) {
+                          return Draggable<String>(
+                            data: images[index],
+                            child: Image.asset(
+                              images[index],
+                              width: screenWidth * 0.15,
+                              height: screenHeight * 0.1,
+                            ),
+                            feedback: Image.asset(
+                              images[index],
+                              width: screenWidth * 0.15,
+                              height: screenHeight * 0.1,
+                            ),
+                            childWhenDragging: Container(),
                           );
-                        },
+                        }).toList(),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.refresh, size: 30),
+                        onPressed: resetGame,
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(images.length, (index) {
-                      return Draggable<String>(
-                        data: images[index],
-                        child: Image.asset(
-                          images[index],
-                          width: screenWidth * 0.15,
-                          height: screenHeight * 0.1,
-                        ),
-                        feedback: Image.asset(
-                          images[index],
-                          width: screenWidth * 0.15,
-                          height: screenHeight * 0.1,
-                        ),
-                        childWhenDragging: Container(),
-                      );
-                    }).toList(),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.refresh, size: 30),
-                    onPressed: resetGame,
-                  ),
                 ],
               ),
-            ],
-          ),
+            ),
+            Center(
+              child: isLoading ? CircularProgressIndicator() : SizedBox(),
+            ),
+          ],
         ),
       ),
     );
