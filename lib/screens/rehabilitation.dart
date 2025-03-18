@@ -143,13 +143,15 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 70),
+            SizedBox(height: screenHeight / 12),
             Align(
               alignment: Alignment.centerRight,
               child: Text(
@@ -164,7 +166,7 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: screenHeight / 25),
             Container(
               height: screenHeight * 0.3,
               decoration: BoxDecoration(
@@ -179,122 +181,122 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
                   ),
                 ],
               ),
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  SizedBox(height: 10),
-                  Expanded(
-                    child: LineChart(
-                      LineChartData(
-                        minY: 0,
-                        maxY: weekData['هذا الأسبوع']!
-                                .map((spot) => spot.y)
-                                .reduce((a, b) => a > b ? a : b) +
-                            (10 -
-                                (weekData['هذا الأسبوع']!
-                                        .map((spot) => spot.y)
-                                        .reduce((a, b) => a > b ? a : b)) %
-                                    10),
-                        minX: 0,
-                        maxX: 7,
-                        gridData: FlGridData(
-                          show: true,
-                          drawHorizontalLine: true,
-                          drawVerticalLine: false,
-                          horizontalInterval: 10,
-                          getDrawingHorizontalLine: (value) {
-                            return FlLine(
-                              color: Colors.grey.withOpacity(0.3),
-                              strokeWidth: 1,
+              padding: EdgeInsets.only(
+                top: screenHeight / 40,
+                bottom: screenHeight / 90,
+                left: screenWidth / 30,
+                right: 4 * screenWidth / 50,
+              ),
+              child: LineChart(
+                LineChartData(
+                  minY: 0,
+                  maxY: weekData['هذا الأسبوع']!
+                          .map((spot) => spot.y)
+                          .reduce((a, b) => a > b ? a : b) +
+                      (10 -
+                          (weekData['هذا الأسبوع']!
+                                  .map((spot) => spot.y)
+                                  .reduce((a, b) => a > b ? a : b)) %
+                              10),
+                  minX: 0,
+                  maxX: 6,
+                  gridData: FlGridData(
+                    show: true,
+                    drawHorizontalLine: true,
+                    drawVerticalLine: false,
+                    horizontalInterval: screenHeight / 60,
+                    getDrawingHorizontalLine: (value) {
+                      return FlLine(
+                        color: Colors.grey.withOpacity(0.3),
+                        strokeWidth: 1,
+                      );
+                    },
+                  ),
+                  titlesData: FlTitlesData(
+                    leftTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        reservedSize: screenWidth / 10,
+                        getTitlesWidget: (value, meta) {
+                          if (value % 10 == 0) {
+                            return Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                '${value.toInt()}',
+                                style:
+                                    TextStyle(fontSize: 8, color: Colors.grey),
+                              ),
                             );
-                          },
-                        ),
-                        titlesData: FlTitlesData(
-                          leftTitles: AxisTitles(
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              reservedSize: 40,
-                              getTitlesWidget: (value, meta) {
-                                if (value % 10 == 0) {
-                                  return Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      '${value.toInt()}',
-                                      style: TextStyle(
-                                          fontSize: 8, color: Colors.grey),
-                                    ),
-                                  );
-                                }
-                                return Container();
-                              },
-                            ),
-                          ),
-                          rightTitles: AxisTitles(
-                            sideTitles: SideTitles(showTitles: false),
-                          ),
-                          topTitles: AxisTitles(
-                            sideTitles: SideTitles(showTitles: false),
-                          ),
-                          bottomTitles: AxisTitles(
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              reservedSize: 30,
-                              getTitlesWidget: (value, meta) {
-                                switch (value.toInt()) {
-                                  case 6:
-                                    return Text(getDay(days[0]['date']),
-                                        style: TextStyle(fontSize: 10));
-                                  case 5:
-                                    return Text(getDay(days[1]['date']),
-                                        style: TextStyle(fontSize: 10));
-                                  case 4:
-                                    return Text(getDay(days[2]['date']),
-                                        style: TextStyle(fontSize: 10));
-                                  case 3:
-                                    return Text(getDay(days[3]['date']),
-                                        style: TextStyle(fontSize: 10));
-                                  case 2:
-                                    return Text(getDay(days[4]['date']),
-                                        style: TextStyle(fontSize: 10));
-                                  case 1:
-                                    return Text(getDay(days[5]['date']),
-                                        style: TextStyle(fontSize: 10));
-                                  case 0:
-                                    return Text(getDay(days[6]['date']),
-                                        style: TextStyle(fontSize: 10));
-                                  default:
-                                    return Container();
-                                }
-                              },
-                            ),
-                          ),
-                        ),
-                        borderData: FlBorderData(
-                          show: false,
-                          border: Border(
-                            top: BorderSide.none,
-                            left: BorderSide.none,
-                            bottom: BorderSide(color: Colors.grey),
-                            right: BorderSide(color: Colors.grey),
-                          ),
-                        ),
-                        lineBarsData: [
-                          LineChartBarData(
-                            isCurved: true,
-                            spots: weekData[selectedWeek]!,
-                            barWidth: 2,
-                            isStrokeCapRound: true,
-                            belowBarData: BarAreaData(show: false),
-                            color: const Color(0xFF66C6CF),
-                          ),
-                        ],
+                          }
+                          return Container();
+                        },
+                      ),
+                    ),
+                    rightTitles: AxisTitles(
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
+                    topTitles: AxisTitles(
+                      sideTitles: SideTitles(showTitles: false),
+                    ),
+                    bottomTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: (value, meta) {
+                          print(value.toInt());
+                          switch (value.toInt()) {
+                            case 6:
+                              return Text(getDay(days[6]['date']),
+                                  style: TextStyle(fontSize: 10));
+                            case 5:
+                              return Text(getDay(days[5]['date']),
+                                  style: TextStyle(fontSize: 10));
+                            case 4:
+                              return Text(getDay(days[4]['date']),
+                                  style: TextStyle(fontSize: 10));
+                            case 3:
+                              return Text(getDay(days[3]['date']),
+                                  style: TextStyle(fontSize: 10));
+                            case 2:
+                              return Text(getDay(days[2]['date']),
+                                  style: TextStyle(fontSize: 10));
+                            case 1:
+                              return Text(getDay(days[1]['date']),
+                                  style: TextStyle(fontSize: 10));
+                            case 0:
+                              return Text(getDay(days[0]['date']),
+                                  style: TextStyle(fontSize: 10));
+                            default:
+                              return SizedBox();
+                          }
+                        },
                       ),
                     ),
                   ),
-                ],
+                  borderData: FlBorderData(
+                    show: false,
+                    border: Border(
+                      top: BorderSide.none,
+                      left: BorderSide.none,
+                      bottom: BorderSide(color: Colors.grey),
+                      right: BorderSide(color: Colors.grey),
+                    ),
+                  ),
+                  lineBarsData: [
+                    LineChartBarData(
+                      isCurved: true,
+                      spots: weekData[selectedWeek]!,
+                      barWidth: 2,
+                      isStrokeCapRound: true,
+                      belowBarData: BarAreaData(show: false),
+                      color: const Color(0xFF66C6CF),
+                    ),
+                  ],
+                ),
               ),
             ),
-            SizedBox(height: 30),
+
+            ///////////////////////////////////////////////////////////////////////
+            SizedBox(height: screenHeight / 25),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -302,7 +304,7 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
                   'تنمية النطق',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: screenHeight / 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -313,8 +315,8 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
                     GestureDetector(
                       onTap: onButtonTap,
                       child: Container(
-                        width: 200,
-                        height: 150,
+                        width: screenWidth / 1.8,
+                        height: screenHeight / 5,
                         decoration: BoxDecoration(
                           color: items[currentIndex]['color'],
                           borderRadius: BorderRadius.circular(16),
@@ -332,10 +334,10 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
                           children: [
                             Icon(
                               items[currentIndex]['icon'],
-                              size: 50,
+                              size: screenHeight / 15,
                               color: Colors.black54,
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: screenHeight / 60),
                             Text(
                               items[currentIndex]['text'],
                               style: TextStyle(

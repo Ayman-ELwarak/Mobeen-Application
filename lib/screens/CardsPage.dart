@@ -118,7 +118,7 @@ class Cardspage extends StatelessWidget {
       items: Vegetableslist().Vegetables,
     ),
     Cardmodel(
-      item_name: 'أساس البيت',
+      item_name: 'أثاث البيت',
       color: const Color(0xFFFFF7DB),
       image: 'assest/images/Foundation.png',
       items: Foundationlist().Foundation,
