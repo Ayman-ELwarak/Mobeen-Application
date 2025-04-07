@@ -149,8 +149,63 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: screenHeight / 25),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(height: screenHeight / 40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: navigateToPrevious,
+                    ),
+                    GestureDetector(
+                      onTap: onButtonTap,
+                      child: Container(
+                        width: screenWidth / 1.8,
+                        height: screenHeight / 5,
+                        decoration: BoxDecoration(
+                          color: items[currentIndex]['color'],
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 6,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              items[currentIndex]['icon'],
+                              size: screenHeight / 15,
+                              color: Colors.black54,
+                            ),
+                            SizedBox(height: screenHeight / 60),
+                            Text(
+                              items[currentIndex]['text'],
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.arrow_forward_ios),
+                      onPressed: navigateToNext,
+                    ),
+                  ],
+                ),
+              ],
+            ),
             SizedBox(height: screenHeight / 12),
             Align(
               alignment: Alignment.centerRight,
@@ -294,67 +349,7 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
                 ),
               ),
             ),
-
             ///////////////////////////////////////////////////////////////////////
-            SizedBox(height: screenHeight / 25),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'تنمية النطق',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: screenHeight / 40),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: navigateToPrevious,
-                    ),
-                    GestureDetector(
-                      onTap: onButtonTap,
-                      child: Container(
-                        width: screenWidth / 1.8,
-                        height: screenHeight / 5,
-                        decoration: BoxDecoration(
-                          color: items[currentIndex]['color'],
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 6,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              items[currentIndex]['icon'],
-                              size: screenHeight / 15,
-                              color: Colors.black54,
-                            ),
-                            SizedBox(height: screenHeight / 60),
-                            Text(
-                              items[currentIndex]['text'],
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.arrow_forward_ios),
-                      onPressed: navigateToNext,
-                    ),
-                  ],
-                ),
-              ],
-            ),
           ],
         ),
       ),
