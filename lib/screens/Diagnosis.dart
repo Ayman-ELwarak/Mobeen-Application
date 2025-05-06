@@ -63,7 +63,7 @@ class _DiagnosisState extends State<Diagnosis> {
     try {
       final Dio _dio = Dio();
       final response = await _dio.post(
-        'https://dd-api-ef261231066c.herokuapp.com/detect',
+        'https://efee-102-186-45-83.ngrok-free.app/detect/detect',
         data: FormData.fromMap({
           'file': await MultipartFile.fromFile(recordingPath!),
         }),

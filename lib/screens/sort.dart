@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/Backend.dart';
 import 'dart:async';
 import 'dart:math';
 
@@ -28,7 +29,7 @@ class _SortState extends State<Sort> {
   Future<void> action() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String message = await postReqToUpdatePoints(
-      'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/points',
+      '$link/api/v1/users/points',
       prefs.getString('token')!,
       {"points": "50"},
     );

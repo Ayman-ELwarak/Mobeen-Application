@@ -50,41 +50,28 @@ class _TranslatorState extends State<Translator> {
   }
 
   Future<void> upload(String filePath) async {
-    final file = File(filePath);
-    final bytes = await file.readAsBytes();
-
-    Dio dio = Dio();
-
-    const r = RetryOptions(maxAttempts: 3);
-
+    if (recordingPath == null) return;
     try {
-      final response = await r.retry(
-        () => dio.post(
-          "https://api-inference.huggingface.co/models/jonatasgrosman/wav2vec2-large-xlsr-53-arabic",
-          options: Options(
-            headers: {
-              "Authorization": "Bearer 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",
-            },
-            validateStatus: (status) =>
-                status! < 500, // Retry only for server errors
-          ),
-          data: bytes,
+      final Dio _dio = Dio();
+      final response = await _dio.post(
+        'https://efee-102-186-45-83.ngrok-free.app/model/transcribe',
+        data: FormData.fromMap({
+          'file': await MultipartFile.fromFile(recordingPath!),
+        }),
+        options: Options(
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         ),
-        retryIf: (e) => e is DioException && e.response?.statusCode == 503,
       );
-
-      if (response.statusCode == 200) {
-        print(response.data);
-        Map<String, dynamic> jsonData = response.data;
-        setState(() {
-          data = jsonData['text']!;
-          UploadComplete = 2;
-        });
-      } else {
-        throw Exception("Failed to load data: ${response.statusCode}");
-      }
-    } on DioException catch (e) {
-      throw Exception("Dio error: ${e.message}");
+      Map<String, dynamic> Json = response.data;
+      setState(() {
+        UploadComplete = 2;
+        rslt = Json["transcript"];
+      });
+      print('Upload response: ${response.data}');
+    } catch (e) {
+      print('Error uploading file: $e');
     }
   }
 
@@ -139,7 +126,7 @@ class _TranslatorState extends State<Translator> {
               MaterialPageRoute(builder: (context) {
                 return Gettext(
                   recordingPath: recordingPath,
-                  text: data,
+                  text: rslt,
                 );
               }),
             );
@@ -158,7 +145,7 @@ class _TranslatorState extends State<Translator> {
   int UploadComplete = 0;
   String? recordingPath;
   bool isRecoring = false;
-  String data = "";
+  String rslt = "";
   final AudioRecorder audioRecorder = AudioRecorder();
   Widget build(BuildContext context) {
     final double screenheight =

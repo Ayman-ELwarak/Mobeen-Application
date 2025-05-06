@@ -1,4 +1,5 @@
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mobile_app/components/Backend.dart';
 import 'package:mobile_app/screens/SigninPage.dart';
 
 Future<dynamic> signInWithGoogle() async {
@@ -19,7 +20,7 @@ Future<dynamic> signInWithGoogle() async {
 
     Map<String, dynamic> data = {"email": email, "name": name};
     dynamic message = await postData(
-        'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/auth',
+        '$link/api/v1/users/auth',
         data);
     return message;
   } catch (e) {

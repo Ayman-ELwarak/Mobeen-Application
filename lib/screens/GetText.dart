@@ -127,67 +127,6 @@ class _GettextState extends State<Gettext> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20.0, left: 20, right: 20),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF5A7493),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 8, bottom: 10),
-                                  child: SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height / 22,
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xFF89A8CD),
-                                          shape: BoxShape.circle),
-                                      child: IconButton(
-                                        onPressed: handlerPlayerPause,
-                                        icon: Icon(
-                                          player.playing
-                                              ? Icons.pause
-                                              : Icons.play_arrow,
-                                          color: Colors.white,
-                                          size: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              35,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 8,
-                                child: Slider(
-                                  thumbColor: const Color(0xFF89A8CD),
-                                  activeColor: const Color(0xFF89A8CD),
-                                  min: 0.0,
-                                  max: duration.inSeconds.toDouble(),
-                                  value: position.inSeconds.toDouble(),
-                                  onChanged: hanleSeek,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 16.0),
-                                child: Text(
-                                  formatDuratio(duration),
-                                  style: const TextStyle(color: Colors.grey),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:mobile_app/components/Backend.dart';
 import 'package:mobile_app/components/CheckResult.dart';
 import 'package:mobile_app/components/CorrectAlert.dart';
 import 'package:mobile_app/components/PostRequestToUpdatePoints.dart';
@@ -30,7 +31,7 @@ class _LevelonepageState extends State<Levelfivepage> {
   Future<void> action() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String message = await postReqToUpdatePoints(
-      'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/points',
+      '$link/api/v1/users/points',
       prefs.getString('token')!,
       {"points": "50"},
     );

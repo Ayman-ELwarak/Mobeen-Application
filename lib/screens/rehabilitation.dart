@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mobile_app/components/Backend.dart';
 import 'package:mobile_app/components/GetRequest.dart';
 import 'package:mobile_app/components/sort_list.dart';
 import 'package:mobile_app/screens/All_Exercises.dart';
@@ -48,7 +49,7 @@ class _RehabilitationPageState extends State<RehabilitationPage> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       print(prefs.getString('token'));
       Map<String, dynamic> response = await GetRequest(
-          'https://speechable-api-7313b6c7ea20.herokuapp.com/api/v1/users/points/week',
+          '$link/api/v1/users/points/week',
           prefs.getString('token')!) as Map<String, dynamic>;
       Map<String, dynamic> data = response['data'];
       setState(() {
