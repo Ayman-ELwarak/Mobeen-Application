@@ -1,9 +1,13 @@
 // ignore: depend_on_referenced_packages
 import 'package:just_audio/just_audio.dart';
+import 'package:mobile_app/components/Backend.dart';
+import 'package:mobile_app/components/CorrectBackend.dart';
+import 'package:mobile_app/components/GetRequest.dart';
 import 'package:mobile_app/components/TextaA.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 import 'package:record/record.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class Itemofcards extends StatefulWidget {
@@ -16,8 +20,6 @@ class Itemofcards extends StatefulWidget {
 }
 
 class _Itemofcards extends State<Itemofcards> {
-  int gain = 200;
-  int totalScore = 0;
   bool isRecoring = false;
   bool isPlaying = false;
   final AudioRecorder audioRecorder = AudioRecorder();
@@ -188,33 +190,6 @@ class _Itemofcards extends State<Itemofcards> {
                                   ],
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top: screenheight / 70,
-                                    bottom: screenheight / 80),
-                                child: Expanded(
-                                  flex: 1,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 15,
-                                        width: 15,
-                                        child: Image.asset(
-                                            'assest/images/diamond.png'),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: Text(
-                                          '$gain',
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                         ),
@@ -236,14 +211,16 @@ class _Itemofcards extends State<Itemofcards> {
                           shape: BoxShape.circle,
                         ),
                         child: IconButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (!isPlaying) {
                               sound.setAsset(widget.cards[widget.index].sound);
                               sound.play();
                               setState(() {
                                 isPlaying = true;
-                                totalScore += gain;
                               });
+                              String message = await CorrectBackend(
+                                  '$link/api/v1/users/sections', 1);
+                              print(message);
                             } else {
                               sound.stop();
                               setState(() {

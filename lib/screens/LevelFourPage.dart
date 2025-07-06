@@ -4,8 +4,10 @@ import 'package:just_audio/just_audio.dart';
 import 'package:mobile_app/components/Backend.dart';
 import 'package:mobile_app/components/CheckResult.dart';
 import 'package:mobile_app/components/CorrectAlert.dart';
+import 'package:mobile_app/components/CorrectBackend.dart';
 import 'package:mobile_app/components/PostRequestToUpdatePoints.dart';
 import 'package:mobile_app/components/RepeatAgainAlert.dart';
+import 'package:mobile_app/components/wrongBackend.dart';
 import 'package:mobile_app/models/CardsTypeModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,6 +48,17 @@ class _LevelonepageState extends State<Levelfourpage> {
       widget.index += 1;
       Correct = false;
     });
+    String message2 = await CorrectBackend('$link/api/v1/users/sections', 4);
+    print(message2);
+  }
+
+  Future<void> wrongAction() async {
+    setState(() {
+      isLoading = false;
+    });
+    RepeatAgainAlert(context);
+    String message = await WrongBackend('$link/api/v1/users/sections', 4);
+    print(message);
   }
 
   List<Cardstypemodel> createList(
@@ -137,10 +150,7 @@ class _LevelonepageState extends State<Levelfourpage> {
                                   i: 0)) {
                                 await action();
                               } else {
-                                setState(() {
-                                  isLoading = false;
-                                });
-                                RepeatAgainAlert(context);
+                                wrongAction();
                               }
                             },
                             child: Stack(
@@ -198,10 +208,7 @@ class _LevelonepageState extends State<Levelfourpage> {
                                   i: 1)) {
                                 await action();
                               } else {
-                                setState(() {
-                                  isLoading = false;
-                                });
-                                RepeatAgainAlert(context);
+                                wrongAction();
                               }
                             },
                             child: Stack(
@@ -259,10 +266,7 @@ class _LevelonepageState extends State<Levelfourpage> {
                             i: 2)) {
                           await action();
                         } else {
-                          setState(() {
-                            isLoading = false;
-                          });
-                          RepeatAgainAlert(context);
+                          wrongAction();
                         }
                       },
                       child: Stack(
@@ -321,10 +325,7 @@ class _LevelonepageState extends State<Levelfourpage> {
                                   i: 3)) {
                                 await action();
                               } else {
-                                setState(() {
-                                  isLoading = false;
-                                });
-                                RepeatAgainAlert(context);
+                                wrongAction();
                               }
                             },
                             child: Stack(
@@ -382,10 +383,7 @@ class _LevelonepageState extends State<Levelfourpage> {
                                   i: 4)) {
                                 await action();
                               } else {
-                                setState(() {
-                                isLoading = false;
-                              });
-                                RepeatAgainAlert(context);
+                                wrongAction();
                               }
                             },
                             child: Stack(

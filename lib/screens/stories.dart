@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/Backend.dart';
+import 'package:mobile_app/components/CorrectBackend.dart';
+import 'package:mobile_app/components/GetRequest.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'story_type.dart';
 
 class Stories extends StatelessWidget {
@@ -58,7 +62,7 @@ class Stories extends StatelessWidget {
                     itemCount: buttons.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           Navigator.push(
                             context,
                             MaterialPageRoute(

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/Backend.dart';
+import 'package:mobile_app/components/CorrectBackend.dart';
+import 'package:mobile_app/components/GetRequest.dart';
 import 'package:mobile_app/components/letters_list.dart';
 import 'package:mobile_app/screens/letter_videos.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Letters_page extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -55,12 +58,17 @@ class Letters_page extends StatelessWidget {
                     itemCount: letter_list.letter_img.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {
+                        onTap: () async {
+                          String message = await CorrectBackend(
+                              '$link/api/v1/users/sections', 5);
+                          print(message);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  Letters_vid_Page(Videos:letter_list.letter_video,index: index,),
+                              builder: (context) => Letters_vid_Page(
+                                Videos: letter_list.letter_video,
+                                index: index,
+                              ),
                             ),
                           );
                         },

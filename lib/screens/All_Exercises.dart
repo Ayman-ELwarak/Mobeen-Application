@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/components/Backend.dart';
+import 'package:mobile_app/components/CorrectBackend.dart';
+import 'package:mobile_app/components/GetRequest.dart';
 import 'package:mobile_app/components/cheek_list.dart';
 import 'package:mobile_app/components/jaw_list.dart';
 import 'package:mobile_app/components/lip_list.dart';
@@ -6,6 +9,7 @@ import 'package:mobile_app/components/soft_palate_list.dart';
 import 'package:mobile_app/components/tongue_list.dart';
 import 'package:mobile_app/models/video_model.dart';
 import 'package:mobile_app/screens/Exercises.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AllExercises extends StatefulWidget {
   const AllExercises({super.key});
@@ -126,20 +130,20 @@ class _AllExercisesState extends State<AllExercises> {
       children: [
         GestureDetector(
           onTap: () {
-            _toggleExpand(key); 
+            _toggleExpand(key);
           },
           child: Container(
             height: height,
             width: double.infinity,
             decoration: BoxDecoration(
               color: color,
-               boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1), 
-                blurRadius: 8,
-                offset: Offset(0, 4),
-              ),
-            ],
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 8,
+                  offset: Offset(0, 4),
+                ),
+              ],
             ),
             child: Row(
               children: [
@@ -174,8 +178,8 @@ class _AllExercisesState extends State<AllExercises> {
                   padding: const EdgeInsets.only(right: 16.0),
                   child: Icon(
                     isExpanded[key] ?? false
-                        ? Icons.arrow_drop_up 
-                        : Icons.arrow_drop_down, 
+                        ? Icons.arrow_drop_up
+                        : Icons.arrow_drop_down,
                     size: 30,
                     color: Colors.black,
                   ),
@@ -194,7 +198,10 @@ class _AllExercisesState extends State<AllExercises> {
                 String exercise = entry.value;
                 return ListTile(
                   title: Text(exercise),
-                  onTap: () {
+                  onTap: () async {
+                    String message =
+                        await CorrectBackend('$link/api/v1/users/sections', 2);
+                    print(message);
                     Navigator.push(
                       context,
                       MaterialPageRoute(

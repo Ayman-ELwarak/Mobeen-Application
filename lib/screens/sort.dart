@@ -4,7 +4,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:mobile_app/components/CorrectAlert.dart';
+import 'package:mobile_app/components/CorrectBackend.dart';
+import 'package:mobile_app/components/GetRequest.dart';
 import 'package:mobile_app/components/PostRequestToUpdatePoints.dart';
+import 'package:mobile_app/components/wrongBackend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Sort extends StatefulWidget {
@@ -26,7 +29,7 @@ class _SortState extends State<Sort> {
 
   bool isLoading = false;
 
-  Future<void> action() async {
+  Future<void> correctAction() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String message = await postReqToUpdatePoints(
       '$link/api/v1/users/points',
@@ -38,6 +41,13 @@ class _SortState extends State<Sort> {
       isLoading = false;
     });
     CorrectAlert(context);
+    String message2 = await CorrectBackend('$link/api/v1/users/sections', 3);
+    print(message2);
+  }
+
+  Future<void> wrongAction() async {
+    String message = await WrongBackend('$link/api/v1/users/sections', 3);
+    print(message);
   }
 
   void initializeImages() {
@@ -50,11 +60,11 @@ class _SortState extends State<Sort> {
       setState(() {
         isLoading = true;
       });
-      await action();
+      await correctAction();
     }
   }
 
-  void resetGame() {
+  void resetGame() async {
     setState(() {
       answers = [null, null, null, null];
       correct = [false, false, false, false];
@@ -65,7 +75,7 @@ class _SortState extends State<Sort> {
     });
   }
 
-  void showErrorIcon(int index) {
+  void showErrorIcon(int index) async {
     setState(() {
       showError[index] = true;
       errorAttempts[index]++;
@@ -73,6 +83,7 @@ class _SortState extends State<Sort> {
 
     if (errorAttempts[index] > 1) {
       resetGame();
+      wrongAction();
       return;
     }
 

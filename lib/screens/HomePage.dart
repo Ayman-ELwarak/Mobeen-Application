@@ -3,6 +3,7 @@ import 'package:mobile_app/components/TextaA.dart';
 import 'package:mobile_app/components/article_list.dart';
 import 'package:mobile_app/screens/Articles.dart';
 import 'package:mobile_app/screens/Diagnosis.dart';
+import 'package:mobile_app/screens/Profile.dart';
 import 'package:mobile_app/screens/SigninPage.dart';
 import 'package:mobile_app/screens/Translator.dart';
 import 'package:mobile_app/screens/rehabilitation.dart';
@@ -54,28 +55,21 @@ class _HomepageState extends State<Homepage> {
                     padding: EdgeInsets.only(bottom: screenheight / 30),
                     child: Row(
                       children: [
-                        ElevatedButton(
-                          onPressed: () async {
-                            setState(() {
-                              isLoading = true;
-                            });
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
-                            await prefs.setBool('isLoggedIn', false);
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return Signinpage();
+                        SizedBox(
+                            height: screenheight / 15,
+                            child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return Profile();
+                                      },
+                                    ),
+                                  );
                                 },
-                              ),
-                            );
-                            setState(() {
-                              isLoading = false;
-                            });
-                          },
-                          child: Icon(Icons.logout),
-                        ),
+                                child: Image.asset(
+                                    'assest/images/profile photo.png'))),
                         Spacer(),
                         SizedBox(
                           height: screenheight / 23,

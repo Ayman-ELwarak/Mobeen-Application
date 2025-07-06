@@ -73,7 +73,7 @@ class _GetsoundlevelsState extends State<Getsoundlevels> {
                   left: screenwidth / 90,
                 ),
                 child: GestureDetector(
-                  onTap: () async{
+                  onTap: () async {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -81,11 +81,11 @@ class _GetsoundlevelsState extends State<Getsoundlevels> {
                       ),
                     );
                     setState(() {
-                      items[index].flag = true;                     
+                      items[index].flag = true;
                     });
                     await Future.delayed(Duration(milliseconds: 500));
                     setState(() {
-                       items[index].flag = false;
+                      items[index].flag = false;
                     });
                   },
                   child: Container(
@@ -96,7 +96,7 @@ class _GetsoundlevelsState extends State<Getsoundlevels> {
                         color: !items[index].flag
                             ? Color(0xFFD9D9D9)
                             : Colors.black,
-                        width: 1.0, 
+                        width: 1.0,
                       ),
                       color:
                           !items[index].flag ? Color(0xFFD9D9D9) : Colors.green,

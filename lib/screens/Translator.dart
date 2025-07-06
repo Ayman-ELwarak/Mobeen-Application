@@ -54,7 +54,7 @@ class _TranslatorState extends State<Translator> {
     try {
       final Dio _dio = Dio();
       final response = await _dio.post(
-        'https://efee-102-186-45-83.ngrok-free.app/model/transcribe',
+        'https://4f29-196-152-208-9.ngrok-free.app/model/transcribe',
         data: FormData.fromMap({
           'file': await MultipartFile.fromFile(recordingPath!),
         }),
