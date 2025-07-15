@@ -28,8 +28,7 @@ class _ProfileState extends State<Profile> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       print(prefs.getString('token'));
       Map<String, dynamic> response =
-          await GetRequest('$link/api/v1/users/me', prefs.getString('token')!)
-              as Map<String, dynamic>;
+          await GetRequest('$link/api/v1/users/me', prefs.getString('token')!);
       Map<String, dynamic> data = response['data'];
       setState(() {
         user.name = data['data']['name'];

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/Backend.dart';
 import 'package:mobile_app/components/CorrectBackend.dart';
-import 'package:mobile_app/components/GetRequest.dart';
 import 'package:mobile_app/components/cheek_list.dart';
 import 'package:mobile_app/components/jaw_list.dart';
 import 'package:mobile_app/components/lip_list.dart';
@@ -9,7 +8,6 @@ import 'package:mobile_app/components/soft_palate_list.dart';
 import 'package:mobile_app/components/tongue_list.dart';
 import 'package:mobile_app/models/video_model.dart';
 import 'package:mobile_app/screens/Exercises.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AllExercises extends StatefulWidget {
   const AllExercises({super.key});
