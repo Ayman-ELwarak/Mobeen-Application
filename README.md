@@ -11,7 +11,8 @@ The system uses **Deep Learning (DL) models** to:
 ---
 
 ## Software Architecture
-
+ **System Architecture Diagram:**
+![Software Architecture](SoftwareArchitecture.jpg)
 
 ---
 
@@ -141,4 +142,5 @@ After logging in, users can access:
 
 ---
 
-## https://docs.google.com/document/d/15zKHyvBpRGj8GVhX-qMUs9M7RJhVPCNrg7t6nFuRFAc/edit?usp=sharing
+## Documentation
+[![Documentation](https://img.shields.io/badge/Live%20Demo-Click%20Here-blue)](https://docs.google.com/document/d/15zKHyvBpRGj8GVhX-qMUs9M7RJhVPCNrg7t6nFuRFAc/edit?usp=sharing)
