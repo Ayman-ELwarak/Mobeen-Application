@@ -143,4 +143,4 @@ After logging in, users can access:
 ---
 
 ## Documentation
-[![Documentation](https://img.shields.io/badge/Live%20Demo-Click%20Here-blue)](https://docs.google.com/document/d/15zKHyvBpRGj8GVhX-qMUs9M7RJhVPCNrg7t6nFuRFAc/edit?usp=sharing)
+[![Documentation](https://img.shields.io/badge/Documentation-Click%20Here-blue)](https://docs.google.com/document/d/15zKHyvBpRGj8GVhX-qMUs9M7RJhVPCNrg7t6nFuRFAc/edit?usp=sharing)
